@@ -7,7 +7,7 @@
             <!--begin::Info-->
             <div class="d-flex flex-column align-items-start justify-content-center flex-wrap me-2">
                 <!--begin::Title-->
-                <h1 class="text-dark fw-bolder my-1 fs-2">Tableau de Bord
+                <h1 class="text-dark fw-bolder my-1 fs-2">Paramètre du compte
                     <small class="text-muted fs-6 fw-normal ms-1"></small>
                 </h1>
                 <!--end::Title-->
@@ -16,7 +16,7 @@
                     <li class="breadcrumb-item text-muted">
                         <a href="{{route("welcome")}}" class="text-muted text-hover-primary">Accueil</a>
                     </li>
-                    <li class="breadcrumb-item text-dark">Tableau de Bord</li>
+                    <li class="breadcrumb-item text-dark">Paramètre du compte</li>
                 </ul>
                 <!--end::Breadcrumb-->
             </div>

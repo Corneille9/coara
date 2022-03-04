@@ -190,7 +190,7 @@
                                 <label class="form-label fs-6 fw-bolder text-dark">Email</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input class="form-control form-control-lg form-control-solid" type="text" name="email" autocomplete="off" />
+                                <input class="form-control form-control-lg form-control-solid" type="email" name="email" autocomplete="off" />
                                 <!--end::Input-->
                             </div>
                             <!--end::Input group-->
