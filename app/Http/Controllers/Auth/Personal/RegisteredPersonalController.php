@@ -1,18 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Auth\Personal;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
-class AuthenticatedSessionController extends Controller
+class RegisteredPersonalController extends Controller
+
 {
     /**
      * @var array
@@ -59,45 +62,41 @@ class AuthenticatedSessionController extends Controller
     }
 
     /**
-     * Display the login view.
+     * Display the registration view.
      *
      * @return View
      */
     public function create()
     {
-        return view('auth.login',$this->data);
+        return view('auth.personal_account_register', $this->data);
     }
 
     /**
-     * Handle an incoming authentication request.
-     *
-     * @param LoginRequest $request
-     * @return RedirectResponse
-     * @throws ValidationException
-     */
-    public function store(LoginRequest $request)
-    {
-        $request->authenticate();
-
-        $request->session()->regenerate();
-
-        return redirect()->intended(RouteServiceProvider::HOME);
-    }
-
-    /**
-     * Destroy an authenticated session.
+     * Handle an incoming registration request.
      *
      * @param Request $request
      * @return RedirectResponse
+     *
      */
-    public function destroy(Request $request)
+    public function store(Request $request)
     {
-        Auth::guard('web')->logout();
+        $request->validate([
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
 
-        $request->session()->invalidate();
+        $user = User::create([
+            'name' => $request->firstname." ".$request->lastname,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
 
-        $request->session()->regenerateToken();
+        event(new Registered($user));
 
-        return redirect('/');
+        Auth::login($user);
+
+        return redirect(RouteServiceProvider::HOME);
     }
 }

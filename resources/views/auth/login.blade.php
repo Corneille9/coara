@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from silicon.createx.studio/login.blade.php by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Feb 2022 11:53:06 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
     <meta charset="utf-8">
+    <meta name="description" content="Craft admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." />
+    <meta name="keywords" content="Craft, bootstrap, bootstrap 5, admin themes, free admin themes, bootstrap admin, bootstrap dashboard" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Craft - Bootstrap 5 HTML Admin Dashboard Theme" />
+    <meta property="og:url" content="https://themes.getbootstrap.com/product/craft-bootstrap-5-admin-dashboard-theme" />
+    <meta property="og:site_name" content="Keenthemes | Craft" />
+    <link rel="canonical" href="https://preview.keenthemes.com/craft" />
     <title>Company Armada | Login</title>
+    <link rel="shortcut icon" href="{{asset($resolved_assets."app/assets/media/logos/favicon.ico")}}"/>
+    <!--begin::Fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700"/>
+    <!--end::Fonts-->
 
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Silicon - Multipurpose Technology Bootstrap Template">
-    <meta name="keywords" content="bootstrap, business, creative agency, mobile app showcase, saas, fintech, finance, online courses, software, medical, conference landing, services, e-commerce, shopping cart, multipurpose, shop, ui kit, marketing, seo, landing, blog, portfolio, html5, css3, javascript, gallery, slider, touch, creative">
-    <meta name="author" content="Createx Studio">
+    <!--begin::Global Stylesheets Bundle(used by all pages)-->
+    @if(isset($_COOKIE["mode"]) && $_COOKIE["mode"]=="light")
+        <link href="{{asset($resolved_assets."app/assets/plugins/global/plugins.bundle.css")}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset($resolved_assets."app/assets/css/style.bundle.css")}}" rel="stylesheet" type="text/css"/>
+    @else
+        <link href="{{asset($resolved_assets."app/assets/plugins/global/plugins.dark.bundle.css")}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset($resolved_assets."app/assets/css/style.dark.bundle.css")}}" rel="stylesheet" type="text/css"/>
+    @endif
+    <!--end::Global Stylesheets Bundle-->
 
-    <!-- Viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Favicon and Touch Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/favicon/site.webmanifest">
-    <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#6366f1">
-    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
-    <meta name="msapplication-TileColor" content="#080032">
-    <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
-
-    <!-- Vendor Styles -->
-    <link rel="stylesheet" media="screen" href="assets/vendor/boxicons/css/boxicons.min.css"/>
-
-    <!-- Main Theme Styles + Bootstrap -->
-    <link rel="stylesheet" media="screen" href="assets/css/theme.min.css">
+    <!--Begin::Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src= '../../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-5FS8GGP');</script>
+    <!--End::Google Tag Manager -->
 
     <!-- Page loading styles -->
     <style>
@@ -111,17 +111,6 @@
       }
     </style>
 
-    <!-- Theme mode -->
-    <script>
-      let mode = window.localStorage.getItem('mode'),
-          root = document.getElementsByTagName('html')[0];
-      if (mode !== undefined && mode === 'dark') {
-        root.classList.add('dark-mode');
-      } else {
-        root.classList.remove('dark-mode');
-      }
-    </script>
-
     <!-- Page loading scripts -->
     <script>
       (function () {
@@ -134,26 +123,9 @@
         };
       })();
     </script>
-
-    <!-- Google Tag Manager -->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WKV3GT5');
-    </script>
   </head>
-
-
   <!-- Body -->
-  <body>
-
-    <!-- Google Tag Manager (noscript)-->
-    <noscript>
-      <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
-    </noscript>
-
+  <body class="dark-mode auth-bg">
     <!-- Page loading spinner -->
     <div class="page-loading active">
       <div class="page-loading-inner">
@@ -161,116 +133,130 @@
       </div>
     </div>
 
-
-    <!-- Page wrapper for sticky footer -->
-    <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
-    <main class="page-wrapper">
-
-
-      <!-- Navbar -->
-      <!-- Remove "fixed-top" class to make navigation bar scrollable with the page -->
-      <header class="header navbar navbar-expand-lg navbar-light position-absolute navbar-sticky">
-        <div class="container px-3">
-          <a href="{{route("welcome")}}" class="navbar-brand pe-3">
-            <img src="assets/img/logo.svg" width="47" alt="CoAra">
-            CoAra
-          </a>
-          <div id="navbarNav" class="offcanvas offcanvas-end">
-            <div class="offcanvas-header border-bottom">
-              <h5 class="offcanvas-title">Menu</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-
-          </div>
-          <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
-            <input type="checkbox" class="form-check-input" id="theme-mode">
-            <label class="form-check-label d-none d-sm-block" for="theme-mode">Light</label>
-            <label class="form-check-label d-none d-sm-block" for="theme-mode">Dark</label>
-          </div>
-        </div>
-      </header>
-
-
-      <!-- Page content -->
-      <section class="position-relative h-100 pt-5 pb-4">
-
-        <!-- Sign in form -->
-        <div class="container d-flex flex-wrap justify-content-center justify-content-xl-start h-100 pt-5">
-          <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
-            <h2 class="text-center">Connexion</h2>
-            <p class="text-center pb-2 mb-2 btn-sm">Vous n'avez pas encore de compte ? <a href="{{route("register")}}">S'incrire ici.</a></p>
-            <form method="POST" class="needs-validation mb-2" action="{{ route('login') }}" novalidate>
-                @csrf
-              <div class="position-relative mb-4">
-                <label for="email" class="form-label fs-base">Email</label>
-                <input type="email" id="email" name="email" class="form-control" required>
-                <div class="invalid-feedback position-absolute start-0 top-100">S'il vous plaît, mettez une adresse email valide !</div>
-              </div>
-              <div class="mb-4">
-                <label for="password" class="form-label fs-base">Mot de passe</label>
-                <div class="password-toggle">
-                  <input type="password" id="password" class="form-control" name="password" required>
-                  <label class="password-toggle-btn" aria-label="Show/hide password">
-                    <input class="password-toggle-check" type="checkbox">
-                    <span class="password-toggle-indicator"></span>
-                  </label>
-                  <div class="invalid-feedback position-absolute start-0 top-100">S'il vous plait entrez votre mot de passe !</div>
+    <!--begin::Main-->
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Authentication - Sign-in -->
+        <div class="d-flex flex-column flex-lg-row flex-column-fluid">
+            <!--begin::Aside-->
+            <div class="d-flex flex-column flex-lg-row-auto bg-body w-xl-600px positon-xl-relative">
+                <!--begin::Wrapper-->
+                <div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
+                    <!--begin::Header-->
+                    <div class="d-flex flex-row-fluid flex-column text-center p-10 pt-lg-20">
+                        <!--begin::Logo-->
+                        <a href="{{route("welcome")}}" class="py-9 pt-lg-20">
+                            <img alt="Logo" src="{{asset($resolved_assets."app/assets/media/logos/logo-ellipse.svg")}}" class="h-70px" />
+                        </a>
+                        <!--end::Logo-->
+                        <!--begin::Title-->
+                        <h1 class="fw-bolder text-white fs-2qx pb-5 pb-md-10">CoAra</h1>
+                        <!--end::Title-->
+                        <!--begin::Description-->
+                        <p class="fw-bold fs-2 text-white">Lorem ipsum dolor sit amet, consectetur adipisicing.
+                            <br/>Lorem ipsum dolor sit amet.</p>
+                        <!--end::Description-->
+                    </div>
+                    <!--end::Header-->
+                    <!--begin::Illustration-->
+                    <div class="d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px" style="background-image: url({{$resolved_assets}}app/assets/media/illustrations/sigma-1/17-dark.png)"></div>
+                    <!--end::Illustration-->
                 </div>
-              </div>
-              <div class="mb-4">
-                <div class="form-check">
-                  <input type="checkbox" id="remember" class="form-check-input"  name="remember">
-                  <label for="remember" class="form-check-label fs-base" >Se souvenir de moi</label>
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary shadow-primary w-100">Se connecter</button>
-            </form>
-            <a href="#" class="btn btn-link btn-lg w-100">Mot de passe oublié?</a>
-            <hr class="my-4">
-            <h6 class="text-center mb-4">Ou connectez-vous avec votre réseau social</h6>
-            <div class="row row-cols-1 row-cols-sm-2">
-              <div class="col mb-3">
-                <a href="#" class="btn btn-icon btn-secondary btn-google btn-lg w-100">
-                  <i class="bx bxl-google fs-xl me-2"></i>
-                  Google
-                </a>
-              </div>
-              <div class="col mb-3">
-                <a href="#" class="btn btn-icon btn-secondary btn-facebook btn-lg w-100">
-                  <i class="bx bxl-facebook fs-xl me-2"></i>
-                  Facebook
-                </a>
-              </div>
+                <!--end::Wrapper-->
             </div>
-          </div>
-          <div class="w-100 align-self-end">
-            <p class="fs-xs text-center text-xl-start pb-2 mb-0">
-              &copy; All rights reserved. CoAra
-            </p>
-          </div>
+            <!--begin::Aside-->
+            <!--begin::Body-->
+            <div class="d-flex flex-column flex-lg-row-fluid py-10">
+                <!--begin::Content-->
+                <div class="d-flex flex-center flex-column flex-column-fluid">
+                    <!--begin::Wrapper-->
+                    <div class="w-lg-500px p-10 p-lg-15 mx-auto">
+                        <!--begin::Form-->
+                        <form method="POST" class="form w-100" novalidate="novalidate" id="kt_sign_in_form" action="{{route("login")}}">
+                            @csrf
+                            <!--begin::Heading-->
+                            <div class="text-center mb-10">
+                                <!--begin::Title-->
+                                <h1 class="text-dark mb-3">Sign In to Craft</h1>
+                                <!--end::Title-->
+                                <!--begin::Link-->
+                                <div class="text-gray-400 fw-bold fs-4">Vous n'aviez pas encore de compte ?
+                                    <a href="{{route("register")}}" class="link-primary fw-bolder">Créer un compte</a></div>
+                                <!--end::Link-->
+                            </div>
+                            <!--begin::Heading-->
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-10">
+                                <!--begin::Label-->
+                                <label class="form-label fs-6 fw-bolder text-dark">Email</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input class="form-control form-control-lg form-control-solid" type="text" name="email" autocomplete="off" />
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-10">
+                                <!--begin::Wrapper-->
+                                <div class="d-flex flex-stack mb-2">
+                                    <!--begin::Label-->
+                                    <label class="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
+                                    <!--end::Label-->
+                                    <!--begin::Link-->
+                                    <a href="password-reset.html" class="link-primary fs-6 fw-bolder">Forgot Password ?</a>
+                                    <!--end::Link-->
+                                </div>
+                                <!--end::Wrapper-->
+                                <!--begin::Input-->
+                                <input class="form-control form-control-lg form-control-solid" type="password" name="password" autocomplete="off" />
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+                                <div class="form-check form-check-custom form-check-solid form-check-sm mb-5">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember"/>
+                                    <label class="form-check-label" for="remember">
+                                       Se souvenir de moi.
+                                    </label>
+                                </div>
+                                <!--begin::Actions-->
+                            <div class="text-center">
+                                <!--begin::Submit button-->
+                                <button type="submit" id="kt_sign_in_submit" class="btn btn-lg btn-primary fw-bolder me-3 my-2">
+                                    <span class="indicator-label">Se connecter</span>
+                                    <span class="indicator-progress">Please wait...
+										<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                </button>
+                                <!--end::Submit button-->
+                                <!--begin::Google link-->
+                                <a href="#" class="btn btn-light-primary btn-lg fw-bolder my-2">
+                                    <img alt="Logo" src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/google-icon.svg")}}" class="h-20px me-3" />Sign in with Google</a>
+                                <!--end::Google link-->
+                            </div>
+                            <!--end::Actions-->
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Wrapper-->
+                </div>
+                <!--end::Content-->
+            </div>
+            <!--end::Body-->
         </div>
+        <!--end::Authentication - Sign-in-->
+    </div>
+    <!--end::Main-->
 
-        <!-- Background -->
-        <div class="position-absolute top-0 end-0 w-50 h-100 bg-position-center bg-repeat-0 bg-size-contain d-none d-xl-block " style="background-image: url(assets/img/account/signin-bg.svg);"></div>
-      </section>
-    </main>
+    <script>const hostUrl = "{{asset($resolved_assets."app/assets/index.hmtl")}}";</script>
+    <!--begin::Javascript-->
+    <!--begin::Global Javascript Bundle(used by all pages)-->
+    <script src="{{asset($resolved_assets."app/assets/plugins/global/plugins.bundle.js")}}"></script>
+    <script src="{{asset($resolved_assets."app/assets/js/scripts.bundle.js")}}"></script>
+    <script src="{{asset($resolved_assets."app/assets/js/custom/authentication/sign-in/general.js")}}"></script>
+    <!--end::Global Javascript Bundle-->
 
-
-    <!-- Back to top button -->
-    <a href="#top" class="btn-scroll-top" data-scroll>
-      <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
-      <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
-    </a>
-
-
-    <!-- Vendor Scripts -->
-    <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-    <script src="assets/vendor/cleave.js/dist/cleave.min.js"></script>
-
-    <!-- Main Theme Script -->
-    <script src="assets/js/theme.min.js"></script>
+    <!--Begin::Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FS8GGP" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!--End::Google Tag Manager (noscript) -->
   </body>
-
-<!-- Mirrored from silicon.createx.studio/login.blade.php by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Feb 2022 11:54:04 GMT -->
 </html>

@@ -2,32 +2,25 @@
 class ChartBuilder {
 
     constructor(container) {
-        this.container = document.getElementById(container)
+        this.chartTypes = new ChartOptions()
+        this.container = container
         this.height = parseInt(KTUtil.css(this.container, 'height'));
         this.labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
         this.borderColor = KTUtil.getCssVariableValue('--bs-gray-200');
         this.baseColor = KTUtil.getCssVariableValue('--bs-primary');
         this.secondaryColor = KTUtil.getCssVariableValue('--bs-gray-300');
-
-        //Build options
         this.buildOptions()
     }
 
     buildOptions(){
         this.options = {
-            series: [{
-                name: 'Net Profit',
-                data: [44, 55, 57, 56, 61, 58]
-            }, {
-                name: 'Revenue',
-                data: [76, 85, 101, 98, 87, 105]
-            }],
+            series: undefined,
             chart: {
                 fontFamily: 'inherit',
-                type: 'bar',
+                type: undefined,
                 height: this.height,
                 toolbar: {
-                    show: false
+                    show: true
                 }
             },
             plotOptions: {
@@ -38,18 +31,17 @@ class ChartBuilder {
                 },
             },
             legend: {
-                show: false
+                show: true
             },
             dataLabels: {
-                enabled: false
+                enabled: true
             },
             stroke: {
                 show: true,
                 width: 2,
-                colors: ['transparent']
             },
             xaxis: {
-                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                categories: undefined,
                 axisBorder: {
                     show: false,
                 },
@@ -101,11 +93,11 @@ class ChartBuilder {
                 },
                 y: {
                     formatter: function (val) {
-                        return '$' + val + ' thousands'
+                        return val
                     }
                 }
             },
-            colors: [this.baseColor, this.secondaryColor],
+            // colors: [this.baseColor, this.secondaryColor],
             grid: {
                 borderColor: this.borderColor,
                 strokeDashArray: 4,
@@ -115,7 +107,7 @@ class ChartBuilder {
                     }
                 }
             }
-        };
+        }
     }
 
     init(){

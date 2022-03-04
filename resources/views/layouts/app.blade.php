@@ -3,36 +3,41 @@
 <html lang="en">
 <!--begin::Head-->
 
-<meta http-equiv="content-type" content="text/html;charset=UTF-8"/><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
 <head>
     <title>CoAra</title>
     <meta charset="utf-8"/>
-    <meta name="description" content="Craft admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets."/>
-    <meta name="keywords" content="Craft, bootstrap, bootstrap 5, admin themes, free admin themes, bootstrap admin, bootstrap dashboard"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta property="og:locale" content="en_US"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:title" content="Craft - Bootstrap 5 HTML Admin Dashboard Theme"/>
-    <meta property="og:url" content="https://themes.getbootstrap.com/product/craft-bootstrap-5-admin-dashboard-theme"/>
-    <meta property="og:site_name" content="Keenthemes | Craft"/>
-    <link rel="canonical" href="https://preview.keenthemes.com/craft"/>
+    {{--    <meta name="description" content="Craft admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets."/>--}}
+    {{--    <meta name="keywords" content="Craft, bootstrap, bootstrap 5, admin themes, free admin themes, bootstrap admin, bootstrap dashboard"/>--}}
+    {{--    <meta name="viewport" content="width=device-width, initial-scale=1"/>--}}
+    {{--    <meta property="og:locale" content="en_US"/>--}}
+    {{--    <meta property="og:type" content="article"/>--}}
+    {{--    <meta property="og:title" content="Craft - Bootstrap 5 HTML Admin Dashboard Theme"/>--}}
+    {{--    <meta property="og:url" content="https://themes.getbootstrap.com/product/craft-bootstrap-5-admin-dashboard-theme"/>--}}
+    {{--    <meta property="og:site_name" content="Keenthemes | Craft"/>--}}
+    {{--    <link rel="canonical" href="https://preview.keenthemes.com/craft"/>--}}
     <link rel="shortcut icon" href="{{asset($resolved_assets."app/assets/media/logos/favicon.ico")}}"/>
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700"/>
     <!--end::Fonts-->
     <!--begin::Page Vendor Stylesheets(used by this page)-->
-    <link href="{{asset($resolved_assets."app/assets/plugins/custom/leaflet/leaflet.bundle.css")}}" rel="stylesheet" type="text/css"/>
-    <link href="{{asset($resolved_assets."app/assets/plugins/custom/datatables/datatables.bundle.css")}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset($resolved_assets."app/assets/plugins/custom/leaflet/leaflet.bundle.css")}}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{{asset($resolved_assets."app/assets/plugins/custom/datatables/datatables.bundle.css")}}"
+          rel="stylesheet" type="text/css"/>
     <!--end::Page Vendor Stylesheets-->
     <!--begin::Global Stylesheets Bundle(used by all pages)-->
     @if(isset($_COOKIE["mode"]) && $_COOKIE["mode"]=="light")
-    <link href="{{asset($resolved_assets."app/assets/plugins/global/plugins.bundle.css")}}" rel="stylesheet" type="text/css"/>
-    <link href="{{asset($resolved_assets."app/assets/css/style.bundle.css")}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset($resolved_assets."app/assets/plugins/global/plugins.bundle.css")}}" rel="stylesheet"
+              type="text/css"/>
+        <link href="{{asset($resolved_assets."app/assets/css/style.bundle.css")}}" rel="stylesheet" type="text/css"/>
     @else
-        <link href="{{asset($resolved_assets."app/assets/plugins/global/plugins.dark.bundle.css")}}" rel="stylesheet" type="text/css"/>
-        <link href="{{asset($resolved_assets."app/assets/css/style.dark.bundle.css")}}" rel="stylesheet" type="text/css"/>
-    @endif
-    <!--end::Global Stylesheets Bundle-->
+        <link href="{{asset($resolved_assets."app/assets/plugins/global/plugins.dark.bundle.css")}}" rel="stylesheet"
+              type="text/css"/>
+        <link href="{{asset($resolved_assets."app/assets/css/style.dark.bundle.css")}}" rel="stylesheet"
+              type="text/css"/>
+@endif
+<!--end::Global Stylesheets Bundle-->
     <!-- Page loading styles -->
     <style>
         .page-loading {
@@ -148,7 +153,8 @@
 </head>
 <!--end::Head-->
 <!--begin::Body-->
-<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled aside-fixed aside-default-enabled">
+<body id="kt_body"
+      class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled aside-fixed aside-default-enabled">
 <!--begin::Main-->
 
 <!-- Page loading spinner -->
@@ -171,9 +177,11 @@
             <!--begin::Brand-->
             <div class="aside-logo flex-column-auto pt-9 pb-5" id="kt_aside_logo">
                 <!--begin::Logo-->
-                <a href="{{route("app.dashboard")}}">
-                    <img alt="Logo" src="{{asset($resolved_assets."app/assets/media/logos/logo-default.svg")}}" class="max-h-50px logo-default"/>
-                    <img alt="Logo" src="{{asset($resolved_assets."app/assets/media/logos/logo-minimize.svg")}}" class="max-h-50px logo-minimize"/>
+                <a href="{{route("app.news")}}">
+                    <img alt="Logo" src="{{asset($resolved_assets."app/assets/media/logos/logo-default.svg")}}"
+                         class="max-h-50px logo-default"/>
+                    <img alt="Logo" src="{{asset($resolved_assets."app/assets/media/logos/logo-minimize.svg")}}"
+                         class="max-h-50px logo-minimize"/>
                 </a>
                 <!--end::Logo-->
             </div>
@@ -182,10 +190,14 @@
             <div class="aside-menu flex-column-fluid">
                 <!--begin::Aside Menu-->
                 <!--begin::Menu-->
-                <div class="menu menu-column menu-fit menu-rounded menu-title-gray-600 menu-icon-gray-400 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-bold fs-5 my-5 mt-lg-2 mb-lg-0" id="kt_aside_menu" data-kt-menu="true">
-                    <div class="menu-fit hover-scroll-y me-lg-n5 pe-lg-5" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-wrappers="#kt_aside_menu" data-kt-scroll-offset="20px" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer">
-                        <div class="menu-item @if(Route::getCurrentRoute()->uri=="app/dashboard") here @endif">
-                            <a class="menu-link" href="{{route("app.dashboard")}}">
+                <div class="menu menu-column menu-fit menu-rounded menu-title-gray-600 menu-icon-gray-400 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-bold fs-5 my-5 mt-lg-2 mb-lg-0"
+                    id="kt_aside_menu" data-kt-menu="true">
+                    <div class="menu-fit hover-scroll-y me-lg-n5 pe-lg-5" id="kt_aside_menu_wrapper"
+                         data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}"
+                         data-kt-scroll-height="auto" data-kt-scroll-wrappers="#kt_aside_menu"
+                         data-kt-scroll-offset="20px" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer">
+                        <div class="menu-item @if(Route::getCurrentRoute()->uri=="app/news") here @endif">
+                            <a class="menu-link" href="{{route("app.news")}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -202,17 +214,43 @@
 											</span>
                                             <!--end::Svg Icon-->
 										</span>
-                                <span class="menu-title">Tableau de Bord</span>
+                                <span class="menu-title">Fil d'actualités</span>
                             </a>
                         </div>
-                        <div class="menu-item @if(Route::getCurrentRoute()->uri=="app/search") here @elseif(str_starts_with(Route::getCurrentRoute()->uri, "search/")) show menu-accordion @endif">
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{route("app.company.dashboard")}}">
+										<span class="menu-icon">
+											<!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
+											<span class="svg-icon svg-icon-2">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                     viewBox="0 0 24 24" fill="none">
+													<path
+                                                        d="M17.5 11H6.5C4 11 2 9 2 6.5C2 4 4 2 6.5 2H17.5C20 2 22 4 22 6.5C22 9 20 11 17.5 11ZM15 6.5C15 7.9 16.1 9 17.5 9C18.9 9 20 7.9 20 6.5C20 5.1 18.9 4 17.5 4C16.1 4 15 5.1 15 6.5Z"
+                                                        fill="black"/>
+													<path opacity="0.3"
+                                                          d="M17.5 22H6.5C4 22 2 20 2 17.5C2 15 4 13 6.5 13H17.5C20 13 22 15 22 17.5C22 20 20 22 17.5 22ZM4 17.5C4 18.9 5.1 20 6.5 20C7.9 20 9 18.9 9 17.5C9 16.1 7.9 15 6.5 15C5.1 15 4 16.1 4 17.5Z"
+                                                          fill="black"/>
+												</svg>
+											</span>
+                                            <!--end::Svg Icon-->
+										</span>
+                                <span class="menu-title">Tableau de bord</span>
+                            </a>
+                        </div>
+                        <div
+                            class="menu-item @if(Route::getCurrentRoute()->uri=="app/search") here @elseif(str_starts_with(Route::getCurrentRoute()->uri, "search/")) show menu-accordion @endif">
                             <a class="menu-link" href="{{route("app.search")}}">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
                                     <span class="svg-icon svg-icon-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path d="M21.7 18.9L18.6 15.8C17.9 16.9 16.9 17.9 15.8 18.6L18.9 21.7C19.3 22.1 19.9 22.1 20.3 21.7L21.7 20.3C22.1 19.9 22.1 19.3 21.7 18.9Z" fill="black"/>
-                                            <path opacity="0.3" d="M11 20C6 20 2 16 2 11C2 6 6 2 11 2C16 2 20 6 20 11C20 16 16 20 11 20ZM11 4C7.1 4 4 7.1 4 11C4 14.9 7.1 18 11 18C14.9 18 18 14.9 18 11C18 7.1 14.9 4 11 4ZM8 11C8 9.3 9.3 8 11 8C11.6 8 12 7.6 12 7C12 6.4 11.6 6 11 6C8.2 6 6 8.2 6 11C6 11.6 6.4 12 7 12C7.6 12 8 11.6 8 11Z" fill="black"/>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M21.7 18.9L18.6 15.8C17.9 16.9 16.9 17.9 15.8 18.6L18.9 21.7C19.3 22.1 19.9 22.1 20.3 21.7L21.7 20.3C22.1 19.9 22.1 19.3 21.7 18.9Z"
+                                                fill="black"/>
+                                            <path opacity="0.3"
+                                                  d="M11 20C6 20 2 16 2 11C2 6 6 2 11 2C16 2 20 6 20 11C20 16 16 20 11 20ZM11 4C7.1 4 4 7.1 4 11C4 14.9 7.1 18 11 18C14.9 18 18 14.9 18 11C18 7.1 14.9 4 11 4ZM8 11C8 9.3 9.3 8 11 8C11.6 8 12 7.6 12 7C12 6.4 11.6 6 11 6C8.2 6 6 8.2 6 11C6 11.6 6.4 12 7 12C7.6 12 8 11.6 8 11Z"
+                                                  fill="black"/>
                                         </svg>
                                     </span>
                                     <!--end::Svg Icon-->
@@ -236,68 +274,50 @@
                             @endif
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="">
+                            <a class="menu-link" href="{{route("app.company.tables")}}">
+                                <span class="menu-icon">
+									<!--begin::Svg Icon | path: icons/duotune/abstract/abs027.svg-->
+                                    <span class="svg-icon svg-icon-2">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewBox="0 0 24 24" fill="none">
+                                                <path
+                                                    d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z"
+                                                    fill="black"/>
+                                                <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4"
+                                                      fill="black"/>
+                                            </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </span>
+                                <span class="menu-title">Tableaux
+                                    <span
+                                        class="badge badge-changelog badge-light-warning bg-hover-warning text-hover-white fw-bold fs-9 px-2 ms-2">!</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{route("app.enterprises.list")}}">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: /icons/duotune/general/gen002.svg-->
                                     <span class="svg-icon svg-icon-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none">
                                             <path d="M20 19.725V18.725C20 18.125 19.6 17.725 19 17.725H5C4.4 17.725 4 18.125 4 18.725V19.725H3C2.4 19.725 2 20.125 2 20.725V21.725H22V20.725C22 20.125 21.6 19.725 21 19.725H20Z" fill="black"/>
                                             <path opacity="0.3" d="M22 6.725V7.725C22 8.325 21.6 8.725 21 8.725H18C18.6 8.725 19 9.125 19 9.725C19 10.325 18.6 10.725 18 10.725V15.725C18.6 15.725 19 16.125 19 16.725V17.725H15V16.725C15 16.125 15.4 15.725 16 15.725V10.725C15.4 10.725 15 10.325 15 9.725C15 9.125 15.4 8.725 16 8.725H13C13.6 8.725 14 9.125 14 9.725C14 10.325 13.6 10.725 13 10.725V15.725C13.6 15.725 14 16.125 14 16.725V17.725H10V16.725C10 16.125 10.4 15.725 11 15.725V10.725C10.4 10.725 10 10.325 10 9.725C10 9.125 10.4 8.725 11 8.725H8C8.6 8.725 9 9.125 9 9.725C9 10.325 8.6 10.725 8 10.725V15.725C8.6 15.725 9 16.125 9 16.725V17.725H5V16.725C5 16.125 5.4 15.725 6 15.725V10.725C5.4 10.725 5 10.325 5 9.725C5 9.125 5.4 8.725 6 8.725H3C2.4 8.725 2 8.325 2 7.725V6.725L11 2.225C11.6 1.925 12.4 1.925 13.1 2.225L22 6.725ZM12 3.725C11.2 3.725 10.5 4.425 10.5 5.225C10.5 6.025 11.2 6.725 12 6.725C12.8 6.725 13.5 6.025 13.5 5.225C13.5 4.425 12.8 3.725 12 3.725Z" fill="black"/>
                                         </svg>
                                     </span>
                                     <!--end::Svg Icon-->
                                 </span>
-                                <span class="menu-title">Entreprises</span>
+                                <span class="menu-title">Voir les Entreprises</span>
                             </a>
                         </div>
-{{--                        <div class="menu-item">--}}
-{{--                            <a class="menu-link" href="layout-builder.html">--}}
-{{--										<span class="menu-icon">--}}
-{{--											<!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->--}}
-{{--											<span class="svg-icon svg-icon-2">--}}
-{{--												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"--}}
-{{--                                                     viewBox="0 0 24 24" fill="none">--}}
-{{--													<path--}}
-{{--                                                        d="M17.5 11H6.5C4 11 2 9 2 6.5C2 4 4 2 6.5 2H17.5C20 2 22 4 22 6.5C22 9 20 11 17.5 11ZM15 6.5C15 7.9 16.1 9 17.5 9C18.9 9 20 7.9 20 6.5C20 5.1 18.9 4 17.5 4C16.1 4 15 5.1 15 6.5Z"--}}
-{{--                                                        fill="black"/>--}}
-{{--													<path opacity="0.3"--}}
-{{--                                                          d="M17.5 22H6.5C4 22 2 20 2 17.5C2 15 4 13 6.5 13H17.5C20 13 22 15 22 17.5C22 20 20 22 17.5 22ZM4 17.5C4 18.9 5.1 20 6.5 20C7.9 20 9 18.9 9 17.5C9 16.1 7.9 15 6.5 15C5.1 15 4 16.1 4 17.5Z"--}}
-{{--                                                          fill="black"/>--}}
-{{--												</svg>--}}
-{{--											</span>--}}
-{{--                                            <!--end::Svg Icon-->--}}
-{{--										</span>--}}
-{{--                                <span class="menu-title">Layout Builder</span>--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                        <div class="menu-item">--}}
-{{--                            <a class="menu-link" href="documentation/getting-started/changelog.html">--}}
-{{--										<span class="menu-icon">--}}
-{{--											<!--begin::Svg Icon | path: icons/duotune/coding/cod003.svg-->--}}
-{{--											<span class="svg-icon svg-icon-2">--}}
-{{--												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"--}}
-{{--                                                     viewBox="0 0 24 24" fill="none">--}}
-{{--													<path--}}
-{{--                                                        d="M16.95 18.9688C16.75 18.9688 16.55 18.8688 16.35 18.7688C15.85 18.4688 15.75 17.8688 16.05 17.3688L19.65 11.9688L16.05 6.56876C15.75 6.06876 15.85 5.46873 16.35 5.16873C16.85 4.86873 17.45 4.96878 17.75 5.46878L21.75 11.4688C21.95 11.7688 21.95 12.2688 21.75 12.5688L17.75 18.5688C17.55 18.7688 17.25 18.9688 16.95 18.9688ZM7.55001 18.7688C8.05001 18.4688 8.15 17.8688 7.85 17.3688L4.25001 11.9688L7.85 6.56876C8.15 6.06876 8.05001 5.46873 7.55001 5.16873C7.05001 4.86873 6.45 4.96878 6.15 5.46878L2.15 11.4688C1.95 11.7688 1.95 12.2688 2.15 12.5688L6.15 18.5688C6.35 18.8688 6.65 18.9688 6.95 18.9688C7.15 18.9688 7.35001 18.8688 7.55001 18.7688Z"--}}
-{{--                                                        fill="black"/>--}}
-{{--													<path opacity="0.3"--}}
-{{--                                                          d="M10.45 18.9687C10.35 18.9687 10.25 18.9687 10.25 18.9687C9.75 18.8687 9.35 18.2688 9.55 17.7688L12.55 5.76878C12.65 5.26878 13.25 4.8687 13.75 5.0687C14.25 5.1687 14.65 5.76878 14.45 6.26878L11.45 18.2688C11.35 18.6688 10.85 18.9687 10.45 18.9687Z"--}}
-{{--                                                          fill="black"/>--}}
-{{--												</svg>--}}
-{{--											</span>--}}
-{{--                                            <!--end::Svg Icon-->--}}
-{{--										</span>--}}
-{{--                                <span class="menu-title">Changelog--}}
-{{--                                    <span class="badge badge-changelog badge-light-danger bg-hover-danger text-hover-white fw-bold fs-9 px-2 ms-2">v1.0.10</span>--}}
-{{--                                </span>--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
                         <div class="menu-item">
-                            <a class="menu-link" href="">
+                            <a class="menu-link" href="{{route("app.personal.settings")}}">
                                 <span class="menu-icon">
 									<!--begin::Svg Icon | path: icons/duotune/abstract/abs027.svg-->
                                     <span class="svg-icon svg-icon-2">
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewBox="0 0 24 24" fill="none">
                                                 <path d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z" fill="black"/>
                                                 <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4" fill="black"/>
                                             </svg>
@@ -305,9 +325,87 @@
                                     <!--end::Svg Icon-->
                                 </span>
                                 <span class="menu-title">Compte
-                                    <span class="badge badge-changelog badge-light-warning bg-hover-warning text-hover-white fw-bold fs-9 px-2 ms-2">!</span>
+                                    <span
+                                        class="badge badge-changelog badge-light-warning bg-hover-warning text-hover-white fw-bold fs-9 px-2 ms-2">!</span>
                                 </span>
                             </a>
+                        </div>
+                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                            <span class="menu-link">
+                                <span class="menu-icon">
+                                    <!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
+                                    <span class="svg-icon svg-icon-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M20 14H18V10H20C20.6 10 21 10.4 21 11V13C21 13.6 20.6 14 20 14ZM21 19V17C21 16.4 20.6 16 20 16H18V20H20C20.6 20 21 19.6 21 19ZM21 7V5C21 4.4 20.6 4 20 4H18V8H20C20.6 8 21 7.6 21 7Z" fill="black"/>
+                                            <path opacity="0.3" d="M17 22H3C2.4 22 2 21.6 2 21V3C2 2.4 2.4 2 3 2H17C17.6 2 18 2.4 18 3V21C18 21.6 17.6 22 17 22ZM10 7C8.9 7 8 7.9 8 9C8 10.1 8.9 11 10 11C11.1 11 12 10.1 12 9C12 7.9 11.1 7 10 7ZM13.3 16C14 16 14.5 15.3 14.3 14.7C13.7 13.2 12 12 10.1 12C8.10001 12 6.49999 13.1 5.89999 14.7C5.59999 15.3 6.19999 16 7.39999 16H13.3Z" fill="black"/>
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </span>
+                                <span class="menu-title">Compte</span>
+                                <span class="menu-arrow"></span>
+                            </span>
+                            <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                <div class="menu-item">
+                                    <a class="menu-link" href="{{route("app.company.settings")}}">
+												<span class="menu-bullet">
+													<span class="bullet bullet-dot"></span>
+												</span>
+                                        <span class="menu-title">Paramètres</span>
+                                    </a>
+                                </div>
+                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+									<span class="menu-link">
+										<span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+										<span class="menu-title">Gérer les utilisateurs</span>
+										<span class="menu-arrow"></span>
+									</span>
+                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                        <div class="menu-item">
+                                            <a class="menu-link" href="{{route("app.company.users.list")}}">
+												<span class="menu-bullet">
+													<span class="bullet bullet-dot"></span>
+												</span>
+                                                <span class="menu-title">Utilisateurs</span>
+                                            </a>
+                                        </div>
+                                        <div class="menu-item">
+                                            <a class="menu-link" href="{{route("app.company.roles.list")}}">
+												<span class="menu-bullet">
+													<span class="bullet bullet-dot"></span>
+												</span>
+                                                <span class="menu-title">Roles</span>
+                                            </a>
+                                        </div>
+                                        <div class="menu-item">
+                                            <a class="menu-link" href="{{route("app.company.permissions")}}">
+												<span class="menu-bullet">
+													<span class="bullet bullet-dot"></span>
+												</span>
+                                                <span class="menu-title">Permissions</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link" href="{{route("app.company.security")}}">
+												<span class="menu-bullet">
+													<span class="bullet bullet-dot"></span>
+												</span>
+                                        <span class="menu-title">Paramètres de Sécurité</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link" href="{{route("app.company.apikeys")}}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">API Keys</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -351,7 +449,8 @@
                         <!--end::Aside Toggle-->
                         <!--begin::Logo-->
                         <a href="index-2.html" class="d-lg-none">
-                            <img alt="Logo" src="{{asset($resolved_assets."app/assets/media/logos/logo-compact.svg")}}" class="mh-40px"/>
+                            <img alt="Logo" src="{{asset($resolved_assets."app/assets/media/logos/logo-compact.svg")}}"
+                                 class="mh-40px"/>
                         </a>
                         <!--end::Logo-->
                         <!--begin::Aside toggler-->
@@ -414,7 +513,8 @@
                                     <!--end::Hidden input-->
                                     <!--begin::Icon-->
                                     <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-                                    <span class="svg-icon svg-icon-2 svg-icon-gray-500 position-absolute top-50 translate-middle-y ms-0">
+                                    <span
+                                        class="svg-icon svg-icon-2 svg-icon-gray-500 position-absolute top-50 translate-middle-y ms-0">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                      viewBox="0 0 24 24" fill="none">
 													<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546"
@@ -907,7 +1007,9 @@
                                                    data-kt-search-category="users">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-                                                        <img src="{{asset($resolved_assets."app/assets/media/avatars/150-1.jpg")}}" alt=""/>
+                                                        <img
+                                                            src="{{asset($resolved_assets."app/assets/media/avatars/150-1.jpg")}}"
+                                                            alt=""/>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
@@ -924,7 +1026,9 @@
                                                    data-kt-search-category="users">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-                                                        <img src="{{asset($resolved_assets."app/assets/media/avatars/150-3.jpg")}}" alt=""/>
+                                                        <img
+                                                            src="{{asset($resolved_assets."app/assets/media/avatars/150-3.jpg")}}"
+                                                            alt=""/>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
@@ -941,7 +1045,9 @@
                                                    data-kt-search-category="users">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-                                                        <img src="{{asset($resolved_assets."app/assets/media/avatars/150-4.jpg")}}" alt=""/>
+                                                        <img
+                                                            src="{{asset($resolved_assets."app/assets/media/avatars/150-4.jpg")}}"
+                                                            alt=""/>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
@@ -958,7 +1064,9 @@
                                                    data-kt-search-category="users">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-                                                        <img src="{{asset($resolved_assets."app/assets/media/avatars/150-6.jpg")}}" alt=""/>
+                                                        <img
+                                                            src="{{asset($resolved_assets."app/assets/media/avatars/150-6.jpg")}}"
+                                                            alt=""/>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
@@ -975,7 +1083,9 @@
                                                    data-kt-search-category="users">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-                                                        <img src="{{asset($resolved_assets."app/assets/media/avatars/150-8.jpg")}}" alt=""/>
+                                                        <img
+                                                            src="{{asset($resolved_assets."app/assets/media/avatars/150-8.jpg")}}"
+                                                            alt=""/>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
@@ -992,7 +1102,9 @@
                                                    data-kt-search-category="users">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-                                                        <img src="{{asset($resolved_assets."app/assets/media/avatars/150-11.jpg")}}" alt=""/>
+                                                        <img
+                                                            src="{{asset($resolved_assets."app/assets/media/avatars/150-11.jpg")}}"
+                                                            alt=""/>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
@@ -1009,7 +1121,9 @@
                                                    data-kt-search-category="users">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-                                                        <img src="{{asset($resolved_assets."app/assets/media/avatars/150-12.jpg")}}" alt=""/>
+                                                        <img
+                                                            src="{{asset($resolved_assets."app/assets/media/avatars/150-12.jpg")}}"
+                                                            alt=""/>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
@@ -1279,8 +1393,10 @@
                                             <!--end::Message-->
                                             <!--begin::Illustration-->
                                             <div class="text-center px-4">
-                                                <img src="{{asset($resolved_assets."app/assets/media/illustrations/sigma-1/1.png")}}" alt=""
-                                                     class="mw-100 mh-200px"/>
+                                                <img
+                                                    src="{{asset($resolved_assets."app/assets/media/illustrations/sigma-1/1.png")}}"
+                                                    alt=""
+                                                    class="mw-100 mh-200px"/>
                                             </div>
                                             <!--end::Illustration-->
                                         </div>
@@ -1441,8 +1557,9 @@
                                                 <!--begin::Item-->
                                                 <div
                                                     class="d-flex align-items-center item-border-hover px-3 py-2 ms-n3 mb-1">
-                                                    <img src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/fox-hub.svg")}}"
-                                                         class="w-25px me-5" alt=""/>
+                                                    <img
+                                                        src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/fox-hub.svg")}}"
+                                                        class="w-25px me-5" alt=""/>
                                                     <div class="pe-2">
                                                         <a href="#"
                                                            class="fs-5 text-gray-800 text-hover-primary fw-boldest">Mivy
@@ -1456,8 +1573,9 @@
                                                 <!--begin::Item-->
                                                 <div
                                                     class="d-flex align-items-center item-border-hover px-3 py-2 ms-n3 mb-1">
-                                                    <img src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/leaf.svg")}}"
-                                                         class="w-25px me-5" alt=""/>
+                                                    <img
+                                                        src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/leaf.svg")}}"
+                                                        class="w-25px me-5" alt=""/>
                                                     <div class="pe-2">
                                                         <a href="#"
                                                            class="fs-5 text-gray-800 text-hover-primary fw-boldest">Leaf
@@ -1471,8 +1589,9 @@
                                                 <!--begin::Item-->
                                                 <div
                                                     class="d-flex align-items-center item-border-hover px-3 py-2 ms-n3 mb-1">
-                                                    <img src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/atica.svg")}}"
-                                                         class="w-25px me-5" alt=""/>
+                                                    <img
+                                                        src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/atica.svg")}}"
+                                                        class="w-25px me-5" alt=""/>
                                                     <div class="pe-2">
                                                         <a href="#"
                                                            class="fs-5 text-gray-800 text-hover-primary fw-boldest">Atica
@@ -1486,8 +1605,9 @@
                                                 <!--begin::Item-->
                                                 <div
                                                     class="d-flex align-items-center item-border-hover px-3 py-2 ms-n3 mb-1">
-                                                    <img src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/treva.svg")}}"
-                                                         class="w-25px me-5" alt=""/>
+                                                    <img
+                                                        src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/treva.svg")}}"
+                                                        class="w-25px me-5" alt=""/>
                                                     <div class="pe-2">
                                                         <a href="#"
                                                            class="fs-5 text-gray-800 text-hover-primary fw-boldest">Avionica</a>
@@ -1527,8 +1647,9 @@
                                                 <!--begin::Item-->
                                                 <div
                                                     class="d-flex align-items-center item-border-hover px-3 py-2 ms-n3 mb-1">
-                                                    <img src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/atica.svg")}}"
-                                                         class="w-25px me-5" alt=""/>
+                                                    <img
+                                                        src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/atica.svg")}}"
+                                                        class="w-25px me-5" alt=""/>
                                                     <div class="pe-2">
                                                         <a href="#"
                                                            class="fs-5 text-gray-800 text-hover-primary fw-boldest">Atica
@@ -1542,8 +1663,9 @@
                                                 <!--begin::Item-->
                                                 <div
                                                     class="d-flex align-items-center item-border-hover px-3 py-2 ms-n3 mb-1">
-                                                    <img src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/leaf.svg")}}"
-                                                         class="w-25px me-5" alt=""/>
+                                                    <img
+                                                        src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/leaf.svg")}}"
+                                                        class="w-25px me-5" alt=""/>
                                                     <div class="pe-2">
                                                         <a href="#"
                                                            class="fs-5 text-gray-800 text-hover-primary fw-boldest">Leaf
@@ -1557,8 +1679,9 @@
                                                 <!--begin::Item-->
                                                 <div
                                                     class="d-flex align-items-center item-border-hover px-3 py-2 ms-n3 mb-1">
-                                                    <img src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/treva.svg")}}"
-                                                         class="w-25px me-5" alt=""/>
+                                                    <img
+                                                        src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/treva.svg")}}"
+                                                        class="w-25px me-5" alt=""/>
                                                     <div class="pe-2">
                                                         <a href="#"
                                                            class="fs-5 text-gray-800 text-hover-primary fw-boldest">Avionica</a>
@@ -1571,8 +1694,9 @@
                                                 <!--begin::Item-->
                                                 <div
                                                     class="d-flex align-items-center item-border-hover px-3 py-2 ms-n3 mb-1">
-                                                    <img src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/fox-hub.svg")}}"
-                                                         class="w-25px me-5" alt=""/>
+                                                    <img
+                                                        src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/fox-hub.svg")}}"
+                                                        class="w-25px me-5" alt=""/>
                                                     <div class="pe-2">
                                                         <a href="#"
                                                            class="fs-5 text-gray-800 text-hover-primary fw-boldest">Mivy
@@ -1613,8 +1737,9 @@
                                                 <!--begin::Item-->
                                                 <div
                                                     class="d-flex align-items-center item-border-hover px-3 py-2 ms-n3 mb-1">
-                                                    <img src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/fox-hub.svg")}}"
-                                                         class="w-25px me-5" alt=""/>
+                                                    <img
+                                                        src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/fox-hub.svg")}}"
+                                                        class="w-25px me-5" alt=""/>
                                                     <div class="pe-2">
                                                         <a href="#"
                                                            class="fs-5 text-gray-800 text-hover-primary fw-boldest">Mivy
@@ -1628,8 +1753,9 @@
                                                 <!--begin::Item-->
                                                 <div
                                                     class="d-flex align-items-center item-border-hover px-3 py-2 ms-n3 mb-1">
-                                                    <img src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/atica.svg")}}"
-                                                         class="w-25px me-5" alt=""/>
+                                                    <img
+                                                        src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/atica.svg")}}"
+                                                        class="w-25px me-5" alt=""/>
                                                     <div class="pe-2">
                                                         <a href="#"
                                                            class="fs-5 text-gray-800 text-hover-primary fw-boldest">Atica
@@ -1643,8 +1769,9 @@
                                                 <!--begin::Item-->
                                                 <div
                                                     class="d-flex align-items-center item-border-hover px-3 py-2 ms-n3 mb-1">
-                                                    <img src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/treva.svg")}}"
-                                                         class="w-25px me-5" alt=""/>
+                                                    <img
+                                                        src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/treva.svg")}}"
+                                                        class="w-25px me-5" alt=""/>
                                                     <div class="pe-2">
                                                         <a href="#"
                                                            class="fs-5 text-gray-800 text-hover-primary fw-boldest">Avionica</a>
@@ -1657,8 +1784,9 @@
                                                 <!--begin::Item-->
                                                 <div
                                                     class="d-flex align-items-center item-border-hover px-3 py-2 ms-n3 mb-1">
-                                                    <img src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/leaf.svg")}}"
-                                                         class="w-25px me-5" alt=""/>
+                                                    <img
+                                                        src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/leaf.svg")}}"
+                                                        class="w-25px me-5" alt=""/>
                                                     <div class="pe-2">
                                                         <a href="#"
                                                            class="fs-5 text-gray-800 text-hover-primary fw-boldest">Leaf
@@ -1969,8 +2097,10 @@
                                                 <!--end::Section-->
                                                 <!--begin::Illustration-->
                                                 <div class="text-center px-5">
-                                                    <img src="{{asset($resolved_assets."app/assets/media/illustrations/sigma-1/8.png")}}" alt=""
-                                                         class="mw-100 mh-175px"/>
+                                                    <img
+                                                        src="{{asset($resolved_assets."app/assets/media/illustrations/sigma-1/8.png")}}"
+                                                        alt=""
+                                                        class="mw-100 mh-175px"/>
                                                 </div>
                                                 <!--end::Illustration-->
                                             </div>
@@ -1990,7 +2120,8 @@
                                 <div class="cursor-pointer symbol symbol-35px symbol-lg-35px"
                                      data-kt-menu-trigger="click" data-kt-menu-attach="parent"
                                      data-kt-menu-placement="bottom-end">
-                                    <img alt="Pic" src="{{asset($resolved_assets."app/assets/media/avatars/150-26.jpg")}}"/>
+                                    <img alt="Pic"
+                                         src="{{asset($resolved_assets."assets/img/blog/single/cover-image.jpg")}}"/>
                                 </div>
                                 <!--begin::Menu-->
                                 <div
@@ -2001,7 +2132,8 @@
                                         <div class="menu-content d-flex align-items-center px-3">
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-50px me-5">
-                                                <img alt="Logo" src="{{asset($resolved_assets."app/assets/media/avatars/150-26.jpg")}}"/>
+                                                <img alt="Logo"
+                                                     src="{{asset($resolved_assets."assets/img/blog/single/cover-image.jpg")}}"/>
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Username-->
@@ -2056,7 +2188,8 @@
 													<span
                                                         class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
 													<img class="w-15px h-15px rounded-1 ms-2"
-                                                         src="{{asset($resolved_assets."app/assets/media/flags/united-states.svg")}}" alt=""/></span></span>
+                                                         src="{{asset($resolved_assets."app/assets/media/flags/united-states.svg")}}"
+                                                         alt=""/></span></span>
                                         </a>
                                         <!--begin::Menu sub-->
                                         <div class="menu-sub menu-sub-dropdown w-175px py-4">
@@ -2065,7 +2198,8 @@
                                                 <a href="account/settings.html" class="menu-link d-flex px-5 active">
 														<span class="symbol symbol-20px me-4">
 															<img class="rounded-1"
-                                                                 src="{{asset($resolved_assets."app/assets/media/flags/united-states.svg")}}" alt=""/>
+                                                                 src="{{asset($resolved_assets."app/assets/media/flags/united-states.svg")}}"
+                                                                 alt=""/>
 														</span>English</a>
                                             </div>
                                             <!--end::Menu item-->
@@ -2074,7 +2208,8 @@
                                                 <a href="account/settings.html" class="menu-link d-flex px-5">
 														<span class="symbol symbol-20px me-4">
 															<img class="rounded-1"
-                                                                 src="{{asset($resolved_assets."app/assets/media/flags/spain.svg")}}" alt=""/>
+                                                                 src="{{asset($resolved_assets."app/assets/media/flags/spain.svg")}}"
+                                                                 alt=""/>
 														</span>Spanish</a>
                                             </div>
                                             <!--end::Menu item-->
@@ -2083,7 +2218,8 @@
                                                 <a href="account/settings.html" class="menu-link d-flex px-5">
 														<span class="symbol symbol-20px me-4">
 															<img class="rounded-1"
-                                                                 src="{{asset($resolved_assets."app/assets/media/flags/germany.svg")}}" alt=""/>
+                                                                 src="{{asset($resolved_assets."app/assets/media/flags/germany.svg")}}"
+                                                                 alt=""/>
 														</span>German</a>
                                             </div>
                                             <!--end::Menu item-->
@@ -2092,7 +2228,8 @@
                                                 <a href="account/settings.html" class="menu-link d-flex px-5">
 														<span class="symbol symbol-20px me-4">
 															<img class="rounded-1"
-                                                                 src="{{asset($resolved_assets."app/assets/media/flags/japan.svg")}}" alt=""/>
+                                                                 src="{{asset($resolved_assets."app/assets/media/flags/japan.svg")}}"
+                                                                 alt=""/>
 														</span>Japanese</a>
                                             </div>
                                             <!--end::Menu item-->
@@ -2101,7 +2238,8 @@
                                                 <a href="account/settings.html" class="menu-link d-flex px-5">
 														<span class="symbol symbol-20px me-4">
 															<img class="rounded-1"
-                                                                 src="{{asset($resolved_assets."app/assets/media/flags/france.svg")}}" alt=""/>
+                                                                 src="{{asset($resolved_assets."app/assets/media/flags/france.svg")}}"
+                                                                 alt=""/>
 														</span>French</a>
                                             </div>
                                             <!--end::Menu item-->
@@ -2111,7 +2249,12 @@
                                     <!--end::Menu item-->
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-5">
-                                        <a href="authentication/sign-in/basic.html" class="menu-link px-5">Sign Out</a>
+                                        <form method="POST" action="{{route('logout')}}">
+                                            @csrf
+                                            <a class="menu-link px-5"
+                                               onclick="event.preventDefault();this.closest('form').submit();">Se
+                                                déconnecter</a>
+                                        </form>
                                     </div>
                                     <!--end::Menu item-->
                                     <!--begin::Menu separator-->
@@ -2123,7 +2266,9 @@
                                             <label
                                                 class="form-check form-switch form-check-custom form-check-solid pulse pulse-success"
                                                 for="kt_user_menu_dark_mode_toggle">
-                                                <input class="form-check-input w-30px h-20px" type="checkbox" value="1" name="mode" id="user_menu_dark_mode_toggle" data-kt-url="" {{isset($_COOKIE["mode"])?$_COOKIE["mode"]=="dark"?"checked":"":""}}/>
+                                                <input class="form-check-input w-30px h-20px" type="checkbox" value="1"
+                                                       name="mode" id="user_menu_dark_mode_toggle"
+                                                       data-kt-url="" {{isset($_COOKIE["mode"])?$_COOKIE["mode"]=="dark"?"checked":"":""}}/>
                                                 <span class="pulse-ring ms-n1"></span>
                                                 <span class="form-check-label text-gray-600 fs-7">Dark Mode</span>
                                             </label>
@@ -2239,7 +2384,8 @@
                                     <!--begin::User-->
                                     <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip"
                                          data-bs-boundary="window" data-bs-placement="top" title="Nina Nilson">
-                                        <img src="{{asset($resolved_assets."app/assets/media/avatars/150-11.jpg")}}" alt="img"/>
+                                        <img src="{{asset($resolved_assets."app/assets/media/avatars/150-11.jpg")}}"
+                                             alt="img"/>
                                     </div>
                                     <!--end::User-->
                                 </div>
@@ -2264,12 +2410,14 @@
                                     <div class="symbol-group symbol-hover flex-nowrap flex-grow-1 min-w-100px pe-2">
                                         <!--begin::User-->
                                         <div class="symbol symbol-circle symbol-25px">
-                                            <img src="{{asset($resolved_assets."app/assets/media/avatars/150-3.jpg")}}" alt="img"/>
+                                            <img src="{{asset($resolved_assets."app/assets/media/avatars/150-3.jpg")}}"
+                                                 alt="img"/>
                                         </div>
                                         <!--end::User-->
                                         <!--begin::User-->
                                         <div class="symbol symbol-circle symbol-25px">
-                                            <img src="{{asset($resolved_assets."app/assets/media/avatars/150-11.jpg")}}" alt="img"/>
+                                            <img src="{{asset($resolved_assets."app/assets/media/avatars/150-11.jpg")}}"
+                                                 alt="img"/>
                                         </div>
                                         <!--end::User-->
                                         <!--begin::User-->
@@ -2306,7 +2454,8 @@
                                     <div class="symbol-group symbol-hover flex-nowrap flex-grow-1 min-w-100px">
                                         <!--begin::User-->
                                         <div class="symbol symbol-circle symbol-25px">
-                                            <img src="{{asset($resolved_assets."app/assets/media/avatars/150-5.jpg")}}" alt="img"/>
+                                            <img src="{{asset($resolved_assets."app/assets/media/avatars/150-5.jpg")}}"
+                                                 alt="img"/>
                                         </div>
                                         <!--end::User-->
                                         <!--begin::User-->
@@ -2373,7 +2522,8 @@
                                     <!--begin::User-->
                                     <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip"
                                          data-bs-boundary="window" data-bs-placement="top" title="Alan Nilson">
-                                        <img src="{{asset($resolved_assets."app/assets/media/avatars/150-2.jpg")}}" alt="img"/>
+                                        <img src="{{asset($resolved_assets."app/assets/media/avatars/150-2.jpg")}}"
+                                             alt="img"/>
                                     </div>
                                     <!--end::User-->
                                 </div>
@@ -2424,7 +2574,8 @@
                                     <!--begin::User-->
                                     <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip"
                                          data-bs-boundary="window" data-bs-placement="top" title="Jan Hummer">
-                                        <img src="{{asset($resolved_assets."app/assets/media/avatars/150-6.jpg")}}" alt="img"/>
+                                        <img src="{{asset($resolved_assets."app/assets/media/avatars/150-6.jpg")}}"
+                                             alt="img"/>
                                     </div>
                                     <!--end::User-->
                                 </div>
@@ -2438,7 +2589,8 @@
                                     <!--begin::Item-->
                                     <div class="d-flex flex-aligns-center pe-10 pe-lg-20">
                                         <!--begin::Icon-->
-                                        <img alt="" class="w-30px me-3" src="{{asset($resolved_assets."app/assets/media/svg/files/pdf.svg")}}"/>
+                                        <img alt="" class="w-30px me-3"
+                                             src="{{asset($resolved_assets."app/assets/media/svg/files/pdf.svg")}}"/>
                                         <!--end::Icon-->
                                         <!--begin::Info-->
                                         <div class="ms-1 fw-bold">
@@ -2456,7 +2608,8 @@
                                     <!--begin::Item-->
                                     <div class="d-flex flex-aligns-center pe-10 pe-lg-20">
                                         <!--begin::Icon-->
-                                        <img alt="" class="w-30px me-3" src="{{asset($resolved_assets."app/assets/media/svg/files/doc.svg")}}"/>
+                                        <img alt="" class="w-30px me-3"
+                                             src="{{asset($resolved_assets."app/assets/media/svg/files/doc.svg")}}"/>
                                         <!--end::Icon-->
                                         <!--begin::Info-->
                                         <div class="ms-1 fw-bold">
@@ -2474,7 +2627,8 @@
                                     <!--begin::Item-->
                                     <div class="d-flex flex-aligns-center">
                                         <!--begin::Icon-->
-                                        <img alt="" class="w-30px me-3" src="{{asset($resolved_assets."app/assets/media/svg/files/css.svg")}}"/>
+                                        <img alt="" class="w-30px me-3"
+                                             src="{{asset($resolved_assets."app/assets/media/svg/files/css.svg")}}"/>
                                         <!--end::Icon-->
                                         <!--begin::Info-->
                                         <div class="ms-1 fw-bold">
@@ -2538,7 +2692,8 @@
                                     <!--begin::User-->
                                     <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip"
                                          data-bs-boundary="window" data-bs-placement="top" title="Nina Nilson">
-                                        <img src="{{asset($resolved_assets."app/assets/media/avatars/150-11.jpg")}}" alt="img"/>
+                                        <img src="{{asset($resolved_assets."app/assets/media/avatars/150-11.jpg")}}"
+                                             alt="img"/>
                                     </div>
                                     <!--end::User-->
                                 </div>
@@ -2588,7 +2743,8 @@
                                     <!--begin::User-->
                                     <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip"
                                          data-bs-boundary="window" data-bs-placement="top" title="Marcus Dotson">
-                                        <img src="{{asset($resolved_assets."app/assets/media/avatars/150-3.jpg")}}" alt="img"/>
+                                        <img src="{{asset($resolved_assets."app/assets/media/avatars/150-3.jpg")}}"
+                                             alt="img"/>
                                     </div>
                                     <!--end::User-->
                                 </div>
@@ -2603,7 +2759,8 @@
                                     <div class="overlay me-10">
                                         <!--begin::Image-->
                                         <div class="overlay-wrapper">
-                                            <img alt="img" class="rounded w-100px" src="{{asset($resolved_assets."app/assets/media/misc/5.jpg")}}"/>
+                                            <img alt="img" class="rounded w-100px"
+                                                 src="{{asset($resolved_assets."app/assets/media/misc/5.jpg")}}"/>
                                         </div>
                                         <!--end::Image-->
                                         <!--begin::Link-->
@@ -2617,7 +2774,8 @@
                                     <div class="overlay me-10">
                                         <!--begin::Image-->
                                         <div class="overlay-wrapper">
-                                            <img alt="img" class="rounded w-100px" src="{{asset($resolved_assets."app/assets/media/misc/6.jpg")}}"/>
+                                            <img alt="img" class="rounded w-100px"
+                                                 src="{{asset($resolved_assets."app/assets/media/misc/6.jpg")}}"/>
                                         </div>
                                         <!--end::Image-->
                                         <!--begin::Link-->
@@ -2631,7 +2789,8 @@
                                     <div class="overlay">
                                         <!--begin::Image-->
                                         <div class="overlay-wrapper">
-                                            <img alt="img" class="rounded w-100px" src="{{asset($resolved_assets."app/assets/media/misc/7.jpg")}}"/>
+                                            <img alt="img" class="rounded w-100px"
+                                                 src="{{asset($resolved_assets."app/assets/media/misc/7.jpg")}}"/>
                                         </div>
                                         <!--end::Image-->
                                         <!--begin::Link-->
@@ -2741,7 +2900,8 @@
                                     <!--begin::User-->
                                     <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip"
                                          data-bs-boundary="window" data-bs-placement="top" title="Robert Rich">
-                                        <img src="{{asset($resolved_assets."app/assets/media/avatars/150-14.jpg")}}" alt="img"/>
+                                        <img src="{{asset($resolved_assets."app/assets/media/avatars/150-14.jpg")}}"
+                                             alt="img"/>
                                     </div>
                                     <!--end::User-->
                                 </div>
@@ -3865,7 +4025,8 @@
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px symbol-circle">
-                                                        <img alt="Pic" src="{{asset($resolved_assets."app/assets/media/avatars/150-1.jpg")}}"/>
+                                                        <img alt="Pic"
+                                                             src="{{asset($resolved_assets."app/assets/media/avatars/150-1.jpg")}}"/>
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -3930,7 +4091,8 @@
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px symbol-circle">
-                                                        <img alt="Pic" src="{{asset($resolved_assets."app/assets/media/avatars/150-26.jpg")}}"/>
+                                                        <img alt="Pic"
+                                                             src="{{asset($resolved_assets."app/assets/media/avatars/150-26.jpg")}}"/>
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -3962,7 +4124,8 @@
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px symbol-circle">
-                                                        <img alt="Pic" src="{{asset($resolved_assets."app/assets/media/avatars/150-4.jpg")}}"/>
+                                                        <img alt="Pic"
+                                                             src="{{asset($resolved_assets."app/assets/media/avatars/150-4.jpg")}}"/>
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -3994,7 +4157,8 @@
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px symbol-circle">
-                                                        <img alt="Pic" src="{{asset($resolved_assets."app/assets/media/avatars/150-15.jpg")}}"/>
+                                                        <img alt="Pic"
+                                                             src="{{asset($resolved_assets."app/assets/media/avatars/150-15.jpg")}}"/>
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -4059,7 +4223,8 @@
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px symbol-circle">
-                                                        <img alt="Pic" src="{{asset($resolved_assets."app/assets/media/avatars/150-8.jpg")}}"/>
+                                                        <img alt="Pic"
+                                                             src="{{asset($resolved_assets."app/assets/media/avatars/150-8.jpg")}}"/>
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -4157,7 +4322,8 @@
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px symbol-circle">
-                                                        <img alt="Pic" src="{{asset($resolved_assets."app/assets/media/avatars/150-6.jpg")}}"/>
+                                                        <img alt="Pic"
+                                                             src="{{asset($resolved_assets."app/assets/media/avatars/150-6.jpg")}}"/>
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -4222,7 +4388,8 @@
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px symbol-circle">
-                                                        <img alt="Pic" src="{{asset($resolved_assets."app/assets/media/avatars/150-7.jpg")}}"/>
+                                                        <img alt="Pic"
+                                                             src="{{asset($resolved_assets."app/assets/media/avatars/150-7.jpg")}}"/>
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -4287,7 +4454,8 @@
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px symbol-circle">
-                                                        <img alt="Pic" src="{{asset($resolved_assets."app/assets/media/avatars/150-17.jpg")}}"/>
+                                                        <img alt="Pic"
+                                                             src="{{asset($resolved_assets."app/assets/media/avatars/150-17.jpg")}}"/>
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -4352,7 +4520,8 @@
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px symbol-circle">
-                                                        <img alt="Pic" src="{{asset($resolved_assets."app/assets/media/avatars/150-10.jpg")}}"/>
+                                                        <img alt="Pic"
+                                                             src="{{asset($resolved_assets."app/assets/media/avatars/150-10.jpg")}}"/>
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -4383,7 +4552,8 @@
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px symbol-circle">
-                                                        <img alt="Pic" src="{{asset($resolved_assets."app/assets/media/avatars/150-17.jpg")}}"/>
+                                                        <img alt="Pic"
+                                                             src="{{asset($resolved_assets."app/assets/media/avatars/150-17.jpg")}}"/>
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -4676,7 +4846,9 @@
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px">
-                                                        <img src="{{asset($resolved_assets."app/assets/media/svg/files/pdf.svg")}}" alt="icon"/>
+                                                        <img
+                                                            src="{{asset($resolved_assets."app/assets/media/svg/files/pdf.svg")}}"
+                                                            alt="icon"/>
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -4708,7 +4880,9 @@
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px">
-                                                        <img src="{{asset($resolved_assets."app/assets/media/svg/files/doc.svg")}}" alt="icon"/>
+                                                        <img
+                                                            src="{{asset($resolved_assets."app/assets/media/svg/files/doc.svg")}}"
+                                                            alt="icon"/>
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -4740,7 +4914,9 @@
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px">
-                                                        <img src="{{asset($resolved_assets."app/assets/media/svg/files/css.svg")}}" alt="icon"/>
+                                                        <img
+                                                            src="{{asset($resolved_assets."app/assets/media/svg/files/css.svg")}}"
+                                                            alt="icon"/>
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -4772,7 +4948,9 @@
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px">
-                                                        <img src="{{asset($resolved_assets."app/assets/media/svg/files/ai.svg")}}" alt="icon"/>
+                                                        <img
+                                                            src="{{asset($resolved_assets."app/assets/media/svg/files/ai.svg")}}"
+                                                            alt="icon"/>
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -4803,7 +4981,9 @@
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px">
-                                                        <img src="{{asset($resolved_assets."app/assets/media/svg/files/tif.svg")}}" alt="icon"/>
+                                                        <img
+                                                            src="{{asset($resolved_assets."app/assets/media/svg/files/tif.svg")}}"
+                                                            alt="icon"/>
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -4901,8 +5081,10 @@
                                     <!--end::Actions-->
                                     <!--begin::Illustration-->
                                     <div class="text-center px-5">
-                                        <img src="{{asset($resolved_assets."app/assets/media/illustrations/sigma-1/19.png")}}" alt=""
-                                             class="mw-100 mh-300px"/>
+                                        <img
+                                            src="{{asset($resolved_assets."app/assets/media/illustrations/sigma-1/19.png")}}"
+                                            alt=""
+                                            class="mw-100 mh-300px"/>
                                     </div>
                                     <!--end::Illustration-->
                                 </div>
@@ -4962,7 +5144,8 @@
                 <!--end::Heading-->
                 <!--begin::Google Contacts Invite-->
                 <div class="btn btn-light-primary fw-boldest w-100 mb-8">
-                    <img alt="Logo" src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/google-icon.svg")}}" class="h-20px me-3"/>Invite
+                    <img alt="Logo" src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/google-icon.svg")}}"
+                         class="h-20px me-3"/>Invite
                     Gmail Contacts
                 </div>
                 <!--end::Google Contacts Invite-->
@@ -4988,7 +5171,8 @@
                             <div class="d-flex align-items-center">
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-35px symbol-circle">
-                                    <img alt="Pic" src="{{asset($resolved_assets."app/assets/media/avatars/150-1.jpg")}}"/>
+                                    <img alt="Pic"
+                                         src="{{asset($resolved_assets."app/assets/media/avatars/150-1.jpg")}}"/>
                                 </div>
                                 <!--end::Avatar-->
                                 <!--begin::Details-->
@@ -5048,7 +5232,8 @@
                             <div class="d-flex align-items-center">
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-35px symbol-circle">
-                                    <img alt="Pic" src="{{asset($resolved_assets."app/assets/media/avatars/150-26.jpg")}}"/>
+                                    <img alt="Pic"
+                                         src="{{asset($resolved_assets."app/assets/media/avatars/150-26.jpg")}}"/>
                                 </div>
                                 <!--end::Avatar-->
                                 <!--begin::Details-->
@@ -5078,7 +5263,8 @@
                             <div class="d-flex align-items-center">
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-35px symbol-circle">
-                                    <img alt="Pic" src="{{asset($resolved_assets."app/assets/media/avatars/150-4.jpg")}}"/>
+                                    <img alt="Pic"
+                                         src="{{asset($resolved_assets."app/assets/media/avatars/150-4.jpg")}}"/>
                                 </div>
                                 <!--end::Avatar-->
                                 <!--begin::Details-->
@@ -5108,7 +5294,8 @@
                             <div class="d-flex align-items-center">
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-35px symbol-circle">
-                                    <img alt="Pic" src="{{asset($resolved_assets."app/assets/media/avatars/150-15.jpg")}}"/>
+                                    <img alt="Pic"
+                                         src="{{asset($resolved_assets."app/assets/media/avatars/150-15.jpg")}}"/>
                                 </div>
                                 <!--end::Avatar-->
                                 <!--begin::Details-->
@@ -5168,7 +5355,8 @@
                             <div class="d-flex align-items-center">
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-35px symbol-circle">
-                                    <img alt="Pic" src="{{asset($resolved_assets."app/assets/media/avatars/150-8.jpg")}}"/>
+                                    <img alt="Pic"
+                                         src="{{asset($resolved_assets."app/assets/media/avatars/150-8.jpg")}}"/>
                                 </div>
                                 <!--end::Avatar-->
                                 <!--begin::Details-->
@@ -5258,7 +5446,8 @@
                             <div class="d-flex align-items-center">
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-35px symbol-circle">
-                                    <img alt="Pic" src="{{asset($resolved_assets."app/assets/media/avatars/150-6.jpg")}}"/>
+                                    <img alt="Pic"
+                                         src="{{asset($resolved_assets."app/assets/media/avatars/150-6.jpg")}}"/>
                                 </div>
                                 <!--end::Avatar-->
                                 <!--begin::Details-->
@@ -5318,7 +5507,8 @@
                             <div class="d-flex align-items-center">
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-35px symbol-circle">
-                                    <img alt="Pic" src="{{asset($resolved_assets."app/assets/media/avatars/150-7.jpg")}}"/>
+                                    <img alt="Pic"
+                                         src="{{asset($resolved_assets."app/assets/media/avatars/150-7.jpg")}}"/>
                                 </div>
                                 <!--end::Avatar-->
                                 <!--begin::Details-->
@@ -5378,7 +5568,8 @@
                             <div class="d-flex align-items-center">
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-35px symbol-circle">
-                                    <img alt="Pic" src="{{asset($resolved_assets."app/assets/media/avatars/150-17.jpg")}}"/>
+                                    <img alt="Pic"
+                                         src="{{asset($resolved_assets."app/assets/media/avatars/150-17.jpg")}}"/>
                                 </div>
                                 <!--end::Avatar-->
                                 <!--begin::Details-->
@@ -5438,7 +5629,8 @@
                             <div class="d-flex align-items-center">
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-35px symbol-circle">
-                                    <img alt="Pic" src="{{asset($resolved_assets."app/assets/media/avatars/150-10.jpg")}}"/>
+                                    <img alt="Pic"
+                                         src="{{asset($resolved_assets."app/assets/media/avatars/150-10.jpg")}}"/>
                                 </div>
                                 <!--end::Avatar-->
                                 <!--begin::Details-->
@@ -5537,7 +5729,7 @@
 </div>
 <!--end::Scrolltop-->
 <!--end::Main-->
-<script>var hostUrl = "{{asset($resolved_assets."app/assets/index.hmtl")}}";</script>
+<script>const hostUrl = "{{asset($resolved_assets."app/assets/index.hmtl")}}";</script>
 <!--begin::Javascript-->
 <!--begin::Global Javascript Bundle(used by all pages)-->
 <script src="{{asset($resolved_assets."app/assets/plugins/global/plugins.bundle.js")}}"></script>
@@ -5555,15 +5747,17 @@
 <script src="{{asset($resolved_assets."app/assets/js/custom/modals/upgrade-plan.js")}}"></script>
 <script src="{{asset($resolved_assets."app/assets/js/custom/intro.js")}}"></script>
 <script src="{{asset($resolved_assets."app/assets/plugins/custom/datatables/datatables.bundle.js")}}"></script>
+<script src="{{asset($resolved_assets."app/assets/js/custom/olapcubejs/cube.min.js")}}"></script>
 <script src="{{asset($resolved_assets."app/assets/js/custom/tables/coaraTable.js")}}"></script>
+<script src="{{asset($resolved_assets."app/assets/js/custom/charts/chartOptions.js")}}"></script>
 <script src="{{asset($resolved_assets."app/assets/js/custom/charts/chartBuilder.js")}}"></script>
 <script>
     $("#user_menu_dark_mode_toggle").click(function () {
         const date = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000); // +2 day from now
         const options = {expires: date};
-        if (KTCookie.get("mode")==="light"){
+        if (KTCookie.get("mode") === "light") {
             KTCookie.set("mode", "dark", options);
-        }else {
+        } else {
             KTCookie.set("mode", "light", options);
         }
         location.reload(true);
@@ -5574,7 +5768,8 @@
 <!--end::Javascript-->
 <!--Begin::Google Tag Manager (noscript) -->
 <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FS8GGP" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FS8GGP" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe>
 </noscript>
 <!--End::Google Tag Manager (noscript) -->
 </body>

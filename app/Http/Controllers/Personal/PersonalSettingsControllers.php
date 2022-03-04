@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Personal;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\View\View;
 
-class RegisteredUserController extends Controller
+class PersonalSettingsControllers extends Controller
 {
     /**
      * @var array
@@ -53,32 +52,8 @@ class RegisteredUserController extends Controller
         return isset($this->data[$name]);
     }
 
-    /**
-     * Display the registration view.
-     *
-     * @return View
-     */
-    public function create()
+    public function index()
     {
-        return view('auth.register', $this->data);
-    }
-
-    /**
-     * Display the registration view.
-     *
-     * @param Request $request
-     * @return View
-     */
-
-    public function create2(Request $request)
-    {
-        if (isset($request->account_type)){
-            if ($request->account_type == "personal"){
-                return view('auth.personal_account_register', $this->data);
-            }else if ($request->account_type == "company"){
-                return view('auth.company_account_register', $this->data);
-            }
-        }
-        return $this->create();
+        return view("personal.settings", $this->data);
     }
 }

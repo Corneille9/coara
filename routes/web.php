@@ -1,9 +1,18 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\OffersDetailsController;
+use App\Http\Controllers\Company\ApiKeysControllers;
+use App\Http\Controllers\Company\CompanyPermissionsControllers;
+use App\Http\Controllers\Company\CompanyRolesControllers;
+use App\Http\Controllers\Company\CompanyUsersControllers;
+use App\Http\Controllers\Company\DashboardController;
+use App\Http\Controllers\Company\CompanySettingsControllers;
+use App\Http\Controllers\Company\CompanySecurityControllers;
+use App\Http\Controllers\Company\CompanyTablesControllers;
+use App\Http\Controllers\NewsControllers;
+use App\Http\Controllers\OffersController;
+use App\Http\Controllers\Personal\PersonalSettingsControllers;
 use App\Http\Controllers\SearchController;
-use App\Http\Controllers\ShowEnterpriseController;
+use App\Http\Controllers\EnterprisesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,19 +33,41 @@ Route::get('/', function () {
 Route::group(
     ['prefix' => 'app', 'as' => 'app.', 'middleware' => ['auth']],
     function () {
+        // add all users routes
+        Route::get('/news', [NewsControllers::class, "index"])
+            ->middleware(["auth"])
+            ->name('news');
 
-        Route::get('/dashboard', [DashboardController::class, "index"])->name('dashboard');
+        Route::get('/search', [SearchController::class, "index"])
+            ->middleware(['auth'])
+            ->name('search');
 
-        Route::get('/search', [SearchController::class, "index"])->middleware(['auth'])->name('search');
+        Route::get('/enterprises', [EnterprisesController::class, "index"])->middleware(['auth'])->name('enterprises.list');
+        Route::get('/enterprise', [EnterprisesController::class, "index"])->middleware(['auth'])->name('enterprise.details');
 
         Route::group(['prefix' => 'offers', 'as' => 'offers.'], function () {
-            Route::get('/show', [OffersDetailsController::class, "index"])->middleware(['auth'])->name('show');
-            Route::get('/showAll', [OffersDetailsController::class, "index"])->middleware(['auth'])->name('showAll');
+            Route::get('/details', [OffersController::class, "index"])->middleware(['auth'])->name('details');
+            Route::get('/', [OffersController::class, "index"])->middleware(['auth'])->name('show');
         });
 
-        Route::group(['prefix' => 'enterprise', 'as' => 'enterprise.'], function () {
-            Route::get('/show', [ShowEnterpriseController::class, "index"])->middleware(['auth'])->name('show');
-            Route::get('/showAll', [ShowEnterpriseController::class, "index"])->middleware(['auth'])->name('showAll');
+        // add personal users routes
+        Route::group(['prefix' => 'personal', 'as' => 'personal.'], function () {
+            Route::get('/settings', [PersonalSettingsControllers::class, "index"])->middleware(['auth'])->name('settings');
         });
+
+        // add enterprises routes
+        Route::group(['prefix' => 'company', 'as' => 'company.'], function () {
+            Route::get('/dashboard', [DashboardController::class, "index"])->middleware(['auth'])->name('dashboard');
+            Route::get('/tables', [CompanyTablesControllers::class, "index"])->middleware(['auth'])->name('tables');
+            Route::get('/settings', [CompanySettingsControllers::class, "index"])->middleware(['auth'])->name('settings');
+            Route::get('/security', [CompanySecurityControllers::class, "index"])->middleware(['auth'])->name('security');
+            Route::get('/apiKeys', [ApiKeysControllers::class, "index"])->middleware(['auth'])->name('apikeys');
+            Route::get('/users', [CompanyUsersControllers::class, "index"])->middleware(['auth'])->name('users.list');
+            Route::get('/user', [CompanyUsersControllers::class, "index"])->middleware(['auth'])->name('user.details');
+            Route::get('/roles', [CompanyRolesControllers::class, "index"])->middleware(['auth'])->name('roles.list');
+            Route::get('/role', [CompanyRolesControllers::class, "index"])->middleware(['auth'])->name('role.details');
+            Route::get('/permissions', [CompanyPermissionsControllers::class, "index"])->middleware(['auth'])->name('permissions');
+        });
+
     });
 require __DIR__ . '/auth.php';
