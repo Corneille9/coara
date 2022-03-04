@@ -289,7 +289,7 @@
                                     </span>
                                     <!--end::Svg Icon-->
                                 </span>
-                                <span class="menu-title">Tableaux
+                                <span class="menu-title">Vos Tableaux
                                     <span
                                         class="badge badge-changelog badge-light-warning bg-hover-warning text-hover-white fw-bold fs-9 px-2 ms-2">!</span>
                                 </span>
@@ -348,10 +348,10 @@
                             <div class="menu-sub menu-sub-accordion menu-active-bg">
                                 <div class="menu-item">
                                     <a class="menu-link" href="{{route("app.company.settings")}}">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-                                        <span class="menu-title">Paramètres</span>
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Paramètre</span>
                                     </a>
                                 </div>
                                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
