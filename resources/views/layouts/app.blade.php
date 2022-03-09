@@ -153,7 +153,7 @@
 </head>
 <!--end::Head-->
 <!--begin::Body-->
-<body id="kt_body"
+<body id="kt_body" 
       class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled aside-fixed aside-default-enabled">
 <!--begin::Main-->
 
