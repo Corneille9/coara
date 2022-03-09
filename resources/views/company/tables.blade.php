@@ -338,10 +338,11 @@
     </script>
     <script>
         let coaraTable = new CoaraTable("table-container")
-        coaraTable.loadData(CoaraTable.testData)
+        CoaraTable.token = "{{csrf_token()}}"
+        CoaraTable.importRoute = "{{route("app.company.tables.import.data")}}"
+        // coaraTable.loadData(CoaraTable.testData)
         coaraTable.init()
-        // let coaraTable2 = new CoaraTable("table-container")
-        // coaraTable2.init()
-
+        let coaraTable2 = new CoaraTable("table-container")
+        coaraTable2.init()
     </script>
 @endsection

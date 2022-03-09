@@ -56,4 +56,9 @@ class CompanyRolesControllers extends Controller
     {
         return view("company.roles_list", $this->data);
     }
+
+    public function getRole()
+    {
+        return view("company.roles_details", $this->data);
+    }
 }

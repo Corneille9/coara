@@ -56,4 +56,8 @@ class OffersController extends Controller
         return view("offers.offers_list", $this->data);
     }
 
+    public function getOffer(){
+        return view("offers.offers_details", $this->data);
+    }
+
 }

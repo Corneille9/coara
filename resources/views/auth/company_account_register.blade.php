@@ -314,7 +314,7 @@
                                     <label class="fs-6 fw-bold form-label required">Pays</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select name="city" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select..." data-allow-clear="true" data-hide-search="true">
+                                    <select name="country" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select..." data-allow-clear="true" data-hide-search="true">
                                         <option></option>
                                         <option value="1">Bénin</option>
                                         <option value="1">Ghana</option>
@@ -331,7 +331,7 @@
                                     </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <input name="address" class="form-control form-control-lg form-control-solid"/>
+                                    <input name="city" class="form-control form-control-lg form-control-solid"/>
                                     <!--end::Input-->
                                 </div>
                             </div>
@@ -586,7 +586,7 @@
                                         <label class="fs-6 fw-bold form-label mb-3">Confirmer le mot de passe</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="password" class="form-control form-control-lg form-control-solid" name="confirmed_password" />
+                                        <input type="password" class="form-control form-control-lg form-control-solid" id="password-confirm" name="password_confirmation"/>
                                         <!--end::Input-->
                                     </div>
                                     <!--end::Input group-->

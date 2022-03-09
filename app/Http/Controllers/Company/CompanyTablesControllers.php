@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Company;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 
 class CompanyTablesControllers extends Controller
 {
@@ -55,5 +56,22 @@ class CompanyTablesControllers extends Controller
     public function index()
     {
         return view("company.tables", $this->data);
+    }
+
+    public function importData(Request $request){
+        if($request->hasFile("file")){
+            if ($request->type == "json") {
+                return json_decode(file_get_contents($request->file), true);
+            }elseif ($request->type == "csv"){
+                $rows = array_map("str_getcsv", file($request->file));
+                $header = array_shift($rows);
+                $csv = array();
+                foreach ($rows as $row){
+                    $csv[] = array_combine($header, $row);
+                }
+                return $csv;
+            }
+        }
+        return ["success"=>false];
     }
 }

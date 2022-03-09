@@ -99,6 +99,10 @@ class CoaraTable {
         ]
     }
 
+    static importRoute = undefined
+    static token = undefined
+
+
     constructor(containerId) {
         this.container = document.getElementById(containerId)
         this.div = document.createElement("div")
@@ -111,15 +115,8 @@ class CoaraTable {
                     <div class="card-title">
                         <!--begin::Search-->
                         <div class="d-flex align-items-center position-relative my-1">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-                            <span class="svg-icon svg-icon-1 position-absolute ms-6">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="black" />
-                                    <path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="black" />
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                            <input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search user" />
+                            <h1 class="text-dark d-none" data-type="table-title"></h1>
+                            <input type="text" data-type="table-title" class="form-control form-control-solid w-250px" placeholder="Titre du tableau" />
                         </div>
                         <!--end::Search-->
                     </div>
@@ -191,6 +188,22 @@ class CoaraTable {
                                 <!--begin::Menu 1-->
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-225px py-4 px-5" data-kt-menu="true">
                                     <!--begin::Menu item-->
+                                     <div class="menu-item px-3">
+                                        <input type="file" accept=".json,.csv,.xlsx" data-type="import" class="d-none">
+                                        <a href="#" class="menu-link px-3" data-type="import" id="import">
+                                            <span class="menu-icon">
+                                                <span class="svg-icon svg-icon-1 ">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                        <rect opacity="0.3" x="12.75" y="4.25" width="12" height="2" rx="1" transform="rotate(90 12.75 4.25)" fill="black"/>
+                                                        <path d="M12.0573 6.11875L13.5203 7.87435C13.9121 8.34457 14.6232 8.37683 15.056 7.94401C15.4457 7.5543 15.4641 6.92836 15.0979 6.51643L12.4974 3.59084C12.0996 3.14332 11.4004 3.14332 11.0026 3.59084L8.40206 6.51643C8.0359 6.92836 8.0543 7.5543 8.44401 7.94401C8.87683 8.37683 9.58785 8.34458 9.9797 7.87435L11.4427 6.11875C11.6026 5.92684 11.8974 5.92684 12.0573 6.11875Z" fill="black"/>
+                                                        <path d="M18.75 8.25H17.75C17.1977 8.25 16.75 8.69772 16.75 9.25C16.75 9.80228 17.1977 10.25 17.75 10.25C18.3023 10.25 18.75 10.6977 18.75 11.25V18.25C18.75 18.8023 18.3023 19.25 17.75 19.25H5.75C5.19772 19.25 4.75 18.8023 4.75 18.25V11.25C4.75 10.6977 5.19771 10.25 5.75 10.25C6.30229 10.25 6.75 9.80228 6.75 9.25C6.75 8.69772 6.30229 8.25 5.75 8.25H4.75C3.64543 8.25 2.75 9.14543 2.75 10.25V19.25C2.75 20.3546 3.64543 21.25 4.75 21.25H18.75C19.8546 21.25 20.75 20.3546 20.75 19.25V10.25C20.75 9.14543 19.8546 8.25 18.75 8.25Z" fill="#C4C4C4"/>
+                                                    </svg>
+                                                </span>
+                                            </span>
+                                            <span class="menu-title">Importer</span>
+                                        </a>
+                                    </div>
+
                                     <div class="menu-item px-3">
                                         <a href="#" class="menu-link px-3" data-type="export" id="export">
                                             <span class="menu-icon">
@@ -275,34 +288,129 @@ class CoaraTable {
                 </div>
             </div>
         `
+
         this.div.insertAdjacentHTML("beforeend", this.card)
+        this.title = this.div.querySelector("h1[data-type='table-title']")
+        this.titleInput = this.div.querySelector("input[data-type='table-title']")
         this.table = this.div.querySelector("table")
         this.thead = this.table.querySelector("thead")
         this.tbody = this.table.querySelector("tbody")
         this.addRowButton = this.div.querySelector("a[data-action='addRow']")
         this.initEvent()
-        this.div.querySelector("#export").addEventListener("click", evt => {this.validate(),this.TCube()})
+        this.div.querySelector("a[data-type='export']").addEventListener("click", evt => {this.validate(),this.TCube()})
 
         this.dynamicTableData = {}
         this.dynamicTableData.series = []
     }
 
     initEvent(){
+        //Title input event
+        this.titleInput.addEventListener('keyup', evt => {
+            if (evt.key === 'Enter'){
+                this.titleInput.classList.add("d-none")
+                this.title.classList.remove("d-none")
+                this.title.innerText = this.titleInput.value
+            }
+        })
+        this.title.addEventListener("dblclick",evt => {
+            this.titleInput.classList.remove("d-none")
+            this.title.classList.add("d-none")
+        })
+
+        //Import table data events
+        this.div.querySelector("a[data-type='import']").addEventListener("click", evt => {
+            this.div.querySelector("input[data-type='import']").click()
+        })
+        $(this.div.querySelector("input[data-type='import']")).change(evt => {
+            let formdata = new FormData()
+            switch (evt.target.value.split('.').pop().toLowerCase()) {
+                case "json":
+                    formdata.append('_token', CoaraTable.token)
+                    formdata.append('file', evt.target.files[0])
+                    formdata.append('type', "json")
+                    $.ajax({
+                        url: CoaraTable.importRoute,
+                        type: "POST",
+                        contentType: false,
+                        processData: false,
+                        data: formdata,
+                        success: (data) =>{
+                            let columns = {}
+                            Object.keys(data[0]).forEach(value => {
+                                columns[value] = "string"
+                            })
+                            this.loadData({columns:columns,data:data})
+                        },
+                    })
+                    break
+                case "csv":
+                    formdata.append('_token', CoaraTable.token)
+                    formdata.append('file', evt.target.files[0])
+                    formdata.append('type', "csv")
+                    $.ajax({
+                        url: CoaraTable.importRoute,
+                        type: "POST",
+                        contentType: false,
+                        processData: false,
+                        data: formdata,
+                        success: (data) =>{
+                            let columns = {}
+                            Object.keys(data[0]).forEach(value => {
+                                columns[value] = "string"
+                            })
+                            this.loadData({columns:columns,data:data})
+                        },
+                    });
+                    break
+                case "xlsx":
+                    break
+                default:
+                    Swal.fire({
+                        html: `Le format du fichier est incorrecte <br><strong>Format autorisés: </strong> .json, .csv et .xlsx`,
+                        icon: "warning",
+                        buttonsStyling: false,
+                        confirmButtonText: "D'accord",
+                        customClass: {
+                            confirmButton: "btn btn-primary"
+                        }
+                    });
+                    break
+            }
+        })
+
+        //First checkbox event
+        this.div.querySelectorAll("[type='checkbox']")[0].addEventListener("click", ( (e) =>{
+            if(e.target.dataset.listner !== "enable"){
+                setTimeout((() =>{
+                    this.tbody.querySelectorAll("[type='checkbox']").forEach(value => {
+                        e.target.checked ?  value.checked = 1: value.checked = 0
+                    })
+                    this.checkCheckboxState()
+                }), 50)
+                e.target.dataset.listner = "enable"
+            }
+        }))
+
+        //Add columns button event
         this.div.querySelector("div[data-action='addColumn']").querySelectorAll("a").forEach((item)=>{
-            item.addEventListener("click",  (e) =>{
-                e.stopPropagation()
-                e.preventDefault()
-                let columnHtml = this.columnInputs(e.target.dataset.type);
-                this.thead.querySelector("tr").querySelector(".text-end").insertAdjacentHTML("beforebegin",`
+
+            if(item.dataset.listner !== "enable"){
+                item.addEventListener("click",  (e) =>{
+                    e.stopPropagation()
+                    e.preventDefault()
+                    let columnHtml = this.columnInputs(e.target.dataset.type);
+                    this.thead.querySelector("tr").querySelector(".text-end").insertAdjacentHTML("beforebegin",`
                     <th class="min-w-125px">` + this.columnInputs("string") +`<input type="hidden" value="` + e.target.dataset.type + `"></th>
                 `)
-                this.tbody.querySelectorAll('tr:not(.odd)').forEach((item)=>{
-                    item.querySelector(".text-end").insertAdjacentHTML("beforebegin", `
+                    this.tbody.querySelectorAll('tr:not(.odd)').forEach((item)=>{
+                        item.querySelector(".text-end").insertAdjacentHTML("beforebegin", `
                         <td class="min-w-125px">` + columnHtml + `</td>
                     `)
+                    })
+                    this.inputsEvent()
                 })
-                this.inputsEvent()
-            })
+                item.dataset.listner = "enable"
+            }
         })
 
         this.addRowButton.addEventListener("click",  (e) =>{
@@ -310,14 +418,8 @@ class CoaraTable {
                 this.tbody.querySelectorAll('tr.odd').forEach(value => {
                     value.remove()
                 })
+
                 this.tbody.insertAdjacentHTML("beforeend", this.rowInputs())
-                let delButtons = this.tbody.querySelectorAll("a[data-kt-users-table-filter='delete_row']")
-                //add event to new checkbox
-                delButtons[delButtons.length - 1].addEventListener("click", evt => {
-                    evt.preventDefault()
-                    evt.target.closest("tr").remove()
-                    this.checkCheckboxState()
-                })
 
                 let allCheckbox = this.div.querySelectorAll("[type='checkbox']")
                 allCheckbox[allCheckbox.length - 1].addEventListener("click", ( (e) =>{
@@ -327,6 +429,197 @@ class CoaraTable {
                 }))
                 this.inputsEvent()
                 KTMenu.createInstances()
+            }
+        })
+
+        this.createGraphEvent()
+    }
+
+    createGraphEvent(){
+        CoaraTable.allTags.forEach(value => {
+            if (value.dataset.taged !== "enable") {
+                value.tagInst = new Tagify(value, {
+                    enforceWhitelist: "enable",
+                    whitelist: undefined,
+                    maxTags: undefined,
+                    dropdown: {
+                        maxItems: undefined,
+                        classname: "",
+                        enabled: 0,
+                        closeOnSelect: false
+                    }
+                })
+                value.tagInst.on("add", (evt)=>{
+                    if (value.dataset.action === "lines-tagify"){
+                        this.dynamicTableData.lines = evt.detail.data.value
+                        this.cube.getDimensionMembers(evt.detail.data.value).forEach((l, index)=>{
+                            CoaraTable.graphDynamicTable.querySelector("tbody").insertAdjacentHTML("beforeend", `<tr data-index="` + evt.detail.index + `"><th class="min-w-100px text-white">` + l[evt.detail.data.value] + `</th></tr>`)
+                        })
+                        CoaraTable.allTags.forEach(inputTag => {
+                            if (inputTag.dataset.action === "columns-tagify"){
+                                const i = inputTag.tagInst.whitelist.indexOf(evt.detail.data.value)
+                                if (i !== -1) {
+                                    inputTag.tagInst.whitelist.splice(inputTag.tagInst.whitelist.indexOf(evt.detail.data.value), 1)
+                                    inputTag.tagInst.removeTags(evt.detail.data.value)
+                                }
+                            }
+                        })
+                    }
+                    else if (value.dataset.action === "columns-tagify"){
+                        this.dynamicTableData.columns = evt.detail.data.value
+                        this.cube.getDimensionMembers(evt.detail.data.value).forEach((l, index)=>{
+                            CoaraTable.graphDynamicTable.querySelector("thead>tr").insertAdjacentHTML("beforeend", `<th class="min-w-125px" data-index="` + evt.detail.index + `">` + l[evt.detail.data.value] + `</th>`)
+                        })
+                        CoaraTable.allTags.forEach(inputTag => {
+                            if (inputTag.dataset.action === "lines-tagify"){
+                                const i = inputTag.tagInst.whitelist.indexOf(evt.detail.data.value)
+                                if (i !== -1) {
+                                    inputTag.tagInst.whitelist.splice(inputTag.tagInst.whitelist.indexOf(evt.detail.data.value), 1)
+                                    inputTag.tagInst.removeTags(evt.detail.data.value)
+                                }
+                            }
+                        })
+                    }
+                    else if (value.dataset.action === "values-tagify"){
+                        this.dynamicTableData.values = evt.detail.data.value
+                        CoaraTable.graphDynamicTable.querySelectorAll("tbody>tr").forEach((value1, key) => {
+                            if (this.dynamicTableData.lines !== undefined && this.dynamicTableData.columns !== undefined){
+                                this.cube.getDimensionMembers(this.dynamicTableData.lines).forEach(l=>{
+                                    if (l[this.dynamicTableData.lines] === value1.querySelector("th").innerText) {
+                                        this.cube.getDimensionMembers(this.dynamicTableData.columns).forEach((c , i)=> {
+                                            let set = {}
+                                            set[this.dynamicTableData.lines] = {id: l.id}
+                                            set[this.dynamicTableData.columns] = {id: c.id}
+                                            let cellValue = 0
+                                            this.cube.dice(set).getFacts().forEach(insert => {
+                                                switch (typeof insert[this.dynamicTableData.values]) {
+                                                    case "number":
+                                                        cellValue += insert[this.dynamicTableData.values]
+                                                        break
+                                                    case "string":
+                                                        const formattedValue = Number(insert[this.dynamicTableData.values])
+                                                        cellValue += (!isNaN(formattedValue))?formattedValue:1
+                                                        break
+                                                }
+                                            })
+                                            value1.insertAdjacentHTML("beforeend", `<td class="min-w-125px">` + cellValue + `</td`)
+
+                                            if (this.dynamicTableData.series.length < i + 1){
+                                                this.dynamicTableData.series.push({name: c[this.dynamicTableData.columns], data: []})
+                                            }
+                                            this.dynamicTableData.series[i].data.push(cellValue)
+                                        })
+                                    }
+                                })
+                            }
+                        })
+                        this.apexChat()
+                    }
+                })
+                value.tagInst.on("remove", (evt)=>{
+                    let tableData = this.getData("Array")
+                    if (value.dataset.action === "lines-tagify"){
+                        tableData[0].forEach((column, index)=>{
+                            if (column.toLowerCase() === evt.detail.data.value.toLowerCase()){
+                                CoaraTable.graphDynamicTable.querySelectorAll("tbody>tr[data-index='" + evt.detail.index + "']").forEach(value1 => {
+                                    value1.remove()
+                                })
+                                CoaraTable.allTags.forEach(inputTag => {
+                                    if (inputTag.dataset.action === "columns-tagify"){
+                                        inputTag.tagInst.whitelist.push(column)
+                                    }
+                                })
+                            }
+                        })
+                    }
+                    else if (value.dataset.action === "columns-tagify"){
+                        tableData[0].forEach((column, index)=>{
+                            if (column.toLowerCase() === evt.detail.data.value.toLowerCase()){
+                                CoaraTable.graphDynamicTable.querySelectorAll("thead>tr>th[data-index='" + evt.detail.index + "']").forEach(value1 => {
+                                    value1.remove()
+                                })
+                                CoaraTable.allTags.forEach(inputTag => {
+                                    if (inputTag.dataset.action === "lines-tagify"){
+                                        inputTag.tagInst.whitelist.push(column)
+                                    }
+                                })
+                            }
+                        })
+                    }
+                })
+                value.dataset.taged = "enable"
+            }
+        })
+        this.div.querySelector("div[data-action='table-menu']").querySelectorAll("a").forEach(value => {
+            if(value.dataset.type === "graph"){
+                value.addEventListener("click", ev => {
+                    this.validate()
+                    CoaraTable.allTags.forEach(value1 => {
+                        value1.tagInst.whitelist = []
+                        this.getData("Array")[0].forEach(value2 => {
+                            if (value1.tagInst.whitelist.indexOf(value2) === -1){
+                                value1.tagInst.whitelist.push(value2)
+                            }
+                        })
+                    })
+                })
+            }
+        })
+    }
+
+    checkCheckboxState(){
+        let tbodyCheckbox = this.tbody.querySelectorAll('[type="checkbox"]'),
+            selectedCount = this.div.querySelector('span[data-kt-user-table-select="selected_count"]'),
+            baseToolbar = this.div.querySelector('[data-kt-user-table-toolbar="base"]'),
+            selectionToolbar = this.div.querySelector('[data-kt-user-table-toolbar="selected"]')
+        let c = !1,
+            l = 0;
+        tbodyCheckbox.forEach((value1 => {
+            value1.checked && (c = !0, l++)
+        })), c ? (selectedCount.innerHTML = l.toString(), baseToolbar.classList.add("d-none"), selectionToolbar.classList.remove("d-none")) : (baseToolbar.classList.remove("d-none"), selectionToolbar.classList.add("d-none"))
+    }
+
+    init(){
+        this.container.appendChild(this.div)
+        // $(this.table).DataTable()
+    }
+
+    inputsEvent(){
+        this.div.querySelectorAll("input[data-type='flatpickr']").forEach((item)=>{
+            if(item.dataset.listner !== "true"){
+                item.flatpickr();
+                item.dataset.listner = "true"
+            }
+        })
+        this.div.querySelectorAll("button[data-action='delete']").forEach((item)=>{
+            if(item.dataset.listner !== "enable"){
+                item.addEventListener("click", (evt => {
+                    if (item.parentElement.parentElement.tagName === "TH"){
+                        this.thead.querySelectorAll("th").forEach((value, key)=>{
+                            if (value === item.parentElement.parentElement) {
+                                this.tbody.querySelectorAll('tr').forEach((value1) => {
+                                    // if (value1.querySelectorAll("td>div").length <= 3){
+                                    //     value1.remove()
+                                    //     return
+                                    // }
+                                    value1.querySelectorAll("td").forEach((value2, key1) => {
+                                        if (key===key1){
+                                            value2.remove()
+                                        }
+                                    })
+                                })
+                            }
+                        })
+                        item.parentElement.parentElement.remove()
+                        return
+                    }
+                    // if (item.parentElement.parentElement.parentElement.querySelectorAll("td>div").length <= 3){
+                    //     item.parentElement.parentElement.parentElement.remove()
+                    //     return
+                    // }
+                    item.parentElement.remove()
+                }))
+                item.dataset.listner = "enable"
             }
         })
 
@@ -371,216 +664,23 @@ class CoaraTable {
             }))
         })
 
-        this.createGraphEvent()
-    }
-
-    createGraphEvent(){
-        CoaraTable.allTags.forEach(value => {
-            value.tagInst = new Tagify(value, {
-                enforceWhitelist: true,
-                whitelist: undefined,
-                maxTags: undefined,
-                dropdown: {
-                    maxItems: undefined,
-                    classname: "",
-                    enabled: 0,
-                    closeOnSelect: false
-                }
-            })
-
-            value.tagInst.on("add", (evt)=>{
-                if (value.dataset.action === "lines-tagify"){
-                    this.dynamicTableData.lines = evt.detail.data.value
-                    this.cube.getDimensionMembers(evt.detail.data.value).forEach((l, index)=>{
-                        CoaraTable.graphDynamicTable.querySelector("tbody").insertAdjacentHTML("beforeend", `<tr data-index="` + evt.detail.index + `"><th class="min-w-100px text-white">` + l[evt.detail.data.value] + `</th></tr>`)
-                    })
-                    CoaraTable.allTags.forEach(inputTag => {
-                        if (inputTag.dataset.action === "columns-tagify"){
-                            const i = inputTag.tagInst.whitelist.indexOf(evt.detail.data.value)
-                            if (i !== -1) {
-                                inputTag.tagInst.whitelist.splice(inputTag.tagInst.whitelist.indexOf(evt.detail.data.value), 1)
-                                inputTag.tagInst.removeTags(evt.detail.data.value)
-                            }
-                        }
-                    })
-                }
-                else if (value.dataset.action === "columns-tagify"){
-                    this.dynamicTableData.columns = evt.detail.data.value
-                    this.cube.getDimensionMembers(evt.detail.data.value).forEach((l, index)=>{
-                        CoaraTable.graphDynamicTable.querySelector("thead>tr").insertAdjacentHTML("beforeend", `<th class="min-w-125px" data-index="` + evt.detail.index + `">` + l[evt.detail.data.value] + `</th>`)
-                    })
-                    CoaraTable.allTags.forEach(inputTag => {
-                        if (inputTag.dataset.action === "lines-tagify"){
-                            const i = inputTag.tagInst.whitelist.indexOf(evt.detail.data.value)
-                            if (i !== -1) {
-                                inputTag.tagInst.whitelist.splice(inputTag.tagInst.whitelist.indexOf(evt.detail.data.value), 1)
-                                inputTag.tagInst.removeTags(evt.detail.data.value)
-                            }
-                        }
-                    })
-                }
-                else if (value.dataset.action === "values-tagify"){
-                    this.dynamicTableData.values = evt.detail.data.value
-                    CoaraTable.graphDynamicTable.querySelectorAll("tbody>tr").forEach((value1, key) => {
-                        if (this.dynamicTableData.lines !== undefined && this.dynamicTableData.columns !== undefined){
-                            this.cube.getDimensionMembers(this.dynamicTableData.lines).forEach(l=>{
-                                if (l[this.dynamicTableData.lines] === value1.querySelector("th").innerText) {
-                                    this.cube.getDimensionMembers(this.dynamicTableData.columns).forEach((c , i)=> {
-                                        let set = {}
-                                        set[this.dynamicTableData.lines] = {id: l.id}
-                                        set[this.dynamicTableData.columns] = {id: c.id}
-                                        let cellValue = 0
-                                        this.cube.dice(set).getFacts().forEach(insert => {
-                                            switch (typeof insert[this.dynamicTableData.values]) {
-                                                case "number":
-                                                    cellValue += insert[this.dynamicTableData.values]
-                                                    break
-                                                case "string":
-                                                    const formattedValue = Number(insert[this.dynamicTableData.values])
-                                                    cellValue += (!isNaN(formattedValue))?formattedValue:1
-                                                    break
-                                            }
-                                        })
-                                        value1.insertAdjacentHTML("beforeend", `<td class="min-w-125px">` + cellValue + `</td`)
-
-                                        if (this.dynamicTableData.series.length < i + 1){
-                                            this.dynamicTableData.series.push({name: c[this.dynamicTableData.columns], data: []})
-                                        }
-                                        this.dynamicTableData.series[i].data.push(cellValue)
-                                    })
-                                }
-                            })
-                        }
-                    })
-                    console.log(this.dynamicTableData)
-                    this.apexChat()
-                }
-            })
-
-            value.tagInst.on("remove", (evt)=>{
-                let tableData = this.getData("Array")
-                if (value.dataset.action === "lines-tagify"){
-                    tableData[0].forEach((column, index)=>{
-                        if (column.toLowerCase() === evt.detail.data.value.toLowerCase()){
-                            CoaraTable.graphDynamicTable.querySelectorAll("tbody>tr[data-index='" + evt.detail.index + "']").forEach(value1 => {
-                                value1.remove()
-                            })
-                            CoaraTable.allTags.forEach(inputTag => {
-                                if (inputTag.dataset.action === "columns-tagify"){
-                                    inputTag.tagInst.whitelist.push(column)
-                                }
-                            })
-                        }
-                    })
-                }
-                else if (value.dataset.action === "columns-tagify"){
-                    tableData[0].forEach((column, index)=>{
-                        if (column.toLowerCase() === evt.detail.data.value.toLowerCase()){
-                            CoaraTable.graphDynamicTable.querySelectorAll("thead>tr>th[data-index='" + evt.detail.index + "']").forEach(value1 => {
-                                value1.remove()
-                            })
-                            CoaraTable.allTags.forEach(inputTag => {
-                                if (inputTag.dataset.action === "lines-tagify"){
-                                    inputTag.tagInst.whitelist.push(column)
-                                }
-                            })
-                        }
-                    })
-                }
-            })
-        })
-        this.div.querySelector("div[data-action='table-menu']").querySelectorAll("a").forEach(value => {
-            if(value.dataset.type === "graph"){
-                value.addEventListener("click", ev => {
-                    this.validate()
-                    CoaraTable.allTags.forEach(value1 => {
-                        value1.tagInst.whitelist = []
-                        this.getData("Array")[0].forEach(value2 => {
-                            if (value1.tagInst.whitelist.indexOf(value2) === -1){
-                                value1.tagInst.whitelist.push(value2)
-                            }
-                        })
-                    })
+        this.tbody.querySelectorAll("a[data-kt-users-table-filter='delete_row']").forEach(item => {
+            if(item.dataset.listner !== "enable"){
+                item.addEventListener("click", evt => {
+                    evt.preventDefault()
+                    evt.target.closest("tr").remove()
+                    this.checkCheckboxState()
                 })
+                item.dataset.listner = "enable"
             }
         })
-    }
-
-    checkCheckboxState()
-    {
-        let tbodyCheckbox = this.tbody.querySelectorAll('[type="checkbox"]'),
-            selectedCount = this.div.querySelector('span[data-kt-user-table-select="selected_count"]'),
-            baseToolbar = this.div.querySelector('[data-kt-user-table-toolbar="base"]'),
-            selectionToolbar = this.div.querySelector('[data-kt-user-table-toolbar="selected"]')
-        let c = !1,
-            l = 0;
-        tbodyCheckbox.forEach((value1 => {
-            value1.checked && (c = !0, l++)
-        })), c ? (selectedCount.innerHTML = l.toString(), baseToolbar.classList.add("d-none"), selectionToolbar.classList.remove("d-none")) : (baseToolbar.classList.remove("d-none"), selectionToolbar.classList.add("d-none"))
-    }
-
-    init(){
-        this.container.appendChild(this.div)
-        $(this.table).DataTable({
-            info: !1,
-            order: [],
-            pageLength: 10,
-            lengthChange: !1,
-            columnDefs: [{
-                orderable: !1,
-                targets: 0
-            }]
-        })
-    }
-
-    inputsEvent(){
-        this.div.querySelectorAll("input[data-type='flatpickr']").forEach((item)=>{
-            item.flatpickr();
-        })
-        this.div.querySelectorAll("button[data-action='delete']").forEach((item)=>{
-            item.addEventListener("click", (evt => {
-                if (item.parentElement.parentElement.tagName === "TH"){
-                    this.thead.querySelectorAll("th").forEach((value, key)=>{
-                        if (value === item.parentElement.parentElement) {
-                            this.tbody.querySelectorAll('tr').forEach((value1) => {
-                                if (value1.querySelectorAll("td>div").length <= 3){
-                                    value1.remove()
-                                    return
-                                }
-                                value1.querySelectorAll("td").forEach((value2, key1) => {
-                                    if (key===key1){
-                                        value2.remove()
-                                    }
-                                })
-                            })
-                        }
-                    })
-                    item.parentElement.parentElement.remove()
-                    return
-                }
-
-                if (item.parentElement.parentElement.parentElement.querySelectorAll("td>div").length <= 3){
-                    item.parentElement.parentElement.parentElement.remove()
-                    return
-                }
-                item.parentElement.remove()
-            }));
-        })
-        this.div.querySelectorAll("[type='checkbox']")[0].addEventListener("click", ( (e) =>{
-            setTimeout((() =>{
-                this.tbody.querySelectorAll("[type='checkbox']").forEach(value => {
-                    e.target.checked ?  value.checked = 1: value.checked = 0
-                })
-                this.checkCheckboxState()
-            }), 50)
-        }))
     }
 
     columnInputs(type){
         switch (type) {
             case "string":
                 return `
-                    <div class="input-group w-250px input-group-sm" >
+                    <div class="input-group w-250px input-group-sm">
                         <input type="text" class="form-control" placeholder="Valeur"/>
                         <button class="border border-secondary btn btn-icon btn-light-danger"  type="button" data-action="delete">
                             <span class="svg-icon svg-icon-muted svg-icon-2hx">
@@ -733,8 +833,6 @@ class CoaraTable {
                 tableData.push(line)
             })
 
-            // console.log(tableData)
-
             if (format === "String") {
                 return JSON.stringify(tableData)
             }else if (format === "Object") {
@@ -743,8 +841,7 @@ class CoaraTable {
         }
     }
 
-    TCube()
-    {
+    TCube(){
         let tableData = this.getData("Object", true)
         let dimensionHierarchies = []
         Object.keys(tableData.columns).forEach(value =>{
@@ -771,9 +868,9 @@ class CoaraTable {
         return csvLine.join("\n")
     }
 
-    loadData(data)
-    {
-        this.tbody.querySelectorAll("tr").forEach(value => value.remove())
+    loadData(data){
+        this.tbody.querySelectorAll('tr.odd').forEach(value => {value.remove()})
+        // this.tbody.querySelectorAll("tr").forEach(value => value.remove())
         data.data.forEach((insert, index)=>{
             let cells = ""
             Object.entries(insert).forEach(([key, value])=>{
@@ -794,35 +891,35 @@ class CoaraTable {
                         </td>`
                 + cells +
                 `<td class="text-end coara-control">
-                            <a href="#" class="btn btn-light btn-active-light-primary btn-sm text-nowrap" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                            <span class="svg-icon svg-icon-5 m-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                            </a>
-                            <!--begin::Menu-->
-                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="view.html" class="menu-link px-3">Edit</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="#" class="menu-link px-3" data-kt-users-table-filter="delete_row">Delete</a>
-                                </div>
-                                <!--end::Menu item-->
-                            </div>
-                            <!--end::Menu-->
-                        </td>
-                    </tr>
-                `
-            )
+                    <a href="#" class="btn btn-light btn-active-light-primary btn-sm text-nowrap" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
+                        <span class="svg-icon svg-icon-5 m-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </a>
+                    <!--begin::Menu-->
+                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
+                        <!--begin::Menu item-->
+                        <div class="menu-item px-3">
+                            <a href="view.html" class="menu-link px-3">Edit</a>
+                        </div>
+                        <!--end::Menu item-->
+                        <!--begin::Menu item-->
+                        <div class="menu-item px-3">
+                            <a href="#" class="menu-link px-3" data-kt-users-table-filter="delete_row">Delete</a>
+                        </div>
+                        <!--end::Menu item-->
+                    </div>
+                    <!--end::Menu-->
+                </td>
+            </tr>
+            `)
         })
-        // this.inputsEvent()
+        this.inputsEvent()
+        KTMenu.createInstances()
     }
 
     apexChat(){

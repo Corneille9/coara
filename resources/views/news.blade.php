@@ -198,8 +198,7 @@
                                                 <span class="badge badge-changelog badge-light-success bg-hover-success text-hover-white fw-bold fs-9 px-2 ms-2">...</span>
                                                 @break
                                             @endif
-                                            <span
-                                                class="badge badge-changelog badge-light-success bg-hover-success text-hover-white fw-bold fs-9 px-2 ms-2">{{$location}}</span>
+                                            <span class="badge badge-changelog badge-light-success bg-hover-success text-hover-white fw-bold fs-9 px-2 ms-2">{{$location}}</span>
                                         @endforeach
                                     </div>
                                     <!--end::Stats-->
