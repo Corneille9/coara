@@ -16,7 +16,7 @@ class Offer extends Model
      */
     protected $fillable = [
         'company_id',
-        'type',
+        'type_id',
         'position_offered',
         'assignments' => "array",
         'assignments_description',
