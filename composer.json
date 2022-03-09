@@ -12,7 +12,8 @@
         "laravel-admin-ext/chartjs": "^1.0",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+      "ext-json": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

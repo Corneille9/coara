@@ -414,7 +414,7 @@
                             </div>
                             <!--end::Avatar-->
                             <!--begin::Name-->
-                            <a href="{{route("app.offers.show")}}" class="fs-3 text-gray-800 text-hover-primary fw-boldest mb-1">Développeur Full Stack</a>
+                            <a href="{{route("app.offers.details")}}" class="fs-3 text-gray-800 text-hover-primary fw-boldest mb-1">Développeur Full Stack</a>
                             <!--end::Name-->
                             <!--begin::Position-->
                             <div class="fs-5 fw-bold text-gray-400 mb-6">Nous recherchons des profils / CVs de Développeurs JAVA Juniors H/F que nous transmettrons à nos clients dans le cadre de leurs...</div>
@@ -442,7 +442,7 @@
                             <!--begin::Info-->
                             <div class="d-flex flex-stack">
                                 <span class="badge badge-light-primary fs-7 fw-boldest me-2">DEC 03, 2022</span>
-                                <a href="{{route("app.offers.show")}}" class="btn btn-light btn-sm btn-color-muted fs-7 fw-boldest px-5">Plus de détails</a>
+                                <a href="{{route("app.offers.details")}}" class="btn btn-light btn-sm btn-color-muted fs-7 fw-boldest px-5">Plus de détails</a>
                             </div>
                             <!--end::Info-->
                         </div>

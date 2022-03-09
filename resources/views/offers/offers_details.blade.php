@@ -54,7 +54,7 @@
                             <div class="d-flex flex-column">
                                 <!--begin::Status-->
                                 <div class="d-flex align-items-center mb-2">
-                                    <a href="{{route("app.enterprise.show")}}" class="text-gray-800 text-hover-primary fs-1 fw-boldest me-3">KY Solution</a>
+                                    <a href="{{route("app.enterprise.details")}}" class="text-gray-800 text-hover-primary fs-1 fw-boldest me-3">KY Solution</a>
                                     <span class="badge badge-light-primary fw-boldest me-auto px-4 py-3">Cotonou</span>
                                 </div>
                                 <!--end::Status-->
@@ -98,7 +98,7 @@
                     <!--begin::Info-->
                     <div class="d-flex flex-stack text-nowrap">
                         <span class="text-gray-800 fs-7 fw-boldest me-2 text-truncate">AK CONSULTING est un cabinet d'expertise comptable crée en 2010 et inscrit à l'OECCA BENIN. Nous développons nos activités autour de 5</span>
-                        <a href="{{route("app.enterprise.show")}}" class="btn btn-light btn-sm btn-color-muted fs-7 fw-boldest px-5">Lire la suite</a>
+                        <a href="{{route("app.enterprise.details")}}" class="btn btn-light btn-sm btn-color-muted fs-7 fw-boldest px-5">Lire la suite</a>
                     </div>
                     <!--end::Info-->
                 </div>

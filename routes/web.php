@@ -46,7 +46,7 @@ Route::group(
         Route::get('/enterprise', [EnterprisesController::class, "index"])->middleware(['auth'])->name('enterprise.details');
 
         Route::group(['prefix' => 'offers', 'as' => 'offers.'], function () {
-            Route::get('/details', [OffersController::class, "index"])->middleware(['auth'])->name('details');
+            Route::get('/details', [OffersController::class, "getOffer"])->middleware(['auth'])->name('details');
             Route::get('/', [OffersController::class, "index"])->middleware(['auth'])->name('show');
         });
 
@@ -59,13 +59,14 @@ Route::group(
         Route::group(['prefix' => 'company', 'as' => 'company.'], function () {
             Route::get('/dashboard', [DashboardController::class, "index"])->middleware(['auth'])->name('dashboard');
             Route::get('/tables', [CompanyTablesControllers::class, "index"])->middleware(['auth'])->name('tables');
+            Route::post('/tables/import', [CompanyTablesControllers::class, "importData"])->middleware(['auth'])->name('tables.import.data');
             Route::get('/settings', [CompanySettingsControllers::class, "index"])->middleware(['auth'])->name('settings');
             Route::get('/security', [CompanySecurityControllers::class, "index"])->middleware(['auth'])->name('security');
             Route::get('/apiKeys', [ApiKeysControllers::class, "index"])->middleware(['auth'])->name('apikeys');
             Route::get('/users', [CompanyUsersControllers::class, "index"])->middleware(['auth'])->name('users.list');
             Route::get('/user', [CompanyUsersControllers::class, "index"])->middleware(['auth'])->name('user.details');
             Route::get('/roles', [CompanyRolesControllers::class, "index"])->middleware(['auth'])->name('roles.list');
-            Route::get('/role', [CompanyRolesControllers::class, "index"])->middleware(['auth'])->name('role.details');
+            Route::get('/role', [CompanyRolesControllers::class, "getRole"])->middleware(['auth'])->name('role.details');
             Route::get('/permissions', [CompanyPermissionsControllers::class, "index"])->middleware(['auth'])->name('permissions');
         });
 

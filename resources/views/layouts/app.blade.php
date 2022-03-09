@@ -402,7 +402,7 @@
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
-                                        <span class="menu-title">API Keys</span>
+                                        <span class="menu-title">Vos Clés Api</span>
                                     </a>
                                 </div>
                             </div>
