@@ -654,10 +654,7 @@
             <span class="fs-4">CoAra</span>
         </div>
         <ul class="nav justify-content-center pt-3 pb-4 pb-lg-5">
-            <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Overview</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+            <li class="nav-item"><a href="{{route("app.news")}}" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Contacts</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Account</a></li>
         </ul>
