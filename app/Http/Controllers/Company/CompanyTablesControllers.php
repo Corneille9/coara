@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 
 class CompanyTablesControllers extends Controller
@@ -58,10 +60,27 @@ class CompanyTablesControllers extends Controller
         return view("company.tables", $this->data);
     }
 
+    public function store(Request $request){
+        $request->validate([
+            'columns' => 'required',
+            'data' => 'required',
+            'title' => 'required',
+        ]);
+
+//        Storage::disk("public")->put("tableData.json", $request->data);
+        return json_encode(["success"=>true]);
+    }
+
     public function importData(Request $request){
+        $request->validate([
+            "offset" => "required",
+            "length" => "required",
+        ]);
         if($request->hasFile("file")){
             if ($request->type == "json") {
-                return json_decode(file_get_contents($request->file), true);
+                $data =  json_decode(file_get_contents($request->file), true);
+                $size = sizeof($data);
+                return ['pageNumber'=> ($size%10 == 0)?intval($size/10):(intval($size/10)+1), 'data'=> array_slice($data, (int)$request->offset, (int)$request->length),];
             }elseif ($request->type == "csv"){
                 $rows = array_map("str_getcsv", file($request->file));
                 $header = array_shift($rows);
@@ -69,9 +88,25 @@ class CompanyTablesControllers extends Controller
                 foreach ($rows as $row){
                     $csv[] = array_combine($header, $row);
                 }
-                return $csv;
+                $size = sizeof($csv);
+                return ['pageNumber'=> ($size%10 == 0)?intval($size/10):(intval($size/10)+1), 'data'=> array_slice($csv, (int)$request->offset, (int)$request->length),];
             }
         }
         return ["success"=>false];
+    }
+
+    /**
+     * @throws FileNotFoundException
+     */
+    public function getTableData(Request $request){
+        $request->validate([
+            'id' => 'required',
+            "offset" => "required",
+            "length" => "required",
+        ]);
+
+        $data = json_decode(Storage::disk("public")->get("tableData.json"), true);
+        $size = sizeof($data);
+        return ['pageNumber'=> ($size%10 == 0)?intval($size/10):(intval($size/10)+1), 'data'=> array_slice($data, (int)$request->offset, (int)$request->length),];
     }
 }

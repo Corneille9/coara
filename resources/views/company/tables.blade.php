@@ -340,7 +340,10 @@
         let coaraTable = new CoaraTable("table-container")
         CoaraTable.token = "{{csrf_token()}}"
         CoaraTable.importRoute = "{{route("app.company.tables.import.data")}}"
+        CoaraTable.loadDataUrl = "{{route("app.company.tables.load.data")}}"
+        CoaraTable.storeTableUrl = "{{route("app.company.tables.load.store")}}"
         // coaraTable.loadData(CoaraTable.testData)
+        coaraTable.loadTableData()
         coaraTable.init()
         let coaraTable2 = new CoaraTable("table-container")
         coaraTable2.init()

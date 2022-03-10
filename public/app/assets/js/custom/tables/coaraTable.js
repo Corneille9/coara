@@ -100,6 +100,8 @@ class CoaraTable {
     }
 
     static importRoute = undefined
+    static loadDataUrl = undefined
+    static storeTableUrl = undefined
     static token = undefined
 
 
@@ -125,6 +127,7 @@ class CoaraTable {
                     <div class="card-toolbar">
                         <!--begin::Toolbar-->
                         <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
+                            <button type="button" class="btn btn-light-success btn-sm mx-2" data-kt-user-table-valid="valid">Valider</button>
                             <div data-action="addColumn">
                                 <button type="button" class="btn btn-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="left">
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
@@ -242,9 +245,9 @@ class CoaraTable {
                         <!--begin::Group actions-->
                         <div class="d-flex justify-content-end align-items-center d-none" data-kt-user-table-toolbar="selected">
                             <div class="fw-bolder me-5">
-                                <span class="me-2" data-kt-user-table-select="selected_count"></span>Selected
+                                <span class="me-2" data-kt-user-table-select="selected_count"></span>Sélectionnés
                             </div>
-                            <button type="button" class="btn btn-danger" data-kt-user-table-select="delete_selected">Delete Selected</button>
+                            <button type="button" class="btn btn-danger" data-kt-user-table-select="delete_selected">Supprimer</button>
                         </div>
                         <!--end::Group actions-->
                     </div>
@@ -275,6 +278,12 @@ class CoaraTable {
                     </table>
                     <!--end::Table-->
                 </div>
+                <div class="align-self-end m-5">
+                    <ul class="pagination" data-type="pagination">
+                        <li class="page-item previous disabled" data-action="prev"><a href="#" class="page-link np"><i class="previous"></i></a></li>
+                        <li class="page-item next" data-action="next"><a href="#"  class="page-link np"><i class="next"></i></a></li>
+                    </ul>
+                </div>
                 <!--end::Card body-->
                 <div class="form-group m-5">
                     <a href="javascript:;" data-repeater-create class="btn btn-light-primary btn-sm" data-action="addRow">
@@ -296,14 +305,20 @@ class CoaraTable {
         this.thead = this.table.querySelector("thead")
         this.tbody = this.table.querySelector("tbody")
         this.addRowButton = this.div.querySelector("a[data-action='addRow']")
-        this.initEvent()
-        this.div.querySelector("a[data-type='export']").addEventListener("click", evt => {this.validate(),this.TCube()})
+        // this.div.querySelector("a[data-type='export']").addEventListener("click", evt => {this.validate(),this.TCube()})
+        this.div.querySelector("button[data-kt-user-table-valid='valid']").addEventListener("click", evt => this.validate())
 
         this.dynamicTableData = {}
         this.dynamicTableData.series = []
+        this.pagination = this.div.querySelector('ul[data-type="pagination"]')
+
+        this.initEvent()
     }
 
     initEvent(){
+        new KTBlockUI(this.div, {
+            message: '<div class="blockui-message"><span class="spinner-border text-primary"></span> Loading...</div>',
+        });
         //Title input event
         this.titleInput.addEventListener('keyup', evt => {
             if (evt.key === 'Enter'){
@@ -323,42 +338,73 @@ class CoaraTable {
         })
         $(this.div.querySelector("input[data-type='import']")).change(evt => {
             let formdata = new FormData()
+            formdata.append('_token', CoaraTable.token)
+            formdata.append('file', evt.target.files[0])
+            formdata.append('offset', "0")
+            formdata.append('length', "10")
+            let blockUI = KTBlockUI.getInstance(this.div);
             switch (evt.target.value.split('.').pop().toLowerCase()) {
                 case "json":
-                    formdata.append('_token', CoaraTable.token)
-                    formdata.append('file', evt.target.files[0])
                     formdata.append('type', "json")
+                    blockUI.block()
                     $.ajax({
                         url: CoaraTable.importRoute,
                         type: "POST",
                         contentType: false,
                         processData: false,
                         data: formdata,
-                        success: (data) =>{
-                            let columns = {}
-                            Object.keys(data[0]).forEach(value => {
-                                columns[value] = "string"
-                            })
-                            this.loadData({columns:columns,data:data})
+                        success: (result) =>{
+                            if (result.data.length !== 0) {
+                                let offset = 0
+                                for (let i = 1; i <= parseInt(result.pageNumber); i++) {
+                                    if (offset === 0) {
+                                        this.pagination.querySelector('[data-action="next"]').insertAdjacentHTML("beforebegin", `<li class="page-item active"><a href="#" class="page-link" data-offset="` + offset + `">` + i + `</a></li>`)
+                                        this.pagination.activeLinkIndex = 0
+                                    } else {
+                                        this.pagination.querySelector('[data-action="next"]').insertAdjacentHTML("beforebegin", `<li class="page-item"><a href="#" class="page-link" data-offset="` + offset + `">` + i + `</a></li>`)
+                                    }
+                                    offset += 10
+                                }
+                                let columns = {}
+                                Object.keys(result.data[0]).forEach(value => {
+                                    columns[value] = "string"
+                                })
+                                this.loadData({columns: columns, data: result.data})
+                                this.paginationEvent()
+                            }
+                            blockUI.release()
                         },
                     })
                     break
                 case "csv":
-                    formdata.append('_token', CoaraTable.token)
-                    formdata.append('file', evt.target.files[0])
                     formdata.append('type', "csv")
+                    blockUI.block()
                     $.ajax({
                         url: CoaraTable.importRoute,
                         type: "POST",
                         contentType: false,
                         processData: false,
                         data: formdata,
-                        success: (data) =>{
-                            let columns = {}
-                            Object.keys(data[0]).forEach(value => {
-                                columns[value] = "string"
-                            })
-                            this.loadData({columns:columns,data:data})
+                        success: (result) =>{
+                            if (result.data.length !== 0) {
+                                let offset = 0
+                                for (let i = 1; i <= parseInt(result.pageNumber); i++) {
+                                    if (offset === 0) {
+                                        this.pagination.querySelector('[data-action="next"]').insertAdjacentHTML("beforebegin", `<li class="page-item active"><a href="#" class="page-link" data-offset="` + offset + `">` + i + `</a></li>`)
+                                        this.pagination.activeLinkIndex = 0
+                                    } else {
+                                        this.pagination.querySelector('[data-action="next"]').insertAdjacentHTML("beforebegin", `<li class="page-item"><a href="#" class="page-link" data-offset="` + offset + `">` + i + `</a></li>`)
+                                    }
+                                    offset += 10
+                                }
+                                let columns = {}
+                                Object.keys(result.data[0]).forEach(value => {
+                                    columns[value] = "string"
+                                })
+                                this.loadData({columns: columns, data: result.data})
+                                this.paginationEvent()
+                            }
+                            blockUI.release()
                         },
                     });
                     break
@@ -380,15 +426,12 @@ class CoaraTable {
 
         //First checkbox event
         this.div.querySelectorAll("[type='checkbox']")[0].addEventListener("click", ( (e) =>{
-            if(e.target.dataset.listner !== "enable"){
-                setTimeout((() =>{
-                    this.tbody.querySelectorAll("[type='checkbox']").forEach(value => {
-                        e.target.checked ?  value.checked = 1: value.checked = 0
-                    })
-                    this.checkCheckboxState()
-                }), 50)
-                e.target.dataset.listner = "enable"
-            }
+            setTimeout((() =>{
+                this.tbody.querySelectorAll("[type='checkbox']").forEach(value => {
+                    e.target.checked ?  value.checked = 1: value.checked = 0
+                })
+                this.checkCheckboxState()
+            }), 50)
         }))
 
         //Add columns button event
@@ -408,6 +451,7 @@ class CoaraTable {
                     `)
                     })
                     this.inputsEvent()
+                    this.checkInputs()
                 })
                 item.dataset.listner = "enable"
             }
@@ -428,11 +472,69 @@ class CoaraTable {
                     }), 50)
                 }))
                 this.inputsEvent()
+                this.checkInputs()
                 KTMenu.createInstances()
             }
         })
 
         this.createGraphEvent()
+    }
+
+    paginationEvent(){
+        // Pagination events
+        let links = this.pagination.querySelectorAll("li>a:not(.np)")
+        links.forEach((a, key )=> {
+            if (a.dataset.listner !== "enable") {
+                a.addEventListener('click', evt => {
+                    evt.preventDefault()
+                    let blockUI = KTBlockUI.getInstance(this.div);
+                    blockUI.block()
+                    $.ajax({
+                        url: CoaraTable.loadDataUrl,
+                        type: "POST",
+                        data: {
+                            _token: CoaraTable.token,
+                            id: 0,
+                            offset: parseInt(a.dataset.offset),
+                            length: parseInt(a.dataset.offset) + 10,
+                        },
+                        success: (result) => {
+                            if (result.data.length !== 0) {
+                                let columns = {}
+                                Object.keys(result.data[0]).forEach(value => {
+                                    columns[value] = "string"
+                                })
+                                this.tbody.querySelectorAll("tr").forEach(item => item.remove())
+                                this.loadData({columns: columns, data: result.data}, true)
+                                this.pagination.querySelector("li.active").classList.remove("active")
+                                a.parentElement.classList.add("active")
+                                this.addRowButton.scrollIntoView({behavior: 'smooth', block: "nearest"})
+                                this.pagination.activeLinkIndex = key
+                                if (key === 0) {
+                                    this.pagination.querySelector("li.previous").classList.add("disabled")
+                                } else {
+                                    this.pagination.querySelector("li.previous").classList.remove("disabled")
+                                }
+                                if (key === links.length - 1) {
+                                    this.pagination.querySelector("li.next").classList.add("disabled")
+                                } else {
+                                    this.pagination.querySelector("li.next").classList.remove("disabled")
+                                }
+                            }
+                            blockUI.release()
+                        },
+                    });
+                })
+                a.dataset.listner = "enable"
+            }
+        })
+        this.pagination.querySelector("li.previous>a").addEventListener("click", evt => {
+            links[this.pagination.activeLinkIndex -1].click()
+        })
+
+        this.pagination.querySelector("li.next>a").addEventListener("click", evt => {
+            links[this.pagination.activeLinkIndex +1].click()
+        })
     }
 
     createGraphEvent(){
@@ -553,7 +655,7 @@ class CoaraTable {
         this.div.querySelector("div[data-action='table-menu']").querySelectorAll("a").forEach(value => {
             if(value.dataset.type === "graph"){
                 value.addEventListener("click", ev => {
-                    this.validate()
+                    // this.validate()
                     CoaraTable.allTags.forEach(value1 => {
                         value1.tagInst.whitelist = []
                         this.getData("Array")[0].forEach(value2 => {
@@ -581,16 +683,10 @@ class CoaraTable {
 
     init(){
         this.container.appendChild(this.div)
-        // $(this.table).DataTable()
+        this.checkInputs()
     }
 
-    inputsEvent(){
-        this.div.querySelectorAll("input[data-type='flatpickr']").forEach((item)=>{
-            if(item.dataset.listner !== "true"){
-                item.flatpickr();
-                item.dataset.listner = "true"
-            }
-        })
+    deleteInputEvent(){
         this.div.querySelectorAll("button[data-action='delete']").forEach((item)=>{
             if(item.dataset.listner !== "enable"){
                 item.addEventListener("click", (evt => {
@@ -611,6 +707,7 @@ class CoaraTable {
                             }
                         })
                         item.parentElement.parentElement.remove()
+                        this.checkInputs()
                         return
                     }
                     // if (item.parentElement.parentElement.parentElement.querySelectorAll("td>div").length <= 3){
@@ -618,10 +715,23 @@ class CoaraTable {
                     //     return
                     // }
                     item.parentElement.remove()
+                    this.checkInputs()
                 }))
                 item.dataset.listner = "enable"
             }
         })
+
+    }
+
+    inputsEvent(){
+        this.div.querySelectorAll("input[data-type='flatpickr']").forEach((item)=>{
+            if(item.dataset.listner !== "true"){
+                item.flatpickr();
+                item.dataset.listner = "true"
+            }
+        })
+
+        this.deleteInputEvent()
 
         this.div.querySelector('[data-kt-user-table-select="delete_selected"]').addEventListener("click",evt =>  {
             Swal.fire({
@@ -674,14 +784,82 @@ class CoaraTable {
                 item.dataset.listner = "enable"
             }
         })
+
+        this.tbody.querySelectorAll("a[data-kt-users-table-filter='edit_row']").forEach(item => {
+            if(item.dataset.listner !== "enable"){
+                item.addEventListener("click", evt => {
+                    evt.preventDefault()
+                    let tds = evt.target.closest("tr").querySelectorAll("td")
+                    tds.forEach((i, index)=>{
+                        if (index !== 0 && index !== tds.length -1) {
+                            if (i.querySelector("input") === null) {
+                                i.innerHTML = this.columnInputs('string', i.innerText)
+                            }
+                        }
+                    })
+                    this.deleteInputEvent()
+                    this.checkInputs()
+                })
+                item.dataset.listner = "enable"
+            }
+        })
+
+        this.tbody.querySelectorAll("td").forEach((item) => {
+            if(item.dataset.listner !== "enable" && item.querySelector("div") === null){
+                item.addEventListener("dblclick", ev => {
+                    if (item.querySelector("input") === null) {
+                        item.innerHTML = this.columnInputs('string', item.innerText)
+                        this.deleteInputEvent()
+                        this.checkInputs()
+                    }
+                })
+
+                item.addEventListener("keyup", ev => {
+                    if (ev.key === 'Enter') {
+                        this.validate()
+                    }
+                })
+                item.dataset.listner = "enable"
+            }
+        })
+
+        // this.thead.querySelectorAll("th").forEach((item) => {
+        //     if(item.dataset.listner !== "enable"){
+        //         item.addEventListener("dblclick", ev => {
+        //             if (item.querySelector("input") === null) {
+        //                 item.innerHTML = this.columnInputs('string', item.innerText)
+        //                 this.deleteInputEvent()
+        //                 this.checkInputs()
+        //             }
+        //         })
+        //
+        //         item.addEventListener("keyup", ev => {
+        //             if (ev.key === 'Enter') {
+        //                 this.validate()
+        //             }
+        //         })
+        //         item.dataset.listner = "enable"
+        //     }
+        // })
+
+        this.div.querySelectorAll("[type='checkbox']").forEach(value => {
+            if (value.dataset.listner = "enable") {
+                value.addEventListener("click", ((e) => {
+                    setTimeout((() => {
+                        this.checkCheckboxState()
+                    }), 50)
+                }))
+                value.dataset.listner = "enable"
+            }
+        })
     }
 
-    columnInputs(type){
+    columnInputs(type, value=''){
         switch (type) {
             case "string":
                 return `
                     <div class="input-group w-250px input-group-sm">
-                        <input type="text" class="form-control" placeholder="Valeur"/>
+                        <input type="text" class="form-control" placeholder="Valeur" value="` + value + `"/>
                         <button class="border border-secondary btn btn-icon btn-light-danger"  type="button" data-action="delete">
                             <span class="svg-icon svg-icon-muted svg-icon-2hx">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -695,7 +873,7 @@ class CoaraTable {
             case "date":
                 return `
                     <div class="input-group w-250px input-group-sm" >
-                        <input class="form-control" placeholder="Pick a date" data-type="flatpickr"/>
+                        <input class="form-control" placeholder="Pick a date" data-type="flatpickr" value="` + value + `"/>
                         <button class="border border-secondary btn btn-icon btn-light-danger"  type="button" data-action="delete">
                             <span class="svg-icon svg-icon-muted svg-icon-2hx">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -711,7 +889,7 @@ class CoaraTable {
                     <!--begin::Dialer-->
                     <div class="position-relative w-250px input-group">
                         <!--begin::Input control-->
-                        <input type="number" class="form-control" data-kt-dialer-control="input" placeholder="Valeur" name=""  value="0"/>
+                        <input type="number" class="form-control" data-kt-dialer-control="input" placeholder="Valeur" name=""  value="` + value + `"/>
                         <!--end::Input control-->
                         <button class="border border-secondary btn btn-icon btn-light-danger"  type="button" data-action="delete">
                             <span class="svg-icon svg-icon-muted svg-icon-2hx">
@@ -775,23 +953,54 @@ class CoaraTable {
     }
 
     validate(){
-
         let thList = Array.from(this.thead.querySelectorAll("input:not(.form-check-input)")).filter(value => !(value.type === "hidden")).map(value => value.value)
         let isvalid = true
         thList.forEach((value, index, array) => {
+            if (value == null || value === ''){
+                toastr.warning("Veuillez remplir La colonne no " + (index + 1));
+                isvalid = false
+                return
+            }
             if (array.indexOf(value, index + 1) !== -1 && isvalid){
                 toastr.warning("Duplication du champ : " + value);
                 isvalid = false
             }
         })
+        if (isvalid && (this.titleInput.value === null || this.titleInput.value === '')){
+            toastr.warning("Veuillez entrer le titre du tableau");
+            isvalid = false
+        }
         if (isvalid) {
             this.table.querySelectorAll("input:not(.form-check-input)").forEach(value => {
                 if (value.type !== 'hidden') {
                     value.parentElement.replaceWith(value.value)
                 }
             })
+            let data = this.getData("Object", true)
+            let blockUI = KTBlockUI.getInstance(this.div);
+            blockUI.options.message = '<div class="blockui-message"><span class="spinner-border text-primary"></span> Sauvegarde en cours...</div>'
+            blockUI.block()
+            $.ajax({
+                url: CoaraTable.storeTableUrl,
+                type: "POST",
+                data: {
+                    _token: CoaraTable.token,
+                    title: this.titleInput.value,
+                    columns: JSON.stringify(data.columns),
+                    data: JSON.stringify(data.data)
+                },
+                success: (result) =>{
+                    console.log(result)
+                    blockUI.release()
+                    blockUI.options.message = '<div class="blockui-message"><span class="spinner-border text-primary"></span> Loading...</div>'
+                },
+                error:(result)=>{
+                    blockUI.release()
+                    blockUI.options.message = '<div class="blockui-message"><span class="spinner-border text-primary"></span> Loading...</div>'
+                }
+            })
         }
-
+        this.checkInputs()
         // this.exportCsv(this.jsonify(true))
     }
 
@@ -868,14 +1077,14 @@ class CoaraTable {
         return csvLine.join("\n")
     }
 
-    loadData(data){
+    loadData(data, rowOnly=false){
         this.tbody.querySelectorAll('tr.odd').forEach(value => {value.remove()})
         // this.tbody.querySelectorAll("tr").forEach(value => value.remove())
         data.data.forEach((insert, index)=>{
             let cells = ""
             Object.entries(insert).forEach(([key, value])=>{
                 if (key !== "id") {
-                    if (index === 0) {
+                    if (index === 0 && !rowOnly) {
                         this.thead.querySelector("tr").querySelector(".text-end").insertAdjacentHTML("beforebegin",
                             `<th class="min-w-125px">` + key + `<input type="hidden" value="` + data["columns"][key] + `"></th>`)
                     }
@@ -904,7 +1113,7 @@ class CoaraTable {
                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                         <!--begin::Menu item-->
                         <div class="menu-item px-3">
-                            <a href="view.html" class="menu-link px-3">Edit</a>
+                            <a href="view.html" class="menu-link px-3" data-kt-users-table-filter="edit_row">Edit</a>
                         </div>
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
@@ -920,6 +1129,49 @@ class CoaraTable {
         })
         this.inputsEvent()
         KTMenu.createInstances()
+    }
+
+    checkInputs(){
+        const validButton = this.div.querySelector("button[data-kt-user-table-valid='valid']")
+        if (this.div.querySelectorAll("button[data-action='delete']").length === 0){
+            validButton.classList.add("d-none")
+        }else {
+            validButton.classList.remove("d-none")
+        }
+    }
+
+    loadTableData(){
+        $.ajax({
+            url: CoaraTable.loadDataUrl,
+            type: "POST",
+            data: {
+                _token: CoaraTable.token,
+                id: 0,
+                offset: 0,
+                length: 10,
+            },
+            success: (result) =>{
+                let blockUI = KTBlockUI.getInstance(this.div);
+                blockUI.block()
+                let offset = 0
+                for (let i=1; i<=parseInt(result.pageNumber); i++){
+                    if (offset === 0){
+                        this.pagination.querySelector('[data-action="next"]').insertAdjacentHTML("beforebegin",`<li class="page-item active"><a href="#" class="page-link" data-offset="` + offset +`">` + i +`</a></li>`)
+                        this.pagination.activeLinkIndex = 0
+                    }else {
+                        this.pagination.querySelector('[data-action="next"]').insertAdjacentHTML("beforebegin", `<li class="page-item"><a href="#" class="page-link" data-offset="` + offset + `">` + i + `</a></li>`)
+                    }
+                    offset += 10
+                }
+                let columns = {}
+                Object.keys(result.data[0]).forEach(value => {
+                    columns[value] = "string"
+                })
+                this.loadData({columns:columns,data:result.data})
+                this.paginationEvent()
+                blockUI.release()
+            },
+        });
     }
 
     apexChat(){

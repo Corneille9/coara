@@ -60,6 +60,8 @@ Route::group(
             Route::get('/dashboard', [DashboardController::class, "index"])->middleware(['auth'])->name('dashboard');
             Route::get('/tables', [CompanyTablesControllers::class, "index"])->middleware(['auth'])->name('tables');
             Route::post('/tables/import', [CompanyTablesControllers::class, "importData"])->middleware(['auth'])->name('tables.import.data');
+            Route::post('/tables/load', [CompanyTablesControllers::class, "getTableData"])->middleware(['auth'])->name('tables.load.data');
+            Route::post('/tables/store', [CompanyTablesControllers::class, "store"])->middleware(['auth'])->name('tables.load.store');
             Route::get('/settings', [CompanySettingsControllers::class, "index"])->middleware(['auth'])->name('settings');
             Route::get('/security', [CompanySecurityControllers::class, "index"])->middleware(['auth'])->name('security');
             Route::get('/apiKeys', [ApiKeysControllers::class, "index"])->middleware(['auth'])->name('apikeys');
