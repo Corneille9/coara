@@ -153,8 +153,7 @@
 </head>
 <!--end::Head-->
 <!--begin::Body-->
-<body id="kt_body" 
-      class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled aside-fixed aside-default-enabled">
+<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled aside-fixed aside-default-enabled">
 <!--begin::Main-->
 
 <!-- Page loading spinner -->
@@ -198,59 +197,54 @@
                          data-kt-scroll-offset="20px" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer">
                         <div class="menu-item @if(Route::getCurrentRoute()->uri=="app/news") here @endif">
                             <a class="menu-link" href="{{route("app.news")}}">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-											<span class="svg-icon svg-icon-2">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                     viewBox="0 0 24 24" fill="none">
-													<rect x="2" y="2" width="9" height="9" rx="2" fill="black"/>
-													<rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
-                                                          fill="black"/>
-													<rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2"
-                                                          fill="black"/>
-													<rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
-                                                          fill="black"/>
-												</svg>
-											</span>
-                                            <!--end::Svg Icon-->
-										</span>
+                                <span class="menu-icon">
+                                    <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
+                                    <span class="svg-icon svg-icon-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none">
+                                            <rect x="2" y="2" width="9" height="9" rx="2" fill="black"/>
+                                            <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
+                                                  fill="black"/>
+                                            <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2"
+                                                  fill="black"/>
+                                            <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
+                                                  fill="black"/>
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </span>
                                 <span class="menu-title">Fil d'actualités</span>
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{route("app.company.dashboard")}}">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
-											<span class="svg-icon svg-icon-2">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                     viewBox="0 0 24 24" fill="none">
-													<path
-                                                        d="M17.5 11H6.5C4 11 2 9 2 6.5C2 4 4 2 6.5 2H17.5C20 2 22 4 22 6.5C22 9 20 11 17.5 11ZM15 6.5C15 7.9 16.1 9 17.5 9C18.9 9 20 7.9 20 6.5C20 5.1 18.9 4 17.5 4C16.1 4 15 5.1 15 6.5Z"
-                                                        fill="black"/>
-													<path opacity="0.3"
-                                                          d="M17.5 22H6.5C4 22 2 20 2 17.5C2 15 4 13 6.5 13H17.5C20 13 22 15 22 17.5C22 20 20 22 17.5 22ZM4 17.5C4 18.9 5.1 20 6.5 20C7.9 20 9 18.9 9 17.5C9 16.1 7.9 15 6.5 15C5.1 15 4 16.1 4 17.5Z"
-                                                          fill="black"/>
-												</svg>
-											</span>
-                                            <!--end::Svg Icon-->
-										</span>
+                            <a class="menu-link" href="{{route("app.company.dashboards")}}">
+                                <span class="menu-icon">
+                                    <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
+                                    <span class="svg-icon svg-icon-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M17.5 11H6.5C4 11 2 9 2 6.5C2 4 4 2 6.5 2H17.5C20 2 22 4 22 6.5C22 9 20 11 17.5 11ZM15 6.5C15 7.9 16.1 9 17.5 9C18.9 9 20 7.9 20 6.5C20 5.1 18.9 4 17.5 4C16.1 4 15 5.1 15 6.5Z"
+                                                fill="black"/>
+                                            <path opacity="0.3"
+                                                  d="M17.5 22H6.5C4 22 2 20 2 17.5C2 15 4 13 6.5 13H17.5C20 13 22 15 22 17.5C22 20 20 22 17.5 22ZM4 17.5C4 18.9 5.1 20 6.5 20C7.9 20 9 18.9 9 17.5C9 16.1 7.9 15 6.5 15C5.1 15 4 16.1 4 17.5Z"
+                                                  fill="black"/>
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </span>
                                 <span class="menu-title">Tableau de bord</span>
                             </a>
                         </div>
-                        <div
-                            class="menu-item @if(Route::getCurrentRoute()->uri=="app/search") here @elseif(str_starts_with(Route::getCurrentRoute()->uri, "search/")) show menu-accordion @endif">
+                        <div class="menu-item @if(Route::getCurrentRoute()->uri=="app/search") here @elseif(str_starts_with(Route::getCurrentRoute()->uri, "search/")) show menu-accordion @endif">
                             <a class="menu-link" href="{{route("app.search")}}">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
                                     <span class="svg-icon svg-icon-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                              viewBox="0 0 24 24" fill="none">
-                                            <path
-                                                d="M21.7 18.9L18.6 15.8C17.9 16.9 16.9 17.9 15.8 18.6L18.9 21.7C19.3 22.1 19.9 22.1 20.3 21.7L21.7 20.3C22.1 19.9 22.1 19.3 21.7 18.9Z"
-                                                fill="black"/>
-                                            <path opacity="0.3"
-                                                  d="M11 20C6 20 2 16 2 11C2 6 6 2 11 2C16 2 20 6 20 11C20 16 16 20 11 20ZM11 4C7.1 4 4 7.1 4 11C4 14.9 7.1 18 11 18C14.9 18 18 14.9 18 11C18 7.1 14.9 4 11 4ZM8 11C8 9.3 9.3 8 11 8C11.6 8 12 7.6 12 7C12 6.4 11.6 6 11 6C8.2 6 6 8.2 6 11C6 11.6 6.4 12 7 12C7.6 12 8 11.6 8 11Z"
-                                                  fill="black"/>
+                                            <path d="M21.7 18.9L18.6 15.8C17.9 16.9 16.9 17.9 15.8 18.6L18.9 21.7C19.3 22.1 19.9 22.1 20.3 21.7L21.7 20.3C22.1 19.9 22.1 19.3 21.7 18.9Z" fill="black"/>
+                                            <path opacity="0.3" d="M11 20C6 20 2 16 2 11C2 6 6 2 11 2C16 2 20 6 20 11C20 16 16 20 11 20ZM11 4C7.1 4 4 7.1 4 11C4 14.9 7.1 18 11 18C14.9 18 18 14.9 18 11C18 7.1 14.9 4 11 4ZM8 11C8 9.3 9.3 8 11 8C11.6 8 12 7.6 12 7C12 6.4 11.6 6 11 6C8.2 6 6 8.2 6 11C6 11.6 6.4 12 7 12C7.6 12 8 11.6 8 11Z" fill="black"/>
                                         </svg>
                                     </span>
                                     <!--end::Svg Icon-->
@@ -264,9 +258,9 @@
                                 <div class="menu-sub menu-sub-accordion menu-active-bg">
                                     <div class="menu-item">
                                         <a class="menu-link active" href="">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
                                             <span class="menu-title">Offres</span>
                                         </a>
                                     </div>
@@ -316,11 +310,11 @@
                                 <span class="menu-icon">
 									<!--begin::Svg Icon | path: icons/duotune/abstract/abs027.svg-->
                                     <span class="svg-icon svg-icon-2">
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                 viewBox="0 0 24 24" fill="none">
-                                                <path d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z" fill="black"/>
-                                                <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4" fill="black"/>
-                                            </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none">
+                                            <path d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z" fill="black"/>
+                                            <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4" fill="black"/>
+                                        </svg>
                                     </span>
                                     <!--end::Svg Icon-->
                                 </span>
@@ -391,9 +385,9 @@
                                 </div>
                                 <div class="menu-item">
                                     <a class="menu-link" href="{{route("app.company.security")}}">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
                                         <span class="menu-title">Paramètres de Sécurité</span>
                                     </a>
                                 </div>
@@ -414,7 +408,7 @@
             <!--end::Aside menu-->
             <!--begin::Footer-->
             <div class="aside-footer flex-column-auto pb-5 d-none" id="kt_aside_footer">
-                <a href="index-2.html" class="btn btn-light-primary w-100">Button</a>
+                <a href="{{route("app.news")}}" class="btn btn-light-primary w-100">Button</a>
             </div>
             <!--end::Footer-->
         </div>
@@ -433,44 +427,35 @@
                             <div class="btn btn-icon btn-active-color-primary ms-n2 me-1" id="kt_aside_toggle">
                                 <!--begin::Svg Icon | path: icons/duotune/abstract/abs015.svg-->
                                 <span class="svg-icon svg-icon-2x">
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                 viewBox="0 0 24 24" fill="none">
-												<path
-                                                    d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z"
-                                                    fill="black"/>
-												<path opacity="0.3"
-                                                      d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z"
-                                                      fill="black"/>
-											</svg>
-										</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z" fill="black"/>
+                                        <path opacity="0.3" d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z" fill="black"/>
+                                    </svg>
+                                </span>
                                 <!--end::Svg Icon-->
                             </div>
                         </div>
                         <!--end::Aside Toggle-->
                         <!--begin::Logo-->
                         <a href="index-2.html" class="d-lg-none">
-                            <img alt="Logo" src="{{asset($resolved_assets."app/assets/media/logos/logo-compact.svg")}}"
-                                 class="mh-40px"/>
+                            <img alt="Logo" src="{{asset($resolved_assets."app/assets/media/logos/logo-compact.svg")}}" class="mh-40px"/>
                         </a>
                         <!--end::Logo-->
                         <!--begin::Aside toggler-->
-                        <div
-                            class="btn btn-icon w-auto ps-0 btn-active-color-primary d-none d-lg-inline-flex me-2 me-lg-5"
-                            data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body"
-                            data-kt-toggle-name="aside-minimize">
+                        <div class="btn btn-icon w-auto ps-0 btn-active-color-primary d-none d-lg-inline-flex me-2 me-lg-5" data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body" data-kt-toggle-name="aside-minimize">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr060.svg-->
                             <span class="svg-icon svg-icon-2 rotate-180">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                             viewBox="0 0 24 24" fill="none">
-											<path
-                                                d="M9.60001 11H21C21.6 11 22 11.4 22 12C22 12.6 21.6 13 21 13H9.60001V11Z"
-                                                fill="black"/>
-											<path
-                                                d="M6.2238 13.2561C5.54282 12.5572 5.54281 11.4429 6.22379 10.7439L10.377 6.48107C10.8779 5.96697 11.75 6.32158 11.75 7.03934V16.9607C11.75 17.6785 10.8779 18.0331 10.377 17.519L6.2238 13.2561Z"
-                                                fill="black"/>
-											<rect opacity="0.3" x="2" y="4" width="2" height="16" rx="1" fill="black"/>
-										</svg>
-									</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                     viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M9.60001 11H21C21.6 11 22 11.4 22 12C22 12.6 21.6 13 21 13H9.60001V11Z"
+                                        fill="black"/>
+                                    <path
+                                        d="M6.2238 13.2561C5.54282 12.5572 5.54281 11.4429 6.22379 10.7439L10.377 6.48107C10.8779 5.96697 11.75 6.32158 11.75 7.03934V16.9607C11.75 17.6785 10.8779 18.0331 10.377 17.519L6.2238 13.2561Z"
+                                        fill="black"/>
+                                    <rect opacity="0.3" x="2" y="4" width="2" height="16" rx="1" fill="black"/>
+                                </svg>
+                            </span>
                             <!--end::Svg Icon-->
                         </div>
                         <!--end::Aside toggler-->
@@ -491,16 +476,16 @@
                                     <div class="btn btn-icon btn-icon-gray-500 btn-active-light-primary">
                                         <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
                                         <span class="svg-icon svg-icon-2">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                         viewBox="0 0 24 24" fill="none">
-														<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546"
-                                                              height="2" rx="1" transform="rotate(45 17.0365 15.1223)"
-                                                              fill="black"/>
-														<path
-                                                            d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
-                                                            fill="black"/>
-													</svg>
-												</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewBox="0 0 24 24" fill="none">
+                                                <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546"
+                                                      height="2" rx="1" transform="rotate(45 17.0365 15.1223)"
+                                                      fill="black"/>
+                                                <path
+                                                    d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
+                                                    fill="black"/>
+                                            </svg>
+                                        </span>
                                         <!--end::Svg Icon-->
                                     </div>
                                 </div>
@@ -515,16 +500,16 @@
                                     <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
                                     <span
                                         class="svg-icon svg-icon-2 svg-icon-gray-500 position-absolute top-50 translate-middle-y ms-0">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                     viewBox="0 0 24 24" fill="none">
-													<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546"
-                                                          height="2" rx="1" transform="rotate(45 17.0365 15.1223)"
-                                                          fill="black"/>
-													<path
-                                                        d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
-                                                        fill="black"/>
-												</svg>
-											</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewBox="0 0 24 24" fill="none">
+                                                <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546"
+                                                      height="2" rx="1" transform="rotate(45 17.0365 15.1223)"
+                                                      fill="black"/>
+                                                <path
+                                                    d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
+                                                    fill="black"/>
+                                            </svg>
+                                        </span>
                                     <!--end::Svg Icon-->
                                     <!--end::Icon-->
                                     <!--begin::Input-->
@@ -532,28 +517,21 @@
                                            value="" placeholder="Search..." data-kt-search-element="input"/>
                                     <!--end::Input-->
                                     <!--begin::Spinner-->
-                                    <span class="position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-1"
-                                          data-kt-search-element="spinner">
-												<span
-                                                    class="spinner-border h-15px w-15px align-middle text-gray-400"></span>
-											</span>
+                                    <span class="position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-1" data-kt-search-element="spinner">
+                                        <span class="spinner-border h-15px w-15px align-middle text-gray-400"></span>
+                                    </span>
                                     <!--end::Spinner-->
                                     <!--begin::Reset-->
-                                    <span
-                                        class="btn btn-flush btn-icon-gray-600 btn-active-color-primary position-absolute top-50 end-0 translate-middle-y lh-0 d-none"
-                                        data-kt-search-element="clear">
-												<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-												<span class="svg-icon svg-icon-1 me-0">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                         viewBox="0 0 24 24" fill="none">
-														<rect opacity="0.5" x="6" y="17.3137" width="16" height="2"
-                                                              rx="1" transform="rotate(-45 6 17.3137)" fill="black"/>
-														<rect x="7.41422" y="6" width="16" height="2" rx="1"
-                                                              transform="rotate(45 7.41422 6)" fill="black"/>
-													</svg>
-												</span>
+                                    <span class="btn btn-flush btn-icon-gray-600 btn-active-color-primary position-absolute top-50 end-0 translate-middle-y lh-0 d-none" data-kt-search-element="clear">
+                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                                        <span class="svg-icon svg-icon-1 me-0">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black"/>
+                                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black"/>
+                                            </svg>
+                                        </span>
                                         <!--end::Svg Icon-->
-											</span>
+                                    </span>
                                     <!--end::Reset-->
                                 </form>
                                 <!--end::Form-->
@@ -580,18 +558,18 @@
                                                  class="btn btn-icon btn-sm btn-active-color-primary ms-auto">
                                                 <!--begin::Svg Icon | path: icons/duotune/general/gen023.svg-->
                                                 <span class="svg-icon svg-icon-2x">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                 height="24" viewBox="0 0 24 24" fill="none">
-																<rect opacity="0.3" x="2" y="2" width="20" height="20"
-                                                                      rx="4" fill="black"/>
-																<rect x="11" y="11" width="2.6" height="2.6" rx="1.3"
-                                                                      fill="black"/>
-																<rect x="15" y="11" width="2.6" height="2.6" rx="1.3"
-                                                                      fill="black"/>
-																<rect x="7" y="11" width="2.6" height="2.6" rx="1.3"
-                                                                      fill="black"/>
-															</svg>
-														</span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                         height="24" viewBox="0 0 24 24" fill="none">
+                                                        <rect opacity="0.3" x="2" y="2" width="20" height="20"
+                                                              rx="4" fill="black"/>
+                                                        <rect x="11" y="11" width="2.6" height="2.6" rx="1.3"
+                                                              fill="black"/>
+                                                        <rect x="15" y="11" width="2.6" height="2.6" rx="1.3"
+                                                              fill="black"/>
+                                                        <rect x="7" y="11" width="2.6" height="2.6" rx="1.3"
+                                                              fill="black"/>
+                                                    </svg>
+                                                </span>
                                                 <!--end::Svg Icon-->
                                             </div>
                                             <!--end::Preferences toggle-->
@@ -614,11 +592,9 @@
                                                    data-kt-search-category="targets">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-																<span class="symbol-label bg-light">
-																	<img class="w-20px h-20px"
-                                                                         src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/volicity-9.svg")}}"
-                                                                         alt=""/>
-																</span>
+                                                        <span class="symbol-label bg-light">
+                                                            <img class="w-20px h-20px" src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/volicity-9.svg")}}" alt=""/>
+                                                        </span>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
@@ -635,11 +611,9 @@
                                                    data-kt-search-category="targets">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-																<span class="symbol-label bg-light">
-																	<img class="w-20px h-20px"
-                                                                         src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/tvit.svg")}}"
-                                                                         alt=""/>
-																</span>
+                                                        <span class="symbol-label bg-light">
+                                                            <img class="w-20px h-20px" src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/tvit.svg")}}" alt=""/>
+                                                        </span>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
@@ -656,17 +630,14 @@
                                                    data-kt-search-category="targets">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-																<span class="symbol-label bg-light">
-																	<img class="w-20px h-20px"
-                                                                         src="{{asset($resolved_assets."app/assets/media/svg/misc/infography.svg")}}"
-                                                                         alt=""/>
-																</span>
+                                                        <span class="symbol-label bg-light">
+                                                            <img class="w-20px h-20px" src="{{asset($resolved_assets."app/assets/media/svg/misc/infography.svg")}}" alt=""/>
+                                                        </span>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
                                                     <div class="fw-bold">
-                                                        <span
-                                                            class="fs-6 text-gray-800 me-2">Business Analytics App</span>
+                                                        <span class="fs-6 text-gray-800 me-2">Business Analytics App</span>
                                                         <span class="badge badge-light">Administration</span>
                                                     </div>
                                                     <!--end::Title-->
@@ -678,11 +649,9 @@
                                                    data-kt-search-category="targets">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-																<span class="symbol-label bg-light">
-																	<img class="w-20px h-20px"
-                                                                         src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/atica.svg")}}"
-                                                                         alt=""/>
-																</span>
+                                                        <span class="symbol-label bg-light">
+                                                            <img class="w-20px h-20px" src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/atica.svg")}}" alt=""/>
+                                                        </span>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
@@ -699,11 +668,9 @@
                                                    data-kt-search-category="targets">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-																<span class="symbol-label bg-light">
-																	<img class="w-20px h-20px"
-                                                                         src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/rgb.svg")}}"
-                                                                         alt=""/>
-																</span>
+                                                        <span class="symbol-label bg-light">
+                                                            <img class="w-20px h-20px" src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/rgb.svg")}}" alt=""/>
+                                                        </span>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
@@ -720,11 +687,9 @@
                                                    data-kt-search-category="targets">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-																<span class="symbol-label bg-light">
-																	<img class="w-20px h-20px"
-                                                                         src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/leaf.svg")}}"
-                                                                         alt=""/>
-																</span>
+                                                        <span class="symbol-label bg-light">
+                                                            <img class="w-20px h-20px" src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/leaf.svg")}}" alt=""/>
+                                                        </span>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
@@ -741,11 +706,9 @@
                                                    data-kt-search-category="targets">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-																<span class="symbol-label bg-light">
-																	<img class="w-20px h-20px"
-                                                                         src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/tower.svg")}}"
-                                                                         alt=""/>
-																</span>
+                                                        <span class="symbol-label bg-light">
+                                                            <img class="w-20px h-20px" src="{{asset($resolved_assets."app/assets/media/svg/brand-logos/tower.svg")}}" alt=""/>
+                                                        </span>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
@@ -757,8 +720,7 @@
                                                 </a>
                                                 <!--end::Item-->
                                                 <!--begin::Category title-->
-                                                <h3 class="fs-4 fw-bold m-0 pt-10 pb-5"
-                                                    data-kt-search-element="category-title">Projects</h3>
+                                                <h3 class="fs-4 fw-bold m-0 pt-10 pb-5" data-kt-search-element="category-title">Projects</h3>
                                                 <!--end::Category title-->
                                                 <!--begin::Item-->
                                                 <a href="#"
@@ -766,28 +728,21 @@
                                                    data-kt-search-category="projects">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-																<span class="symbol-label bg-light-primary">
-																	<!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
-																	<span class="svg-icon svg-icon-2 svg-icon-primary">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-                                                                             width="24" height="24" viewBox="0 0 24 24"
-                                                                             fill="none">
-																			<path
-                                                                                d="M20 14H18V10H20C20.6 10 21 10.4 21 11V13C21 13.6 20.6 14 20 14ZM21 19V17C21 16.4 20.6 16 20 16H18V20H20C20.6 20 21 19.6 21 19ZM21 7V5C21 4.4 20.6 4 20 4H18V8H20C20.6 8 21 7.6 21 7Z"
-                                                                                fill="black"/>
-																			<path opacity="0.3"
-                                                                                  d="M17 22H3C2.4 22 2 21.6 2 21V3C2 2.4 2.4 2 3 2H17C17.6 2 18 2.4 18 3V21C18 21.6 17.6 22 17 22ZM10 7C8.9 7 8 7.9 8 9C8 10.1 8.9 11 10 11C11.1 11 12 10.1 12 9C12 7.9 11.1 7 10 7ZM13.3 16C14 16 14.5 15.3 14.3 14.7C13.7 13.2 12 12 10.1 12C8.10001 12 6.49999 13.1 5.89999 14.7C5.59999 15.3 6.19999 16 7.39999 16H13.3Z"
-                                                                                  fill="black"/>
-																		</svg>
-																	</span>
-                                                                    <!--end::Svg Icon-->
-																</span>
+                                                        <span class="symbol-label bg-light-primary">
+                                                            <!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
+                                                            <span class="svg-icon svg-icon-2 svg-icon-primary">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                    <path d="M20 14H18V10H20C20.6 10 21 10.4 21 11V13C21 13.6 20.6 14 20 14ZM21 19V17C21 16.4 20.6 16 20 16H18V20H20C20.6 20 21 19.6 21 19ZM21 7V5C21 4.4 20.6 4 20 4H18V8H20C20.6 8 21 7.6 21 7Z" fill="black"/>
+                                                                    <path opacity="0.3" d="M17 22H3C2.4 22 2 21.6 2 21V3C2 2.4 2.4 2 3 2H17C17.6 2 18 2.4 18 3V21C18 21.6 17.6 22 17 22ZM10 7C8.9 7 8 7.9 8 9C8 10.1 8.9 11 10 11C11.1 11 12 10.1 12 9C12 7.9 11.1 7 10 7ZM13.3 16C14 16 14.5 15.3 14.3 14.7C13.7 13.2 12 12 10.1 12C8.10001 12 6.49999 13.1 5.89999 14.7C5.59999 15.3 6.19999 16 7.39999 16H13.3Z" fill="black"/>
+                                                                </svg>
+                                                            </span>
+                                                            <!--end::Svg Icon-->
+                                                        </span>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
                                                     <div class="fw-bold">
-                                                        <span
-                                                            class="fs-6 text-gray-800">Si-Fi Project by AU Themes</span>
+                                                        <span class="fs-6 text-gray-800">Si-Fi Project by AU Themes</span>
                                                         <span class="fs-7 text-muted">#45670</span>
                                                     </div>
                                                     <!--end::Title-->
@@ -799,31 +754,22 @@
                                                    data-kt-search-category="projects">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-																<span class="symbol-label bg-light-primary">
-																	<!--begin::Svg Icon | path: icons/duotune/finance/fin008.svg-->
-																	<span class="svg-icon svg-icon-2 svg-icon-primary">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-                                                                             width="24" height="24" viewBox="0 0 24 24"
-                                                                             fill="none">
-																			<path opacity="0.3"
-                                                                                  d="M3.20001 5.91897L16.9 3.01895C17.4 2.91895 18 3.219 18.1 3.819L19.2 9.01895L3.20001 5.91897Z"
-                                                                                  fill="black"/>
-																			<path opacity="0.3"
-                                                                                  d="M13 13.9189C13 12.2189 14.3 10.9189 16 10.9189H21C21.6 10.9189 22 11.3189 22 11.9189V15.9189C22 16.5189 21.6 16.9189 21 16.9189H16C14.3 16.9189 13 15.6189 13 13.9189ZM16 12.4189C15.2 12.4189 14.5 13.1189 14.5 13.9189C14.5 14.7189 15.2 15.4189 16 15.4189C16.8 15.4189 17.5 14.7189 17.5 13.9189C17.5 13.1189 16.8 12.4189 16 12.4189Z"
-                                                                                  fill="black"/>
-																			<path
-                                                                                d="M13 13.9189C13 12.2189 14.3 10.9189 16 10.9189H21V7.91895C21 6.81895 20.1 5.91895 19 5.91895H3C2.4 5.91895 2 6.31895 2 6.91895V20.9189C2 21.5189 2.4 21.9189 3 21.9189H19C20.1 21.9189 21 21.0189 21 19.9189V16.9189H16C14.3 16.9189 13 15.6189 13 13.9189Z"
-                                                                                fill="black"/>
-																		</svg>
-																	</span>
-                                                                    <!--end::Svg Icon-->
-																</span>
+                                                        <span class="symbol-label bg-light-primary">
+                                                            <!--begin::Svg Icon | path: icons/duotune/finance/fin008.svg-->
+                                                            <span class="svg-icon svg-icon-2 svg-icon-primary">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                    <path opacity="0.3" d="M3.20001 5.91897L16.9 3.01895C17.4 2.91895 18 3.219 18.1 3.819L19.2 9.01895L3.20001 5.91897Z" fill="black"/>
+                                                                    <path opacity="0.3" d="M13 13.9189C13 12.2189 14.3 10.9189 16 10.9189H21C21.6 10.9189 22 11.3189 22 11.9189V15.9189C22 16.5189 21.6 16.9189 21 16.9189H16C14.3 16.9189 13 15.6189 13 13.9189ZM16 12.4189C15.2 12.4189 14.5 13.1189 14.5 13.9189C14.5 14.7189 15.2 15.4189 16 15.4189C16.8 15.4189 17.5 14.7189 17.5 13.9189C17.5 13.1189 16.8 12.4189 16 12.4189Z" fill="black"/>
+                                                                    <path d="M13 13.9189C13 12.2189 14.3 10.9189 16 10.9189H21V7.91895C21 6.81895 20.1 5.91895 19 5.91895H3C2.4 5.91895 2 6.31895 2 6.91895V20.9189C2 21.5189 2.4 21.9189 3 21.9189H19C20.1 21.9189 21 21.0189 21 19.9189V16.9189H16C14.3 16.9189 13 15.6189 13 13.9189Z" fill="black"/>
+                                                                </svg>
+                                                            </span>
+                                                            <!--end::Svg Icon-->
+                                                        </span>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
                                                     <div class="fw-bold">
-                                                        <span
-                                                            class="fs-6 text-gray-800">"Create FireStone API" Target</span>
+                                                        <span class="fs-6 text-gray-800">"Create FireStone API" Target</span>
                                                         <span class="fs-7 text-muted">#84250</span>
                                                     </div>
                                                     <!--end::Title-->
@@ -835,25 +781,25 @@
                                                    data-kt-search-category="projects">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-																<span class="symbol-label bg-light-primary">
-																	<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
-																	<span class="svg-icon svg-icon-2 svg-icon-primary">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-                                                                             width="24" height="24" viewBox="0 0 24 24"
-                                                                             fill="none">
-																			<path
-                                                                                d="M21 10H13V11C13 11.6 12.6 12 12 12C11.4 12 11 11.6 11 11V10H3C2.4 10 2 10.4 2 11V13H22V11C22 10.4 21.6 10 21 10Z"
-                                                                                fill="black"/>
-																			<path opacity="0.3"
-                                                                                  d="M12 12C11.4 12 11 11.6 11 11V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V11C13 11.6 12.6 12 12 12Z"
-                                                                                  fill="black"/>
-																			<path opacity="0.3"
-                                                                                  d="M18.1 21H5.9C5.4 21 4.9 20.6 4.8 20.1L3 13H21L19.2 20.1C19.1 20.6 18.6 21 18.1 21ZM13 18V15C13 14.4 12.6 14 12 14C11.4 14 11 14.4 11 15V18C11 18.6 11.4 19 12 19C12.6 19 13 18.6 13 18ZM17 18V15C17 14.4 16.6 14 16 14C15.4 14 15 14.4 15 15V18C15 18.6 15.4 19 16 19C16.6 19 17 18.6 17 18ZM9 18V15C9 14.4 8.6 14 8 14C7.4 14 7 14.4 7 15V18C7 18.6 7.4 19 8 19C8.6 19 9 18.6 9 18Z"
-                                                                                  fill="black"/>
-																		</svg>
-																	</span>
-                                                                    <!--end::Svg Icon-->
-																</span>
+                                                        <span class="symbol-label bg-light-primary">
+                                                            <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
+                                                            <span class="svg-icon svg-icon-2 svg-icon-primary">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                     width="24" height="24" viewBox="0 0 24 24"
+                                                                     fill="none">
+                                                                    <path
+                                                                        d="M21 10H13V11C13 11.6 12.6 12 12 12C11.4 12 11 11.6 11 11V10H3C2.4 10 2 10.4 2 11V13H22V11C22 10.4 21.6 10 21 10Z"
+                                                                        fill="black"/>
+                                                                    <path opacity="0.3"
+                                                                          d="M12 12C11.4 12 11 11.6 11 11V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V11C13 11.6 12.6 12 12 12Z"
+                                                                          fill="black"/>
+                                                                    <path opacity="0.3"
+                                                                          d="M18.1 21H5.9C5.4 21 4.9 20.6 4.8 20.1L3 13H21L19.2 20.1C19.1 20.6 18.6 21 18.1 21ZM13 18V15C13 14.4 12.6 14 12 14C11.4 14 11 14.4 11 15V18C11 18.6 11.4 19 12 19C12.6 19 13 18.6 13 18ZM17 18V15C17 14.4 16.6 14 16 14C15.4 14 15 14.4 15 15V18C15 18.6 15.4 19 16 19C16.6 19 17 18.6 17 18ZM9 18V15C9 14.4 8.6 14 8 14C7.4 14 7 14.4 7 15V18C7 18.6 7.4 19 8 19C8.6 19 9 18.6 9 18Z"
+                                                                          fill="black"/>
+                                                                </svg>
+                                                            </span>
+                                                            <!--end::Svg Icon-->
+                                                        </span>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
@@ -870,22 +816,22 @@
                                                    data-kt-search-category="projects">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-																<span class="symbol-label bg-light-primary">
-																	<!--begin::Svg Icon | path: icons/duotune/communication/com006.svg-->
-																	<span class="svg-icon svg-icon-2 svg-icon-primary">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-                                                                             width="24" height="24" viewBox="0 0 24 24"
-                                                                             fill="none">
-																			<path opacity="0.3"
-                                                                                  d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 7C10.3 7 9 8.3 9 10C9 11.7 10.3 13 12 13C13.7 13 15 11.7 15 10C15 8.3 13.7 7 12 7Z"
-                                                                                  fill="black"/>
-																			<path
-                                                                                d="M12 22C14.6 22 17 21 18.7 19.4C17.9 16.9 15.2 15 12 15C8.8 15 6.09999 16.9 5.29999 19.4C6.99999 21 9.4 22 12 22Z"
-                                                                                fill="black"/>
-																		</svg>
-																	</span>
-                                                                    <!--end::Svg Icon-->
-																</span>
+                                                        <span class="symbol-label bg-light-primary">
+                                                            <!--begin::Svg Icon | path: icons/duotune/communication/com006.svg-->
+                                                            <span class="svg-icon svg-icon-2 svg-icon-primary">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                     width="24" height="24" viewBox="0 0 24 24"
+                                                                     fill="none">
+                                                                    <path opacity="0.3"
+                                                                          d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 7C10.3 7 9 8.3 9 10C9 11.7 10.3 13 12 13C13.7 13 15 11.7 15 10C15 8.3 13.7 7 12 7Z"
+                                                                          fill="black"/>
+                                                                    <path
+                                                                        d="M12 22C14.6 22 17 21 18.7 19.4C17.9 16.9 15.2 15 12 15C8.8 15 6.09999 16.9 5.29999 19.4C6.99999 21 9.4 22 12 22Z"
+                                                                        fill="black"/>
+                                                                </svg>
+                                                            </span>
+                                                            <!--end::Svg Icon-->
+                                                        </span>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
@@ -902,24 +848,24 @@
                                                    data-kt-search-category="projects">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-																<span class="symbol-label bg-light-primary">
-																	<!--begin::Svg Icon | path: icons/duotune/general/gen032.svg-->
-																	<span class="svg-icon svg-icon-2 svg-icon-primary">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-                                                                             width="24" height="24" viewBox="0 0 24 24"
-                                                                             fill="none">
-																			<rect x="8" y="9" width="3" height="10"
-                                                                                  rx="1.5" fill="black"/>
-																			<rect opacity="0.5" x="13" y="5" width="3"
-                                                                                  height="14" rx="1.5" fill="black"/>
-																			<rect x="18" y="11" width="3" height="8"
-                                                                                  rx="1.5" fill="black"/>
-																			<rect x="3" y="13" width="3" height="6"
-                                                                                  rx="1.5" fill="black"/>
-																		</svg>
-																	</span>
-                                                                    <!--end::Svg Icon-->
-																</span>
+                                                        <span class="symbol-label bg-light-primary">
+                                                            <!--begin::Svg Icon | path: icons/duotune/general/gen032.svg-->
+                                                            <span class="svg-icon svg-icon-2 svg-icon-primary">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                     width="24" height="24" viewBox="0 0 24 24"
+                                                                     fill="none">
+                                                                    <rect x="8" y="9" width="3" height="10"
+                                                                          rx="1.5" fill="black"/>
+                                                                    <rect opacity="0.5" x="13" y="5" width="3"
+                                                                          height="14" rx="1.5" fill="black"/>
+                                                                    <rect x="18" y="11" width="3" height="8"
+                                                                          rx="1.5" fill="black"/>
+                                                                    <rect x="3" y="13" width="3" height="6"
+                                                                          rx="1.5" fill="black"/>
+                                                                </svg>
+                                                            </span>
+                                                            <!--end::Svg Icon-->
+                                                        </span>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
@@ -937,23 +883,23 @@
                                                    data-kt-search-category="projects">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-																<span class="symbol-label bg-light-primary">
-																	<!--begin::Svg Icon | path: icons/duotune/communication/com012.svg-->
-																	<span class="svg-icon svg-icon-2 svg-icon-primary">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-                                                                             width="24" height="24" viewBox="0 0 24 24"
-                                                                             fill="none">
-																			<path opacity="0.3"
-                                                                                  d="M20 3H4C2.89543 3 2 3.89543 2 5V16C2 17.1046 2.89543 18 4 18H4.5C5.05228 18 5.5 18.4477 5.5 19V21.5052C5.5 22.1441 6.21212 22.5253 6.74376 22.1708L11.4885 19.0077C12.4741 18.3506 13.6321 18 14.8167 18H20C21.1046 18 22 17.1046 22 16V5C22 3.89543 21.1046 3 20 3Z"
-                                                                                  fill="black"/>
-																			<rect x="6" y="12" width="7" height="2"
-                                                                                  rx="1" fill="black"/>
-																			<rect x="6" y="7" width="12" height="2"
-                                                                                  rx="1" fill="black"/>
-																		</svg>
-																	</span>
-                                                                    <!--end::Svg Icon-->
-																</span>
+                                                        <span class="symbol-label bg-light-primary">
+                                                            <!--begin::Svg Icon | path: icons/duotune/communication/com012.svg-->
+                                                            <span class="svg-icon svg-icon-2 svg-icon-primary">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                     width="24" height="24" viewBox="0 0 24 24"
+                                                                     fill="none">
+                                                                    <path opacity="0.3"
+                                                                          d="M20 3H4C2.89543 3 2 3.89543 2 5V16C2 17.1046 2.89543 18 4 18H4.5C5.05228 18 5.5 18.4477 5.5 19V21.5052C5.5 22.1441 6.21212 22.5253 6.74376 22.1708L11.4885 19.0077C12.4741 18.3506 13.6321 18 14.8167 18H20C21.1046 18 22 17.1046 22 16V5C22 3.89543 21.1046 3 20 3Z"
+                                                                          fill="black"/>
+                                                                    <rect x="6" y="12" width="7" height="2"
+                                                                          rx="1" fill="black"/>
+                                                                    <rect x="6" y="7" width="12" height="2"
+                                                                          rx="1" fill="black"/>
+                                                                </svg>
+                                                            </span>
+                                                            <!--end::Svg Icon-->
+                                                        </span>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
@@ -970,22 +916,22 @@
                                                    data-kt-search-category="projects">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-																<span class="symbol-label bg-light-primary">
-																	<!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
-																	<span class="svg-icon svg-icon-2 svg-icon-primary">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-                                                                             width="24" height="24" viewBox="0 0 24 24"
-                                                                             fill="none">
-																			<path
-                                                                                d="M20 14H18V10H20C20.6 10 21 10.4 21 11V13C21 13.6 20.6 14 20 14ZM21 19V17C21 16.4 20.6 16 20 16H18V20H20C20.6 20 21 19.6 21 19ZM21 7V5C21 4.4 20.6 4 20 4H18V8H20C20.6 8 21 7.6 21 7Z"
-                                                                                fill="black"/>
-																			<path opacity="0.3"
-                                                                                  d="M17 22H3C2.4 22 2 21.6 2 21V3C2 2.4 2.4 2 3 2H17C17.6 2 18 2.4 18 3V21C18 21.6 17.6 22 17 22ZM10 7C8.9 7 8 7.9 8 9C8 10.1 8.9 11 10 11C11.1 11 12 10.1 12 9C12 7.9 11.1 7 10 7ZM13.3 16C14 16 14.5 15.3 14.3 14.7C13.7 13.2 12 12 10.1 12C8.10001 12 6.49999 13.1 5.89999 14.7C5.59999 15.3 6.19999 16 7.39999 16H13.3Z"
-                                                                                  fill="black"/>
-																		</svg>
-																	</span>
-                                                                    <!--end::Svg Icon-->
-																</span>
+                                                        <span class="symbol-label bg-light-primary">
+                                                            <!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
+                                                            <span class="svg-icon svg-icon-2 svg-icon-primary">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                     width="24" height="24" viewBox="0 0 24 24"
+                                                                     fill="none">
+                                                                    <path
+                                                                        d="M20 14H18V10H20C20.6 10 21 10.4 21 11V13C21 13.6 20.6 14 20 14ZM21 19V17C21 16.4 20.6 16 20 16H18V20H20C20.6 20 21 19.6 21 19ZM21 7V5C21 4.4 20.6 4 20 4H18V8H20C20.6 8 21 7.6 21 7Z"
+                                                                        fill="black"/>
+                                                                    <path opacity="0.3"
+                                                                          d="M17 22H3C2.4 22 2 21.6 2 21V3C2 2.4 2.4 2 3 2H17C17.6 2 18 2.4 18 3V21C18 21.6 17.6 22 17 22ZM10 7C8.9 7 8 7.9 8 9C8 10.1 8.9 11 10 11C11.1 11 12 10.1 12 9C12 7.9 11.1 7 10 7ZM13.3 16C14 16 14.5 15.3 14.3 14.7C13.7 13.2 12 12 10.1 12C8.10001 12 6.49999 13.1 5.89999 14.7C5.59999 15.3 6.19999 16 7.39999 16H13.3Z"
+                                                                          fill="black"/>
+                                                                </svg>
+                                                            </span>
+                                                            <!--end::Svg Icon-->
+                                                        </span>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
@@ -1157,22 +1103,22 @@
                                                    class="d-flex align-items-center p-3 rounded bg-state-light bg-state-opacity-50 mb-1">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-																<span class="symbol-label bg-light-primary">
-																	<!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
-																	<span class="svg-icon svg-icon-2 svg-icon-primary">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-                                                                             width="24" height="24" viewBox="0 0 24 24"
-                                                                             fill="none">
-																			<path
-                                                                                d="M20 14H18V10H20C20.6 10 21 10.4 21 11V13C21 13.6 20.6 14 20 14ZM21 19V17C21 16.4 20.6 16 20 16H18V20H20C20.6 20 21 19.6 21 19ZM21 7V5C21 4.4 20.6 4 20 4H18V8H20C20.6 8 21 7.6 21 7Z"
-                                                                                fill="black"/>
-																			<path opacity="0.3"
-                                                                                  d="M17 22H3C2.4 22 2 21.6 2 21V3C2 2.4 2.4 2 3 2H17C17.6 2 18 2.4 18 3V21C18 21.6 17.6 22 17 22ZM10 7C8.9 7 8 7.9 8 9C8 10.1 8.9 11 10 11C11.1 11 12 10.1 12 9C12 7.9 11.1 7 10 7ZM13.3 16C14 16 14.5 15.3 14.3 14.7C13.7 13.2 12 12 10.1 12C8.10001 12 6.49999 13.1 5.89999 14.7C5.59999 15.3 6.19999 16 7.39999 16H13.3Z"
-                                                                                  fill="black"/>
-																		</svg>
-																	</span>
-                                                                    <!--end::Svg Icon-->
-																</span>
+                                                        <span class="symbol-label bg-light-primary">
+                                                            <!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
+                                                            <span class="svg-icon svg-icon-2 svg-icon-primary">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                     width="24" height="24" viewBox="0 0 24 24"
+                                                                     fill="none">
+                                                                    <path
+                                                                        d="M20 14H18V10H20C20.6 10 21 10.4 21 11V13C21 13.6 20.6 14 20 14ZM21 19V17C21 16.4 20.6 16 20 16H18V20H20C20.6 20 21 19.6 21 19ZM21 7V5C21 4.4 20.6 4 20 4H18V8H20C20.6 8 21 7.6 21 7Z"
+                                                                        fill="black"/>
+                                                                    <path opacity="0.3"
+                                                                          d="M17 22H3C2.4 22 2 21.6 2 21V3C2 2.4 2.4 2 3 2H17C17.6 2 18 2.4 18 3V21C18 21.6 17.6 22 17 22ZM10 7C8.9 7 8 7.9 8 9C8 10.1 8.9 11 10 11C11.1 11 12 10.1 12 9C12 7.9 11.1 7 10 7ZM13.3 16C14 16 14.5 15.3 14.3 14.7C13.7 13.2 12 12 10.1 12C8.10001 12 6.49999 13.1 5.89999 14.7C5.59999 15.3 6.19999 16 7.39999 16H13.3Z"
+                                                                          fill="black"/>
+                                                                </svg>
+                                                            </span>
+                                                            <!--end::Svg Icon-->
+                                                        </span>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
@@ -1189,25 +1135,25 @@
                                                    class="d-flex align-items-center p-3 rounded bg-state-light bg-state-opacity-50 mb-1">
                                                     <!--begin::Symbol-->
                                                     <div class="symbol symbol-30px me-4">
-																<span class="symbol-label bg-light-primary">
-																	<!--begin::Svg Icon | path: icons/duotune/finance/fin008.svg-->
-																	<span class="svg-icon svg-icon-2 svg-icon-primary">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-                                                                             width="24" height="24" viewBox="0 0 24 24"
-                                                                             fill="none">
-																			<path opacity="0.3"
-                                                                                  d="M3.20001 5.91897L16.9 3.01895C17.4 2.91895 18 3.219 18.1 3.819L19.2 9.01895L3.20001 5.91897Z"
-                                                                                  fill="black"/>
-																			<path opacity="0.3"
-                                                                                  d="M13 13.9189C13 12.2189 14.3 10.9189 16 10.9189H21C21.6 10.9189 22 11.3189 22 11.9189V15.9189C22 16.5189 21.6 16.9189 21 16.9189H16C14.3 16.9189 13 15.6189 13 13.9189ZM16 12.4189C15.2 12.4189 14.5 13.1189 14.5 13.9189C14.5 14.7189 15.2 15.4189 16 15.4189C16.8 15.4189 17.5 14.7189 17.5 13.9189C17.5 13.1189 16.8 12.4189 16 12.4189Z"
-                                                                                  fill="black"/>
-																			<path
-                                                                                d="M13 13.9189C13 12.2189 14.3 10.9189 16 10.9189H21V7.91895C21 6.81895 20.1 5.91895 19 5.91895H3C2.4 5.91895 2 6.31895 2 6.91895V20.9189C2 21.5189 2.4 21.9189 3 21.9189H19C20.1 21.9189 21 21.0189 21 19.9189V16.9189H16C14.3 16.9189 13 15.6189 13 13.9189Z"
-                                                                                fill="black"/>
-																		</svg>
-																	</span>
-                                                                    <!--end::Svg Icon-->
-																</span>
+                                                        <span class="symbol-label bg-light-primary">
+                                                            <!--begin::Svg Icon | path: icons/duotune/finance/fin008.svg-->
+                                                            <span class="svg-icon svg-icon-2 svg-icon-primary">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                     width="24" height="24" viewBox="0 0 24 24"
+                                                                     fill="none">
+                                                                    <path opacity="0.3"
+                                                                          d="M3.20001 5.91897L16.9 3.01895C17.4 2.91895 18 3.219 18.1 3.819L19.2 9.01895L3.20001 5.91897Z"
+                                                                          fill="black"/>
+                                                                    <path opacity="0.3"
+                                                                          d="M13 13.9189C13 12.2189 14.3 10.9189 16 10.9189H21C21.6 10.9189 22 11.3189 22 11.9189V15.9189C22 16.5189 21.6 16.9189 21 16.9189H16C14.3 16.9189 13 15.6189 13 13.9189ZM16 12.4189C15.2 12.4189 14.5 13.1189 14.5 13.9189C14.5 14.7189 15.2 15.4189 16 15.4189C16.8 15.4189 17.5 14.7189 17.5 13.9189C17.5 13.1189 16.8 12.4189 16 12.4189Z"
+                                                                          fill="black"/>
+                                                                    <path
+                                                                        d="M13 13.9189C13 12.2189 14.3 10.9189 16 10.9189H21V7.91895C21 6.81895 20.1 5.91895 19 5.91895H3C2.4 5.91895 2 6.31895 2 6.91895V20.9189C2 21.5189 2.4 21.9189 3 21.9189H19C20.1 21.9189 21 21.0189 21 19.9189V16.9189H16C14.3 16.9189 13 15.6189 13 13.9189Z"
+                                                                        fill="black"/>
+                                                                </svg>
+                                                            </span>
+                                                            <!--end::Svg Icon-->
+                                                        </span>
                                                     </div>
                                                     <!--end::Symbol-->
                                                     <!--begin::Title-->
@@ -1504,22 +1450,14 @@
                                      data-kt-menu-placement="bottom-end">
                                     <!--begin::Svg Icon | path: icons/duotune/general/gen022.svg-->
                                     <span class="svg-icon svg-icon-1">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                     viewBox="0 0 24 24" fill="none">
-													<path
-                                                        d="M11.2929 2.70711C11.6834 2.31658 12.3166 2.31658 12.7071 2.70711L15.2929 5.29289C15.6834 5.68342 15.6834 6.31658 15.2929 6.70711L12.7071 9.29289C12.3166 9.68342 11.6834 9.68342 11.2929 9.29289L8.70711 6.70711C8.31658 6.31658 8.31658 5.68342 8.70711 5.29289L11.2929 2.70711Z"
-                                                        fill="black"/>
-													<path
-                                                        d="M11.2929 14.7071C11.6834 14.3166 12.3166 14.3166 12.7071 14.7071L15.2929 17.2929C15.6834 17.6834 15.6834 18.3166 15.2929 18.7071L12.7071 21.2929C12.3166 21.6834 11.6834 21.6834 11.2929 21.2929L8.70711 18.7071C8.31658 18.3166 8.31658 17.6834 8.70711 17.2929L11.2929 14.7071Z"
-                                                        fill="black"/>
-													<path opacity="0.3"
-                                                          d="M5.29289 8.70711C5.68342 8.31658 6.31658 8.31658 6.70711 8.70711L9.29289 11.2929C9.68342 11.6834 9.68342 12.3166 9.29289 12.7071L6.70711 15.2929C6.31658 15.6834 5.68342 15.6834 5.29289 15.2929L2.70711 12.7071C2.31658 12.3166 2.31658 11.6834 2.70711 11.2929L5.29289 8.70711Z"
-                                                          fill="black"/>
-													<path opacity="0.3"
-                                                          d="M17.2929 8.70711C17.6834 8.31658 18.3166 8.31658 18.7071 8.70711L21.2929 11.2929C21.6834 11.6834 21.6834 12.3166 21.2929 12.7071L18.7071 15.2929C18.3166 15.6834 17.6834 15.6834 17.2929 15.2929L14.7071 12.7071C14.3166 12.3166 14.3166 11.6834 14.7071 11.2929L17.2929 8.70711Z"
-                                                          fill="black"/>
-												</svg>
-											</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none">
+                                            <path d="M11.2929 2.70711C11.6834 2.31658 12.3166 2.31658 12.7071 2.70711L15.2929 5.29289C15.6834 5.68342 15.6834 6.31658 15.2929 6.70711L12.7071 9.29289C12.3166 9.68342 11.6834 9.68342 11.2929 9.29289L8.70711 6.70711C8.31658 6.31658 8.31658 5.68342 8.70711 5.29289L11.2929 2.70711Z" fill="black"/>
+                                            <path d="M11.2929 14.7071C11.6834 14.3166 12.3166 14.3166 12.7071 14.7071L15.2929 17.2929C15.6834 17.6834 15.6834 18.3166 15.2929 18.7071L12.7071 21.2929C12.3166 21.6834 11.6834 21.6834 11.2929 21.2929L8.70711 18.7071C8.31658 18.3166 8.31658 17.6834 8.70711 17.2929L11.2929 14.7071Z" fill="black"/>
+                                            <path opacity="0.3" d="M5.29289 8.70711C5.68342 8.31658 6.31658 8.31658 6.70711 8.70711L9.29289 11.2929C9.68342 11.6834 9.68342 12.3166 9.29289 12.7071L6.70711 15.2929C6.31658 15.6834 5.68342 15.6834 5.29289 15.2929L2.70711 12.7071C2.31658 12.3166 2.31658 11.6834 2.70711 11.2929L5.29289 8.70711Z" fill="black"/>
+                                            <path opacity="0.3" d="M17.2929 8.70711C17.6834 8.31658 18.3166 8.31658 18.7071 8.70711L21.2929 11.2929C21.6834 11.6834 21.6834 12.3166 21.2929 12.7071L18.7071 15.2929C18.3166 15.6834 17.6834 15.6834 17.2929 15.2929L14.7071 12.7071C14.3166 12.3166 14.3166 11.6834 14.7071 11.2929L17.2929 8.70711Z" fill="black"/>
+                                        </svg>
+                                    </span>
                                     <!--end::Svg Icon-->
                                 </div>
                                 <!--begin::Menu-->
@@ -5729,7 +5667,6 @@
 </div>
 <!--end::Scrolltop-->
 <!--end::Main-->
-<script>const hostUrl = "{{asset($resolved_assets."app/assets/index.hmtl")}}";</script>
 <!--begin::Javascript-->
 <!--begin::Global Javascript Bundle(used by all pages)-->
 <script src="{{asset($resolved_assets."app/assets/plugins/global/plugins.bundle.js")}}"></script>
@@ -5768,8 +5705,7 @@
 <!--end::Javascript-->
 <!--Begin::Google Tag Manager (noscript) -->
 <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FS8GGP" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FS8GGP" height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </noscript>
 <!--End::Google Tag Manager (noscript) -->
 </body>

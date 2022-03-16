@@ -57,11 +57,17 @@ Route::group(
 
         // add enterprises routes
         Route::group(['prefix' => 'company', 'as' => 'company.'], function () {
-            Route::get('/dashboard', [DashboardController::class, "index"])->middleware(['auth'])->name('dashboard');
+            Route::get('/dashboards', [DashboardController::class, "index"])->middleware(['auth'])->name('dashboards');
+            Route::get('/dashboard/view', [DashboardController::class, "view"])->middleware(['auth'])->name('dashboard.view');
+            Route::get('/dashboard/new', [DashboardController::class, "new"])->middleware(['auth'])->name('dashboard.new');
+
             Route::get('/tables', [CompanyTablesControllers::class, "index"])->middleware(['auth'])->name('tables');
+            Route::post('/tables/create', [CompanyTablesControllers::class, "create"])->middleware(['auth'])->name('tables.create');
             Route::post('/tables/import', [CompanyTablesControllers::class, "importData"])->middleware(['auth'])->name('tables.import.data');
             Route::post('/tables/load', [CompanyTablesControllers::class, "getTableData"])->middleware(['auth'])->name('tables.load.data');
             Route::post('/tables/store', [CompanyTablesControllers::class, "store"])->middleware(['auth'])->name('tables.load.store');
+            Route::post('/tables/update', [CompanyTablesControllers::class, "update"])->middleware(['auth'])->name('tables.update');
+
             Route::get('/settings', [CompanySettingsControllers::class, "index"])->middleware(['auth'])->name('settings');
             Route::get('/security', [CompanySecurityControllers::class, "index"])->middleware(['auth'])->name('security');
             Route::get('/apiKeys', [ApiKeysControllers::class, "index"])->middleware(['auth'])->name('apikeys');

@@ -23,10 +23,8 @@
             <!--end::Info-->
             <!--begin::Actions-->
             <div class="d-flex align-items-center flex-nowrap text-nowrap py-1">
-                <a href="#" class="btn bg-body btn-color-gray-700 btn-active-primary me-4"
-                   data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">Créer un nouveau tableau</a>
-                <a href="#" class="btn btn-primary" data-bs-toggle="modal"
-                   data-bs-target="#kt_modal_create_project" id="kt_toolbar_primary_button">New Project</a>
+                <a href="#" class="btn bg-body btn-color-gray-700 btn-active-primary me-4" id="add_new_table">Créer un nouveau tableau</a>
+                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_project" id="kt_toolbar_primary_button">New Project</a>
             </div>
             <!--end::Actions-->
         </div>
@@ -52,14 +50,11 @@
                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
                         <span class="svg-icon svg-icon-2x">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     fill="none">
-									<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
-                                          transform="rotate(-45 6 17.3137)" fill="black"/>
-									<rect x="7.41422" y="6" width="16" height="2" rx="1"
-                                          transform="rotate(45 7.41422 6)" fill="black"/>
-								</svg>
-							</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black"/>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black"/>
+                            </svg>
+                        </span>
                         <!--end::Svg Icon-->
                     </div>
                     <!--end::Close-->
@@ -211,7 +206,7 @@
                                                         <!--begin::Table head-->
                                                         <thead>
                                                         <!--begin::Table row-->
-                                                        <tr class="text-start fw-bolder fs-7 text-uppercase gs-0">
+                                                        <tr class="text-start fw-bolder fs-7 gs-0">
                                                             <th class="min-w-100px"></th>
                                                         </tr>
                                                         <!--end::Table row-->
@@ -336,16 +331,40 @@
             stepper.goPrevious(); // go previous step
         });
     </script>
+
     <script>
-        let coaraTable = new CoaraTable("table-container")
         CoaraTable.token = "{{csrf_token()}}"
         CoaraTable.importRoute = "{{route("app.company.tables.import.data")}}"
         CoaraTable.loadDataUrl = "{{route("app.company.tables.load.data")}}"
         CoaraTable.storeTableUrl = "{{route("app.company.tables.load.store")}}"
-        // coaraTable.loadData(CoaraTable.testData)
-        coaraTable.loadTableData()
-        coaraTable.init()
-        let coaraTable2 = new CoaraTable("table-container")
-        coaraTable2.init()
+        CoaraTable.updateTableUrl = "{{route("app.company.tables.update")}}"
+        CoaraTable.newDashboardUrl = "{{route("app.company.dashboard.new")}}"
+
+        // let coaraTable = new CoaraTable("table-container","dfdfdf")
+        // // coaraTable.loadData(CoaraTable.testData)
+        // coaraTable.loadTableData()
+        // coaraTable.init()
+        // let coaraTable2 = new CoaraTable("table-container", "dcxxvf")
+        // coaraTable2.init()
+    </script>
+
+    <script>
+        document.getElementById("add_new_table").addEventListener("click",function (e){
+            $.ajax({
+                url: "{{route("app.company.tables.create")}}",
+                type: "POST",
+                data: {
+                    _token: CoaraTable.token,
+                },
+                success: (result) => {
+                    console.log(result.uid)
+                    let coaraTable = new CoaraTable("table-container",result.uid)
+                    // coaraTable.loadTableData()
+                    coaraTable.init()
+                },
+                error: (result) => {
+                }
+            })
+        })
     </script>
 @endsection
