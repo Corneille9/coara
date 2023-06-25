@@ -7,35 +7,22 @@
 <head>
     <title>CoAra</title>
     <meta charset="utf-8"/>
-    {{--    <meta name="description" content="Craft admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets."/>--}}
-    {{--    <meta name="keywords" content="Craft, bootstrap, bootstrap 5, admin themes, free admin themes, bootstrap admin, bootstrap dashboard"/>--}}
-    {{--    <meta name="viewport" content="width=device-width, initial-scale=1"/>--}}
-    {{--    <meta property="og:locale" content="en_US"/>--}}
-    {{--    <meta property="og:type" content="article"/>--}}
-    {{--    <meta property="og:title" content="Craft - Bootstrap 5 HTML Admin Dashboard Theme"/>--}}
-    {{--    <meta property="og:url" content="https://themes.getbootstrap.com/product/craft-bootstrap-5-admin-dashboard-theme"/>--}}
-    {{--    <meta property="og:site_name" content="Keenthemes | Craft"/>--}}
-    {{--    <link rel="canonical" href="https://preview.keenthemes.com/craft"/>--}}
+
     <link rel="shortcut icon" href="{{asset($resolved_assets."app/assets/media/logos/favicon.ico")}}"/>
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700"/>
     <!--end::Fonts-->
     <!--begin::Page Vendor Stylesheets(used by this page)-->
-    <link href="{{asset($resolved_assets."app/assets/plugins/custom/leaflet/leaflet.bundle.css")}}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{{asset($resolved_assets."app/assets/plugins/custom/datatables/datatables.bundle.css")}}"
-          rel="stylesheet" type="text/css"/>
+    <link href="{{asset($resolved_assets."app/assets/plugins/custom/leaflet/leaflet.bundle.css")}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset($resolved_assets."app/assets/plugins/custom/datatables/datatables.bundle.css")}}" rel="stylesheet" type="text/css"/>
     <!--end::Page Vendor Stylesheets-->
     <!--begin::Global Stylesheets Bundle(used by all pages)-->
     @if(isset($_COOKIE["mode"]) && $_COOKIE["mode"]=="light")
-        <link href="{{asset($resolved_assets."app/assets/plugins/global/plugins.bundle.css")}}" rel="stylesheet"
-              type="text/css"/>
+        <link href="{{asset($resolved_assets."app/assets/plugins/global/plugins.bundle.css")}}" rel="stylesheet" type="text/css"/>
         <link href="{{asset($resolved_assets."app/assets/css/style.bundle.css")}}" rel="stylesheet" type="text/css"/>
     @else
-        <link href="{{asset($resolved_assets."app/assets/plugins/global/plugins.dark.bundle.css")}}" rel="stylesheet"
-              type="text/css"/>
-        <link href="{{asset($resolved_assets."app/assets/css/style.dark.bundle.css")}}" rel="stylesheet"
-              type="text/css"/>
+        <link href="{{asset($resolved_assets."app/assets/plugins/global/plugins.dark.bundle.css")}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset($resolved_assets."app/assets/css/style.dark.bundle.css")}}" rel="stylesheet" type="text/css"/>
 @endif
 <!--end::Global Stylesheets Bundle-->
     <!-- Page loading styles -->
@@ -202,89 +189,8 @@
                         </div>
                         <!--end::Details-->
                     </div>
-                    <div class="lines-container">
-                        <div class="separator separator-dashed m-7"></div>
-                        <div class="mb-6">
-                            <!--begin::Label-->
-                            <label class="fw-bold fs-6 mb-2">
-                                <span class="text-success fw-bolder">Lignes</span>
-                            </label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="">
-                                <select name="country" aria-label="Select a Country" data-control="select2" data-placeholder="Sélectionner un champ..." class="form-select form-select-solid form-select-lg" id="linesSelect">
-                                    <option value="">Sélectionner un champ</option>
-                                    @foreach($cols as $col)
-                                        <option value="{{$loop->index}}">{{$col}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                    </div>
 
-                    <div class="columns-container">
-                        <div class="separator separator-dashed m-7"></div>
-                        <div class="mb-6">
-                            <!--begin::Label-->
-                            <label class="fs-6 mb-2">
-                                <span class="text-primary fw-bolder">Colonnes</span>
-                            </label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="">
-                                <select name="country" aria-label="Select a Country" data-control="select2" data-placeholder="Sélectionner un champ..." class="form-select form-select-solid form-select-lg" id="columnsSelect">
-                                    <option value="">Sélectionner un champ</option>
-                                    @foreach($cols as $col)
-                                        <option value="{{$loop->index}}">{{$col}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                    </div>
-
-                    <div class="values-container">
-                        <div class="separator separator-dashed m-7"></div>
-                        <div class="mb-6">
-                            <!--begin::Label-->
-                            <label class="fw-bold fs-6 mb-2">
-                                <span class="text-warning fw-bolder tag">Valeurs</span>
-                            </label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="">
-                                <select name="country" aria-label="Select a Country" data-control="select2" data-placeholder="Sélectionner un champ..." class="form-select form-select-solid form-select-lg" id="valuesSelect">
-                                    <option value="">Sélectionner un champ</option>
-                                    @foreach($cols as $col)
-                                        <option value="{{$loop->index}}">{{$col}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                    </div>
-
-                    <div class="filters-container">
-                        <div class="separator separator-dashed m-7"></div>
-                        <div class="mb-6">
-                            <!--begin::Label-->
-                            <label class="fw-bold fs-6 mb-2">
-                                <span class="text-info fw-bolder">Filtres</span>
-                            </label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="">
-                                <select name="country" aria-label="Select a Country" data-control="select2" data-placeholder="Sélectionner un champ..." class="form-select form-select-solid form-select-lg" id="filtersSelect">
-                                    <option value="">Sélectionner un champ</option>
-                                    @foreach($cols as $col)
-                                        <option value="{{$loop->index}}">{{$col}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                    </div>
+                    <div id="fieldsContainer"></div>
 
                 </div>
                 <!--end::Card body-->
@@ -382,6 +288,12 @@
                                     </table>
                                 </div>
 
+                                <div class="card card-bordered">
+                                    <div class="card-body">
+                                        <div id="virtualizationContainer" style="height: 350px;"></div>
+                                    </div>
+                                </div>
+
                             </div>
 
                             <div class="tab-pane fade" id="dynGraph" role="tabpanel">
@@ -406,7 +318,6 @@
     <!--end::Page-->
 </div>
 
-<!--begin::Menu-->
 <div class="modal fade m-5" tabindex="-1" id="chartsModal">
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
@@ -433,19 +344,19 @@
                         <div class="col-2 h-200px w-200px">
                             <!--begin::Chart Widget 1-->
                             <div class="m-0">
-                                <a href="#" class="bg-hover-light-primary" data-slug="{{$chart["slug"]}}" data-type="chart" data-index="{{$loop->index}}">
+                                <a href="#" class="bg-hover-light-primary" data-slug="{{$chart->slug}}" data-type="chartType" data-index="{{$loop->index}}">
                                     <div class="card card-dashed bg-transparent bg-hover-light-primary">
                                         <!--begin::Body-->
                                         <div class="card-body p-0 d-flex justify-content-between flex-column">
                                             <!--begin::Chart-->
                                             <div class="" style="position: relative;">
-                                                <img src="{{asset($resolved_assets.$chart["path"])}}" class="card-img">
+                                                <img src="{{asset($resolved_assets.$chart->path)}}" class="card-img">
                                             </div>
                                             <!--end::Chart-->
                                             <div class="d-flex flex-stack card-p flex-grow-1">
                                                 <!--begin::Text-->
                                                 <div class="d-flex flex-column text-end">
-                                                    <span class="fw-boldest text-gray-800 fs-5">{{$chart["name"]}}</span>
+                                                    <span class="fw-boldest text-gray-800 fs-5">{{$chart->name}}</span>
                                                 </div>
                                                 <!--end::Text-->
                                             </div>
@@ -462,10 +373,6 @@
         </div>
     </div>
 </div>
-<!--end::Menu-->
-<!--end::Main-->
-<!--begin::Javascript-->
-<!--begin::Global Javascript Bundle(used by all pages)-->
 
 <script src="{{asset($resolved_assets."app/assets/plugins/global/plugins.bundle.js")}}"></script>
 <script src="{{asset($resolved_assets."app/assets/js/scripts.bundle.js")}}"></script>
@@ -483,153 +390,25 @@
 <script src="{{asset($resolved_assets."app/assets/js/custom/modals/upgrade-plan.js")}}"></script>
 <script src="{{asset($resolved_assets."app/assets/js/custom/intro.js")}}"></script>
 <script src="{{asset($resolved_assets."app/assets/plugins/custom/datatables/datatables.bundle.js")}}"></script>
+<script src="{{asset($resolved_assets."app/assets/plugins/custom/draggable/draggable.bundle.js")}}"></script>
+
+<script src="{{asset($resolved_assets."app/assets/js/custom/routes.js")}}"></script>
 <script src="{{asset($resolved_assets."app/assets/js/custom/olapcubejs/cube.min.js")}}"></script>
 <script src="{{asset($resolved_assets."app/assets/js/custom/tables/coaraTable.js")}}"></script>
 <script src="{{asset($resolved_assets."app/assets/js/custom/tables/constants.js")}}"></script>
 <script src="{{asset($resolved_assets."app/assets/js/custom/tables/DynamicTableBuilder.js")}}"></script>
 <script src="{{asset($resolved_assets."app/assets/js/custom/charts/chartOptions.js")}}"></script>
 <script src="{{asset($resolved_assets."app/assets/js/custom/charts/chartBuilder.js")}}"></script>
-<script src="{{asset($resolved_assets."app/assets/plugins/custom/draggable/draggable.bundle.js")}}"></script>
+<script src="{{asset($resolved_assets."app/assets/js/custom/charts/virtualizationBuilder.js")}}"></script>
 
 <script>
-    let cols = @json($cols);
-
-    let linesSelect = $("#linesSelect")
-    let columnsSelect = $("#columnsSelect")
-    let valuesSelect = $("#valuesSelect")
-    let filtersSelect = $("#filtersSelect")
-
-    let dfd = "New value"
-
-    linesSelect.on("select2:select", function (e){
-        $(".lines-container").append(`
-            <li class="d-flex align-items-center py-2 ms-md-8">
-                <span class="bullet me-5 bg-success"></span>` + e.params.data.text + `
-                <button type="button" class="btn btn-sm btn-icon btn-color-danger mx-2" onclick="deleteSelected(this)" data-index="` + e.params.data.id + `" data-type="lines">
-                    <span class="svg-icon svg-icon-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <rect opacity="0.5" x="7.05025" y="15.5356" width="12" height="2" rx="1" transform="rotate(-45 7.05025 15.5356)" fill="black"/>
-                            <rect x="8.46447" y="7.05029" width="12" height="2" rx="1" transform="rotate(45 8.46447 7.05029)" fill="black"/>
-                        </svg>
-                    </span>
-                </button>
-            </li>
-        `)
-        document.querySelector("#virtualizationTable").querySelector("tbody").insertAdjacentHTML("beforeend", `<tr class="border-bottom border-gray-200 text-white" data-index="` + 1 + `"><th>` + dfd + "lines"  + `</th></tr>`)
-        columnsSelect.find("option[value='" + e.params.data.id + "']").remove()
-        linesSelect.find(":selected").remove().trigger("change")
-        checkContainers()
-    })
-
-    columnsSelect.on("select2:select", function (e){
-        $(".columns-container").append(`
-            <li class="d-flex align-items-center py-2 ms-md-8">
-                <span class="bullet me-5 bg-primary"></span>` + e.params.data.text + `
-                <button type="button" class="btn btn-sm btn-icon btn-color-danger mx-2" onclick="deleteSelected(this)" data-index="` + e.params.data.id + `" data-type="columns">
-                    <span class="svg-icon svg-icon-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <rect opacity="0.5" x="7.05025" y="15.5356" width="12" height="2" rx="1" transform="rotate(-45 7.05025 15.5356)" fill="black"/>
-                            <rect x="8.46447" y="7.05029" width="12" height="2" rx="1" transform="rotate(45 8.46447 7.05029)" fill="black"/>
-                        </svg>
-                    </span>
-                </button>
-            </li>
-        `)
-        document.querySelector("#virtualizationTable").querySelector("thead>tr").insertAdjacentHTML("beforeend", `<th class="" data-index="` + 1 + `">` + dfd + " Col" + `</th>`)
-        linesSelect.find("option[value='" + e.params.data.id + "']").remove()
-        columnsSelect.find(":selected").remove().trigger("change")
-        checkContainers()
-    })
-
-    valuesSelect.on("select2:select", function (e){
-        $(".values-container").append(`
-            <li class="d-flex align-items-center py-2 ms-md-8">
-                <span class="bullet me-5 bg-warning"></span>` + e.params.data.text + `
-                <button type="button" class="btn btn-sm btn-icon btn-color-danger mx-2" onclick="deleteSelected(this)" data-index="` + e.params.data.id + `" data-type="values">
-                    <span class="svg-icon svg-icon-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <rect opacity="0.5" x="7.05025" y="15.5356" width="12" height="2" rx="1" transform="rotate(-45 7.05025 15.5356)" fill="black"/>
-                            <rect x="8.46447" y="7.05029" width="12" height="2" rx="1" transform="rotate(45 8.46447 7.05029)" fill="black"/>
-                        </svg>
-                    </span>
-                </button>
-            </li>
-        `)
-        valuesSelect.find(":selected").remove().trigger("change")
-        checkContainers()
-    })
-
-
-
-    filtersSelect.on("select2:select", function (e){
-        $(".filters-container").append(`
-            <li class="d-flex align-items-center py-2 ms-md-8">
-                <span class="bullet me-5 bg-info"></span>` + e.params.data.text + `
-                <button type="button" class="btn btn-sm btn-icon btn-color-danger mx-2" onclick="deleteSelected(this)" data-index="` + e.params.data.id + `" data-type="filters">
-                    <span class="svg-icon svg-icon-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <rect opacity="0.5" x="7.05025" y="15.5356" width="12" height="2" rx="1" transform="rotate(-45 7.05025 15.5356)" fill="black"/>
-                            <rect x="8.46447" y="7.05029" width="12" height="2" rx="1" transform="rotate(45 8.46447 7.05029)" fill="black"/>
-                        </svg>
-                    </span>
-                </button>
-            </li>
-        `)
-        filtersSelect.find(":selected").remove().trigger("change")
-        checkContainers()
-    })
-
-    function deleteSelected(target) {
-        switch (target.dataset.type) {
-            case "lines":
-                columnsSelect.append(new Option(cols[target.dataset.index], target.dataset.index, false, false)).trigger("change")
-                linesSelect.append(new Option(cols[target.dataset.index], target.dataset.index, false, false)).trigger("change")
-                break
-            case "columns":
-                linesSelect.append(new Option(cols[target.dataset.index], target.dataset.index, false, false)).trigger("change")
-                columnsSelect.append(new Option(cols[target.dataset.index], target.dataset.index, false, false)).trigger("change")
-                break
-            case "values":
-                break
-            case "filters":
-                break
-            default:break
-        }
-        target.parentElement.remove()
-        checkContainers()
-    }
-
-    function checkContainers() {
-        if ($(".lines-container").find("li").length === 0 && $(".columns-container").find("li").length === 0 && $(".values-container").find("li").length === 0 && $(".filters-container").find("li").length === 0){
-            $("#myTabContent").find("div[data-type='info']").each((i, v)=>{
-                v.classList.remove("d-none")
-            })
-            document.querySelector("#virtualizationTable").classList.add("d-none")
-        }else {
-            $("#myTabContent").find("div[data-type='info']").each((i, v)=>{
-                v.classList.add("d-none")
-            })
-            document.querySelector("#virtualizationTable").classList.remove("d-none")
-        }
-    }
-
-    // checkContainers()
-
-</script>
-
-<script>
-    let chartModal = $("#chartsModal");
-    let chartModalClose = chartModal.find("div[data-bs-dismiss='modal']")
-    let chartData = @json($charts);
-    chartModal.find("a[data-type='chart']").each((key , value)=>{
-        value.addEventListener("click", (e)=>{
-            // console.log(value.dataset.index)
-            $("#myTabContent").find("img").each((index, img)=>{
-                img.src = "{{$resolved_assets}}" + chartData[value.dataset.index]["path"]
-            })
-            chartModalClose.click()
-        })
-    })
+    Routes.token = "{{csrf_token()}}"
+    Routes.importRoute = "{{route("app.company.tables.import.data")}}"
+    Routes.loadDataUrl = "{{route("app.company.tables.load.data")}}"
+    Routes.storeTableUrl = "{{route("app.company.tables.load.store")}}"
+    Routes.updateTableUrl = "{{route("app.company.tables.update")}}"
+    Routes.newDashboardUrl = "{{route("app.company.dashboard.new")}}"
+    Routes.dashDatasourceUrl = "{{route("app.company.dashboard.datasource.get")}}"
 </script>
 
 <script>
@@ -639,61 +418,59 @@
     document.querySelector("a[href='#dynTable']").addEventListener("click", ()=>{
         document.querySelector("#options").classList.remove("d-none")
     })
+    VirtualizationBuilder.cols = @json($cols);
+    VirtualizationBuilder.chartType = @json($charts);
 </script>
 
 <script>
-    let data = {
-        lines: [
-            {
-                name: "Produits",
-                data: [
-                    "Banane",
-                    "Pomme",
-                    "Mangue",
-                    "Coco",
-                ]
-            },
-            {
-                name: 'Prix',
-                data: [
-                    "$1255",
-                    "$85656",
-                    "$256",
-                    "$4563",
-                ]
-            }
-        ]
-    }
-    let bb = new DynamicTableBuilder(document.querySelector("#virtualizationTable"), data, LINESVALUES)
+    let virtualizationBuilder = new VirtualizationBuilder()
+    VirtualizationBuilder.getInstance = virtualizationBuilder
+
+    virtualizationBuilder.checkContainers()
+    virtualizationBuilder.chart = VirtualizationBuilder.chartType[12]
+    virtualizationBuilder.addField()
+
+    let chartModal = $("#chartsModal");
+    let chartModalClose = chartModal.find("div[data-bs-dismiss='modal']")
+
+    chartModal.find("a[data-type='chartType']").each((key , value)=>{
+        value.addEventListener("click", (e)=>{
+            $("#myTabContent").find("img").each((index, img)=>{
+                img.src = "{{$resolved_assets}}" + VirtualizationBuilder.chartType[value.dataset.index]["path"]
+            })
+            chartModalClose.click()
+            virtualizationBuilder.chart = VirtualizationBuilder.chartType[value.dataset.index]
+            virtualizationBuilder.addField()
+        })
+    })
 </script>
 
 
-{{--<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>--}}
-<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
-<script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
-<script src="{{asset($resolved_assets."app/assets/js/reveal/infragistics.reveal.js")}}"></script>
-
-<script type="text/javascript">
-    // $.ig.RevealSdkSettings.ensureFontsLoadedAsync().then(() => {
-    //     let revealView = new $.ig.RevealView("#revealView");
-    //     revealView.dashboard = new $.ig.RVDashboard();
-    // }).then(()=>{
-    //     document.querySelectorAll("#revealView").forEach(v=>{
-    //         console.log(v)
-    //         v.style.backgroundColor = ""
-    //     })
-    // });
-</script>
-
-<!--end::Page Custom Javascript-->
-<!--end::Javascript-->
-<!--Begin::Google Tag Manager (noscript) -->
-<noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FS8GGP" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
-<!--End::Google Tag Manager (noscript) -->
+{{--<script>--}}
+{{--    let data = {--}}
+{{--        lines: [--}}
+{{--            {--}}
+{{--                name: "Produits",--}}
+{{--                data: [--}}
+{{--                    "Banane",--}}
+{{--                    "Pomme",--}}
+{{--                    "Mangue",--}}
+{{--                    "Coco",--}}
+{{--                ]--}}
+{{--            },--}}
+{{--            {--}}
+{{--                name: 'Prix',--}}
+{{--                data: [--}}
+{{--                    "$1255",--}}
+{{--                    "$85656",--}}
+{{--                    "$256",--}}
+{{--                    "$4563",--}}
+{{--                ]--}}
+{{--            }--}}
+{{--        ]--}}
+{{--    }--}}
+{{--    let bb = new DynamicTableBuilder(document.querySelector("#virtualizationTable"), data, LINESVALUES)--}}
+{{--</script>--}}
 </body>
 <!--end::Body-->
-
-<!-- Mirrored from preview.keenthemes.com/craft/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Feb 2022 00:57:04 GMT -->
 </html>

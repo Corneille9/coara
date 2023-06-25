@@ -13,6 +13,7 @@ use App\Http\Controllers\OffersController;
 use App\Http\Controllers\Personal\PersonalSettingsControllers;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\EnterprisesController;
+use App\Http\Controllers\VirtualizationBuilder;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,6 +61,7 @@ Route::group(
             Route::get('/dashboards', [DashboardController::class, "index"])->middleware(['auth'])->name('dashboards');
             Route::get('/dashboard/view', [DashboardController::class, "view"])->middleware(['auth'])->name('dashboard.view');
             Route::get('/dashboard/new', [DashboardController::class, "new"])->middleware(['auth'])->name('dashboard.new');
+            Route::post('/dashboard/datasource', [VirtualizationBuilder::class, "getData"])->middleware(['auth'])->name('dashboard.datasource.get');
 
             Route::get('/tables', [CompanyTablesControllers::class, "index"])->middleware(['auth'])->name('tables');
             Route::post('/tables/create', [CompanyTablesControllers::class, "create"])->middleware(['auth'])->name('tables.create');

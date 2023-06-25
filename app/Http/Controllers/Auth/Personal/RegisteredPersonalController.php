@@ -91,6 +91,7 @@ class RegisteredPersonalController extends Controller
         $user = User::create([
             'name' => $request->firstname." ".$request->lastname,
             'email' => $request->email,
+            'tow_step'=>true,
             'password' => Hash::make($request->password),
         ]);
 

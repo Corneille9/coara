@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
+use App\Models\ChartsOptions;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
@@ -64,6 +66,21 @@ class DashboardController extends Controller
 
     public function new()
     {
+        $data = json_decode(Storage::disk("public")->get("tableData.json"), true)[0];
+        $cols = [];
+        foreach ($data as $key=>$value){
+            if ($key != "id"){
+                array_push($cols, $key);
+            }
+        }
+
+        $this->cols = $cols;
+        $this->charts = ChartsOptions::all();
+        return view("company.new_dashboard", $this->data);
+    }
+
+    public function inst($method, $parameters)
+    {
         $cht = [
             "reveal-chart-illustration-area.svg",
             "reveal-chart-illustration-bar.svg",
@@ -102,24 +119,15 @@ class DashboardController extends Controller
         ];
         $charts = [];
         $chartImgPath = "app/assets/media/svg/charts/";
+        $chtdata = json_decode(Storage::disk("public")->get("chartsoption.json"), true)[0];
+
         foreach ($cht as $item){
-            $chart = [];
-            $chart["name"] = ucfirst(trim(str_replace(["-", ".svg"], " ", str_replace("reveal-chart-illustration-","",$item))));
-            $chart["path"] = $chartImgPath.$item;
-            $chart["slug"] = strtolower(str_replace(' ', '_', $chart["name"]));
-            array_push($charts, $chart);
+            $chart = new ChartsOptions();
+            $chart->slug = strtolower(str_replace(' ', '_', trim(str_replace(["-", ".svg"], " ", str_replace("reveal-chart-illustration-","",$item)))));
+            $chart->path = $chartImgPath.$item;
+            $chart->name = isset($chtdata[$chart->slug])?$chtdata[$chart->slug]["name"]:ucfirst(trim(str_replace(["-", ".svg"], " ", str_replace("reveal-chart-illustration-","",$item))));
+            $chart->fields = json_encode(isset($chtdata[$chart->slug])?$chtdata[$chart->slug]["fields"]:$chtdata["pivot_grid"]["fields"]);
+//            $chart->save();
         }
-
-        $data = json_decode(Storage::disk("public")->get("tableData.json"), true)[0];
-        $cols = [];
-        foreach ($data as $key=>$value){
-            if ($key != "id"){
-                array_push($cols, $key);
-            }
-        }
-
-        $this->cols = $cols;
-        $this->charts = $charts;
-        return view("company.new_dashboard", $this->data);
     }
 }
